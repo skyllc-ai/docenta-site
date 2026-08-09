@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docenta - ask your collection</title>
+<meta name="description" content="docenta is a local-first content retrieval engine built for LLM agents. It turns everything on your machine into an askable collection and answers with receipts. Nothing leaves your machine.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<meta property="og:title" content="docenta - ask your collection">
+<meta property="og:description" content="A local-first content retrieval engine built for LLM agents. Everything you have ever written, ready to answer, with receipts. Nothing leaves your machine.">
+<meta property="og:image" content="https://skyllc-ai.github.io/docenta-site/assets/og-card-1200x630.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --rust:#CE422B; --ember:#F7B26B; --crimson:#B03618; --tan:#DEA584;
+    --charcoal:#0F0D0B; --charcoal-mid:#1E1B18; --cream:#F2EDE8; --sand:#9A8D82;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--charcoal); color:var(--cream);
+    font-family:Inter,'Segoe UI',system-ui,sans-serif;
+    font-size:17px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--ember);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* ── nav ─────────────────────────────────────────── */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;letter-spacing:-.5px;color:var(--cream)}
+  .brand img{width:38px;height:38px}
+  .brand:hover{text-decoration:none}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;font-size:14px;
+    color:var(--charcoal);background:var(--rust);
+    padding:10px 18px;border-radius:8px;font-weight:700;color:var(--cream);
+  }
+  .nav-cta:hover{background:var(--crimson);text-decoration:none}
+
+  /* ── placard eyebrow: the museum wall label ──────── */
+  .placard{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;
+    color:var(--tan);text-transform:uppercase;
+    display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  }
+  .placard::before{content:"";display:inline-block;width:34px;height:1px;background:var(--tan);opacity:.6}
+
+  /* ── hero ────────────────────────────────────────── */
+  header{padding:56px 0 30px}
+  h1{
+    font-weight:800;font-size:clamp(38px,6.4vw,64px);line-height:1.04;
+    letter-spacing:-.03em;max-width:820px;
+  }
+  h1 em{font-style:normal;color:var(--ember)}
+  .sub{color:var(--sand);font-size:clamp(17px,2vw,21px);max-width:640px;margin:26px 0 10px}
+  .sub strong{color:var(--cream);font-weight:600}
+
+  /* ── the signature: the docent answers ───────────── */
+  .terminal{
+    margin:44px 0 8px;background:var(--charcoal-mid);
+    border:1px solid #2c2620; border-radius:12px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55);
+    overflow:hidden;
+  }
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #2c2620}
+  .dot{width:11px;height:11px;border-radius:50%;background:#3a332c}
+  .dot.r{background:var(--crimson)}
+  .term-title{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--sand)}
+  .term-body{padding:22px 24px 26px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;line-height:1.75;min-height:280px}
+  .q{color:var(--cream)}
+  .q::before{content:"❯ ";color:var(--ember)}
+  .tool{color:var(--sand);font-size:13px}
+  .hit{color:var(--cream)}
+  .hit .path{color:var(--ember)}
+  .hit .span{color:var(--sand)}
+  .receipt{color:var(--tan)}
+  .caret{display:inline-block;width:9px;height:18px;background:var(--ember);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .term-line{opacity:0}
+  .term-line.show{opacity:1}
+  @media (prefers-reduced-motion:reduce){
+    .term-line{opacity:1}
+    .caret{animation:none}
+    html{scroll-behavior:auto}
+  }
+  .term-note{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--sand);margin:14px 2px 0}
+
+  /* ── sections ────────────────────────────────────── */
+  section{padding:72px 0 8px}
+  h2{font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;max-width:720px}
+  .lead{color:var(--sand);max-width:660px;margin-top:16px}
+  .lead strong{color:var(--cream);font-weight:600}
+
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .card{
+    background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;
+    padding:26px 24px;
+  }
+  .card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+  .card h3 .k{color:var(--ember)}
+  .card p{color:var(--sand);font-size:15.5px}
+  .card p code{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--tan)}
+
+  /* ── the plaque: collection statistics ───────────── */
+  .plaque{
+    margin-top:44px;border:1px solid var(--tan);border-radius:12px;
+    padding:8px 0;
+    background:linear-gradient(180deg,#171310,#12100d);
+  }
+  .plaque-title{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--tan);text-align:center;padding:18px 0 6px;
+  }
+  .plaque-grid{display:grid;grid-template-columns:repeat(5,1fr);padding:10px 10px 20px}
+  .stat{padding:14px 10px;text-align:center;border-left:1px solid #2c2620}
+  .stat:first-child{border-left:none}
+  .stat b{
+    display:block;font-family:'JetBrains Mono',monospace;font-weight:700;
+    font-size:clamp(18px,2.4vw,26px);color:var(--ember);letter-spacing:-.02em;
+  }
+  .stat span{font-size:12.5px;color:var(--sand);display:block;margin-top:6px;line-height:1.45}
+  .plaque-foot{font-size:12px;color:var(--sand);text-align:center;padding:0 20px 16px}
+
+  /* ── how it works ───────────────────────────────── */
+  .spine{
+    margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;
+    background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;
+    padding:26px 28px;color:var(--sand);overflow-x:auto;
+  }
+  .spine b{color:var(--cream);font-weight:600}
+  .spine .a{color:var(--ember)}
+
+  /* ── cta ─────────────────────────────────────────── */
+  .cta{
+    margin:84px 0 0;padding:56px 40px;text-align:center;
+    background:linear-gradient(180deg,var(--charcoal-mid),#171310);
+    border:1px solid #2c2620;border-radius:16px;
+  }
+  .cta h2{max-width:none}
+  .cta p{color:var(--sand);margin:16px auto 30px;max-width:560px}
+  .btn{
+    display:inline-block;background:var(--rust);color:var(--cream);
+    font-weight:700;font-size:17px;padding:15px 34px;border-radius:10px;
+  }
+  .btn:hover{background:var(--crimson);text-decoration:none}
+  .cta .alt{display:block;margin-top:18px;font-size:14px;color:var(--sand)}
+
+  footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid #2c2620;color:var(--sand);font-size:13.5px}
+  footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer a{color:var(--tan)}
+
+  @media (max-width:820px){
+    .cols{grid-template-columns:1fr}
+    .plaque-grid{grid-template-columns:repeat(2,1fr)}
+    .stat{border-left:none;border-top:1px solid #2c2620}
+    .stat:first-child{border-top:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#"><img src="assets/docenta-glyph.svg" alt="" width="38" height="38">docenta</a>
+    <a class="nav-cta" href="#access">request early access</a>
+  </nav>
+
+  <header>
+    <div class="placard">Exhibit 001 · The Corpus · 1998 to today</div>
+    <h1>Your machine holds everything you ever wrote.<br>Now it can <em>answer</em>.</h1>
+    <p class="sub">docenta is a <strong>local-first content retrieval engine built for LLM agents</strong>. It turns your files, mail, and chat history into one askable collection. Answers come with receipts: exact file, exact span. <strong>Nothing leaves your machine.</strong></p>
+
+    <div class="terminal" aria-label="Example of an agent asking docenta a question">
+      <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
+      <div class="term-body" id="term">
+        <div class="term-line q">when did we decide to switch the importer to streaming, and why?<span class="caret" id="caret"></span></div>
+        <div class="term-line tool">docenta · semantic_search → timeline channel · 6 ms</div>
+        <div class="term-line hit">1. <span class="path">docs/design/importer-notes.md</span> <span class="span">· "2024-03-08: streaming import decided, batch peak RAM 14 GB was the trigger"</span></div>
+        <div class="term-line hit">2. <span class="path">Mail · "Re: importer memory ceiling"</span> <span class="span">· 2024-03-07 · the thread that forced the call</span></div>
+        <div class="term-line hit">3. <span class="path">agent session · 2024-03-08</span> <span class="span">· the refactor itself, step by step</span></div>
+        <div class="term-line receipt">every claim cited · token budget enforced · gaps disclosed, never papered over</div>
+      </div>
+    </div>
+    <p class="term-note">Real behavior, not a mockup: document search, mail, and past agent sessions are one corpus. The docent answers from all of it.</p>
+  </header>
+
+  <section>
+    <div class="placard">Exhibit 002 · Why nothing else does this</div>
+    <h2>File search finds names. grep reads bytes. Cloud RAG reads your life on someone else's disk.</h2>
+    <p class="lead">docenta answers <strong>"which of my files says this"</strong> and proves it. A <em>docent</em> is the museum guide you ask about a collection. <em>Documentum</em> is Latin for "a thing that teaches". Your corpus gets a docent.</p>
+    <div class="cols">
+      <div class="card">
+        <h3><span class="k">Local-first.</span> Actually.</h3>
+        <p>Ingest, index, embeddings, answers: all on your hardware. Zero uploads, zero telemetry, zero cloud dependency. Originals are never copied; only searchable derivatives are stored.</p>
+      </div>
+      <div class="card">
+        <h3><span class="k">Agent-native.</span> Not a search box.</h3>
+        <p>The primary user is your AI agent. Token-disciplined <code>content_search</code>, <code>entity_card</code>, <code>timeline</code>, and <code>evidence_pack</code> tools over MCP; your agent already speaks the protocol.</p>
+      </div>
+      <div class="card">
+        <h3><span class="k">Receipts.</span> Every time.</h3>
+        <p>Answers cite exact spans in exact files. Token budgets are enforced and disclosed. When the corpus cannot answer, docenta says so instead of improvising.</p>
+      </div>
+    </div>
+
+    <div class="plaque">
+      <div class="plaque-title">Collection statistics · one real machine</div>
+      <div class="plaque-grid">
+        <div class="stat"><b>815,405</b><span>content objects from 1.7M file instances</span></div>
+        <div class="stat"><b>246,000</b><span>searchable messages out of one 32 GB mailbox</span></div>
+        <div class="stat"><b>4-6 ms</b><span>entity and timeline answers</span></div>
+        <div class="stat"><b>7.5 min</b><span>full ingest of a 463k-file home directory</span></div>
+        <div class="stat"><b>0 bytes</b><span>sent to any cloud, ever</span></div>
+      </div>
+      <div class="plaque-foot">Measured on the maker's own corpus, Apple M4 Max. Every number traces to a committed field run.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="placard">Exhibit 003 · How the docent works</div>
+    <h2>A spine that ingests, three channels that answer, one artifact that proves it.</h2>
+    <div class="spine">
+<b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
+<b>channels</b> exact BM25 <span class="a">·</span> paragraph lexical <span class="a">·</span> dense vectors, fused and re-ranked <span class="a">·</span> entities, timelines, themes on top<br>
+<b>answer</b>   <span class="a">evidence_pack</span>: route plan, cited spans, conflicts, disclosed gaps, enforced token budget<br>
+<b>live</b>     mail, chat exports, and agent sessions stream in continuously <span class="a">·</span> your corpus feeds itself
+    </div>
+    <p class="lead" style="margin-top:26px">In a 48-task agent harness, the evidence pack answered <strong>44 of 48</strong> questions against 39 for iterative search, in <strong>1 to 2.5 tool calls</strong> per task. Deterministic layers, zero learned models in the loop, bit-stable re-runs.</p>
+  </section>
+
+  <section id="access">
+    <div class="cta">
+      <div class="placard" style="justify-content:center">Exhibit 004 · The velvet rope</div>
+      <h2>Early access is small on purpose.</h2>
+      <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us what your agent needs to remember and we will tell you when the door opens.</p>
+      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access">request early access</a>
+      <span class="alt">or watch <a href="https://github.com/skyllc-ai">github.com/skyllc-ai</a> for the public beta</span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="frow">
+      <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
+      <div>Built in Rust. Runs on macOS, Windows, Linux.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lines = document.querySelectorAll('.term-line');
+    var caret = document.getElementById('caret');
+    if (reduced) { lines.forEach(function(l){l.classList.add('show');}); return; }
+    var q = lines[0];
+    var text = q.childNodes[0].nodeValue;
+    q.childNodes[0].nodeValue = '';
+    q.classList.add('show');
+    var i = 0;
+    function type(){
+      if (i <= text.length) {
+        q.childNodes[0].nodeValue = text.slice(0, i);
+        i++;
+        setTimeout(type, 26);
+      } else {
+        var d = 350;
+        for (var n = 1; n < lines.length; n++) {
+          (function(el, delay){ setTimeout(function(){ el.classList.add('show'); }, delay); })(lines[n], d);
+          d += 380;
+        }
+        setTimeout(function(){ caret.style.display = 'none'; }, 400);
+      }
+    }
+    setTimeout(type, 500);
+  })();
+</script>
+</body>
+</html>

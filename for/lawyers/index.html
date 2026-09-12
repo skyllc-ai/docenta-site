@@ -155,6 +155,23 @@
   .btn:hover{background:var(--crimson);text-decoration:none}
   .cta .alt{display:block;margin-top:18px;font-size:14px;color:var(--sand)}
 
+  /* ── the early-access form ───────────────────────── */
+  .ea{margin:30px auto 0;max-width:640px;text-align:left}
+  .ea-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ea label{display:block;font-size:13.5px;color:var(--sand);margin-bottom:14px}
+  .ea input,.ea select,.ea textarea{
+    display:block;width:100%;margin-top:6px;padding:11px 12px;border-radius:8px;
+    background:var(--charcoal);border:1px solid #2c2620;color:var(--cream);
+    font:inherit;font-size:15.5px;
+  }
+  .ea input:focus,.ea select:focus,.ea textarea:focus{outline:2px solid var(--ember);outline-offset:1px;border-color:var(--ember)}
+  .ea textarea{resize:vertical;min-height:84px}
+  .ea-turnstile{margin:6px 0 16px;min-height:0}
+  .ea .btn{border:0;cursor:pointer;font-family:inherit}
+  .ea .btn[disabled]{opacity:.6;cursor:wait}
+  .ea-status{margin-top:14px;font-size:14.5px;color:var(--cream);min-height:1.4em}
+  .ea-status a{color:var(--ember)}
+  @media (max-width:640px){.ea-grid{grid-template-columns:1fr}}
   footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid #2c2620;color:var(--sand);font-size:13.5px}
   footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
   footer a{color:var(--tan)}
@@ -219,8 +236,29 @@
       <div class="placard" style="justify-content:center">The velvet rope</div>
       <h2>Early access is small on purpose.</h2>
       <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us what your agent needs to remember and we will tell you when the door opens.</p>
-      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(lawyers)">request early access</a>
-      <span class="alt">or check back here: the public beta will be announced on docenta.ai</span>
+<form class="ea" id="early-access" data-audience="lawyers" novalidate>
+        <div class="ea-grid">
+          <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
+          <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+        </div>
+        <label>Which collection, or which desk<select name="audience">
+        <option value="contractors">Contractors: the Palo Alto building rules door</option>
+        <option value="lawyers" selected>Lawyers: the matter file</option>
+        <option value="insurance">Insurance: the claim file</option>
+        <option value="home">Home: a life in files</option>
+        <option value="email">Mail: the mailbox</option>
+        <option value="developers">Developers: repos and sessions</option>
+        <option value="researchers">Researchers: the reading pile</option>
+        <option value="other">Something else (say what below)</option>
+        </select></label>
+        <label>What should your assistant be able to ask? (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
+        <div class="ea-turnstile"></div>
+        <button class="btn" type="submit">request early access</button>
+        <p class="ea-status" role="status" aria-live="polite"></p>
+      </form>
+      <noscript><a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(lawyers)">request early access by mail</a></noscript>
+      <span class="alt">No account and no newsletter: we write back when the door opens. Prefer mail? <a href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(lawyers)">docenta@nios.net</a></span>
+      <script src="/assets/early-access.js" defer></script>
     </div>
   </section>
 

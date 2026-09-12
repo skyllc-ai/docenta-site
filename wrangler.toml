@@ -5,12 +5,13 @@
 name = "docenta-site"
 compatibility_date = "2026-09-01"
 
-[assets]
-directory = "./"
-html_handling = "auto-trailing-slash"
-not_found_handling = "none"
-
+# Top level on purpose: below a table this would belong to that table.
 routes = [
   { pattern = "docenta.ai", custom_domain = true },
   { pattern = "www.docenta.ai", custom_domain = true },
 ]
+
+[assets]
+directory = "./"
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"

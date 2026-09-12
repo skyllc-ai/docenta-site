@@ -1,0 +1,16 @@
+# The landing page on docenta.ai: static files served by Cloudflare
+# Workers assets, no script. `npx wrangler deploy` from this directory
+# uploads index.html and assets/ and binds the two custom domains
+# (Cloudflare creates the DNS records and certificates itself).
+name = "docenta-site"
+compatibility_date = "2026-09-01"
+
+[assets]
+directory = "./"
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"
+
+routes = [
+  { pattern = "docenta.ai", custom_domain = true },
+  { pattern = "www.docenta.ai", custom_domain = true },
+]

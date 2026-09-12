@@ -14,6 +14,6 @@ Cloudflare account (the same one the license worker deploys with).
 Verify: `dig +short docenta.ai` answers with Cloudflare addresses and
 `curl -s https://docenta.ai/ | grep '<title>'` prints the page title.
 
-The older GitHub Pages copy (main branch, root; reachable as
-https://uffs.io/docenta-site/ because the organization's Pages domain is
-uffs.io) stays until it is switched off in the repository settings.
+The GitHub Pages copy of this repository (once reachable as
+https://uffs.io/docenta-site/) was switched off on 2026-09-12; docenta.ai
+is the only address.

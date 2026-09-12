@@ -112,6 +112,9 @@
   a.card:hover,a.card:focus-visible{border-color:var(--ember);transform:translateY(-2px);outline:none}
   a.card:focus-visible{box-shadow:0 0 0 2px var(--ember)}
   a.card h3::after{content:"\00a0\2192";color:var(--ember);font-weight:400}
+  a.card.wide{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-color:var(--tan)}
+  a.card.wide .live{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:4px 9px;border-radius:6px;white-space:nowrap}
+  @media (max-width:820px){a.card.wide{grid-template-columns:1fr}}
   .card p{color:var(--sand);font-size:15.5px}
   .card p code{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--tan)}
 
@@ -245,8 +248,9 @@
   <section id="for">
     <div class="placard">Exhibit 004 · Who asks</div>
     <h2>One engine, your kind of collection.</h2>
-    <p class="lead">The same docent, pointed at what your work actually holds. Each page shows the shape of an answer for one kind of desk.</p>
+    <p class="lead">The same docent, pointed at what your work actually holds. Each page shows the shape of an answer for one kind of desk; the first collection is live behind a door.</p>
     <div class="cols">
+      <a class="card wide" href="/for/contractors/"><div><h3><span class="k">Contractors.</span> Palo Alto building rules</h3><p>The municipal code, the City's handouts, the utility's standards and the state ADU law, sealed and served as a connector your assistant can ask today. Every answer cites the page.</p></div><span class="live">live door</span></a>
       <a class="card" href="/for/lawyers/"><h3><span class="k">Lawyers.</span> The matter file</h3><p>Pleadings, scanned exhibits and the mail thread with opposing counsel, cited by page and line. Privilege stays on the machine.</p></a>
       <a class="card" href="/for/insurance/"><h3><span class="k">Insurance.</span> The claim file</h3><p>Adjuster notes, policies, forms and photos with their time and place, as one timeline with receipts.</p></a>
       <a class="card" href="/for/home/"><h3><span class="k">Home.</span> A life in files</h3><p>Twenty years of mail, photos and documents, asked in plain words, honest when the answer is not there.</p></a>

@@ -6,8 +6,8 @@ retrieval engine from SKY, LLC.
 This repository contains only the public landing page and brand assets.
 The product itself is developed in a separate, private repository.
 
-Live: https://docenta.ai/ (Cloudflare Workers assets; the GitHub Pages copy at
-https://uffs.io/docenta-site/ is the old address and stays until it is retired)
+Live: https://docenta.ai/ (Cloudflare Workers assets). The GitHub Pages
+copy was switched off on 2026-09-12.
 
 The visual identity comes from the docenta brand kit (rust-on-charcoal
 family palette shared with UFFS). Do not modify colors or marks here;

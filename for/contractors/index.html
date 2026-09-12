@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>docenta for insurance</title>
-<meta name="description" content="Adjuster notes, the policy, the FNOL form, the photos with their timestamps and locations, three months of mail with the insured and the shop. docenta holds them as one collection and answers with the receipt. On your machine, not a vendor cloud.">
+<title>docenta for contractors</title>
+<meta name="description" content="The building, zoning, tree and utility rules that govern a residential permit in Palo Alto, as one sealed collection your assistant can ask: the Municipal Code, the City's handouts, CPAU's standards and the state ADU law, answering with the exact page.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
-<meta property="og:title" content="docenta for insurance">
-<meta property="og:description" content="Adjuster notes, the policy, the FNOL form, the photos with their timestamps and locations, three months of mail with the insured and the shop. docenta holds them as one collection and answers with the receipt. On your machine, not a vendor cloud.">
+<meta property="og:title" content="docenta for contractors">
+<meta property="og:description" content="The building, zoning, tree and utility rules that govern a residential permit in Palo Alto, as one sealed collection your assistant can ask: the Municipal Code, the City's handouts, CPAU's standards and the state ADU law, answering with the exact page.">
 <meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://docenta.ai/for/insurance/">
-<link rel="canonical" href="https://docenta.ai/for/insurance/">
+<meta property="og:url" content="https://docenta.ai/for/contractors/">
+<link rel="canonical" href="https://docenta.ai/for/contractors/">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
@@ -155,6 +155,24 @@
   .btn:hover{background:var(--crimson);text-decoration:none}
   .cta .alt{display:block;margin-top:18px;font-size:14px;color:var(--sand)}
 
+  /* ── plug it in: the steps ───────────────────────── */
+  .steps{counter-reset:step;margin-top:34px;display:grid;gap:18px;max-width:760px}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--tan);color:var(--ember);
+    font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .step h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .step p{color:var(--sand);font-size:15.5px}
+  .step p strong{color:var(--cream);font-weight:600}
+  pre.cmd{
+    margin-top:12px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:10px;
+    padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;
+    color:var(--cream);overflow-x:auto;white-space:pre;line-height:1.6;
+  }
+  pre.cmd .a{color:var(--ember)}
+  .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
   footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid #2c2620;color:var(--sand);font-size:13.5px}
   footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
   footer a{color:var(--tan)}
@@ -176,42 +194,70 @@
   </nav>
 
   <header>
-    <div class="placard">Exhibit · docenta for insurance professionals · The claim file</div>
-    <h1>A claim is a story told across mail, photos and forms. Ask it as <em>one</em>.</h1>
-    <p class="sub">Adjuster notes, the policy, the FNOL form, the photos with their timestamps and locations, three months of mail with the insured and the shop. docenta holds them as one collection and answers with the receipt. <strong>On your machine, not a vendor cloud.</strong></p>
+    <div class="placard">Exhibit · docenta for contractors · Palo Alto building rules <span class="live">live door</span></div>
+    <h1>The rules for a Palo Alto permit, answering with the <em>exact page</em>.</h1>
+    <p class="sub">The Palo Alto Municipal Code, the City's Building Division, Green Building and tree handouts, the utility's service standards and fees, the California ADU statute with the state handbook, and the 2022 and 2025 Title 24: one sealed collection your assistant can ask. <strong>No case law, no permit records, nothing about other cities.</strong></p>
 
-    <div class="terminal" aria-label="The shape of an answer for insurance professionals">
+    <div class="terminal" aria-label="The shape of an answer for contractors">
       <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
       <div class="term-body">
-        <div class="term-line q show">when was the water damage first reported, and does the policy cover the sublimit for mold?</div>
-        <div class="term-line tool show">docenta · evidence_pack → cited spans · token budget enforced</div>
-        <div class="term-line hit show">1. <span class="path">Mail · &quot;Claim 44-1187 - basement water&quot;</span> <span class="span">· 2026-02-14 · first notice, 9:12, with 6 photos attached</span></div>
-        <div class="term-line hit show">2. <span class="path">claims/44-1187/IMG_2231.jpg</span> <span class="span">· photo taken 2026-02-13 18:40 · GPS at the risk address</span></div>
-        <div class="term-line hit show">3. <span class="path">policies/HO-3_2025.pdf</span> <span class="span">· p. 12, &quot;Fungi&quot; sublimit · $10,000 per occurrence</span></div>
-        <div class="term-line receipt show">every claim cited · gaps disclosed, never papered over · nothing left the machine</div>
+        <div class="term-line q show">what are the setbacks for a detached ADU behind a single-family house in Palo Alto?</div>
+        <div class="term-line tool show">docenta · semantic_search → three sources, reranked · answered in 2.4 s</div>
+        <div class="term-line hit show">1. <span class="path">palo-alto-handouts/adu-summary-handout.pdf</span> <span class="span">· the City's ADU handout: 4 ft side and rear for a new detached unit; 3 ft when a non-complying structure is rebuilt</span></div>
+        <div class="term-line hit show">2. <span class="path">california-statutes/HCD-ADU-Handbook-2026-03.pdf</span> <span class="span">· the state handbook: what a city may and may not require</span></div>
+        <div class="term-line hit show">3. <span class="path">palo-alto-handouts/adu-ordinance-5412.pdf</span> <span class="span">· Ordinance 5412: the local amendment to Chapter 18</span></div>
+        <div class="term-line receipt show">every claim cited to the page · sealed collection, frozen 2026-09-12 · a question it cannot answer is answered "not in this corpus"</div>
+      </div>
       </div>
     </div>
-    <p class="term-note">An illustration of the shape of an answer. The files are made up; the behavior is docenta's.</p>
+    <p class="term-note">A real answer from the live door, paths shortened. The collection was assembled for one permit and sealed on 2026-09-12: nothing is added or changed, so what it says today it says tomorrow.</p>
   </header>
 
   <section>
-    <div class="placard">What docenta does for insurance professionals</div>
+    <div class="placard">What is in the collection</div>
     <div class="cols">
       <div class="card">
-        <h3><span class="k">Photos are evidence too.</span></h3>
-        <p>The image lane keeps camera, time and location from every photo, so "the pictures from the day it happened" is answerable. Scanned forms go through OCR and are cited by page.</p>
+        <h3><span class="k">The City's rules.</span></h3>
+        <p>The Palo Alto Municipal Code (Supp. 81, 2026; Titles 8, 12, 16 and 18 among them), the Building Division and Green Building handouts, Ordinance 5412 on accessory dwelling units, the Tree Technical Manual and the trees-and-ADUs guideline.</p>
       </div>
       <div class="card">
-        <h3><span class="k">A timeline you did not have to build.</span></h3>
-        <p>Entity cards and timelines across mail, forms and notes: who said what, when, in which document. Conflicts between sources are shown, not smoothed over.</p>
+        <h3><span class="k">The utility and the state.</span></h3>
+        <p>CPAU's electric service requirements, rules 3 and 20, connection fees and the application packet; the California ADU statute (Gov. Code 66310 to 66342) and HCD's ADU handbook of March 2026.</p>
       </div>
       <div class="card">
-        <h3><span class="k">Files stay where regulation wants them.</span></h3>
-        <p>Local-first, no upload, originals never copied. What docenta derives stays beside the files and exports on demand.</p>
+        <h3><span class="k">The building code, both editions.</span></h3>
+        <p>Title 24 as published for 2022 (the edition that governs permits deemed complete before 2026) and 2025, part by part, so the answer names the edition that applies.</p>
       </div>
     </div>
-    <p class="lead" style="margin-top:26px">docenta indexes what is on the machine or in the mailbox you connect. It does not connect to carrier systems.</p>
+    <p class="lead" style="margin-top:26px">docenta finds and cites; your assistant reads and you decide. The collection holds no case law and no permit records, and when a question falls outside it, the answer says so instead of guessing. For anything load-bearing, confirm against the official text the citation points to.</p>
     <p class="lead" style="margin-top:14px"><a href="/">Back to the collection</a> · also for <a href="/for/contractors/">contractors</a>, <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, <a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a></p>
+  </section>
+
+  <section id="plug">
+    <div class="placard">Plug it into your assistant</div>
+    <h2>One address, one key, every question cited.</h2>
+    <p class="lead">The collection is served as an MCP server, the connector standard Claude, ChatGPT and most coding assistants speak. You add the address once; from then on your assistant asks it the way it asks any other tool.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Ask for a key</h3>
+        <p>Use the form at the bottom of this page and say "contractors". You get back a key, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in.</p>
+      </div>
+      <div class="step">
+        <h3>Claude Code: one command</h3>
+        <p>Open a terminal and paste this line, with your key in place of the words in angle brackets. Then start a new session; the collection shows up as <strong>docenta-palo-alto</strong>.</p>
+        <pre class="cmd">claude mcp add --transport http docenta-palo-alto <span class="a">https://door.docenta.ai/mcp</span> \
+  --header "Authorization: Bearer &lt;your key&gt;"</pre>
+      </div>
+      <div class="step">
+        <h3>Claude.ai or ChatGPT: a custom connector</h3>
+        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://door.docenta.ai/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer &lt;your key&gt;</strong>. Save, then ask your question in a new chat.</p>
+      </div>
+      <div class="step">
+        <h3>Ask, and read the citation</h3>
+        <p>Every answer names the document and the page it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:26px">What the door does not do: it never sees your files, it holds nothing you send beyond the question you ask, and it cannot be changed by anyone, us included, without a new seal and a new date on this page.</p>
   </section>
 
   <section id="access">
@@ -219,7 +265,7 @@
       <div class="placard" style="justify-content:center">The velvet rope</div>
       <h2>Early access is small on purpose.</h2>
       <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us what your agent needs to remember and we will tell you when the door opens.</p>
-      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(insurance)">request early access</a>
+      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(contractors)">request early access</a>
       <span class="alt">or check back here: the public beta will be announced on docenta.ai</span>
     </div>
   </section>

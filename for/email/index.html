@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>docenta - ask your collection</title>
-<meta name="description" content="docenta is a local-first content retrieval engine built for LLM agents. It turns everything on your machine into an askable collection and answers with receipts. Nothing leaves your machine.">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
-<meta property="og:title" content="docenta - ask your collection">
-<meta property="og:description" content="A local-first content retrieval engine built for LLM agents. Everything you have ever written, ready to answer, with receipts. Nothing leaves your machine.">
+<title>docenta for mail</title>
+<meta name="description" content="A Google Takeout export becomes a collection in an evening; the live mailbox keeps it current from then on. Threads stay threads, attachments stay with their message, Trash counts too. Ask by sender, by date, by what was said. All on your machine.">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
+<meta property="og:title" content="docenta for mail">
+<meta property="og:description" content="A Google Takeout export becomes a collection in an evening; the live mailbox keeps it current from then on. Threads stay threads, attachments stay with their message, Trash counts too. Ask by sender, by date, by what was said. All on your machine.">
 <meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://docenta.ai/">
-<link rel="canonical" href="https://docenta.ai/">
+<meta property="og:url" content="https://docenta.ai/for/email/">
+<link rel="canonical" href="https://docenta.ai/for/email/">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
@@ -171,93 +171,55 @@
 
 <div class="wrap">
   <nav>
-    <a class="brand" href="#"><img src="assets/docenta-glyph.svg" alt="" width="38" height="38">docenta</a>
+    <a class="brand" href="/"><img src="/assets/docenta-glyph.svg" alt="" width="38" height="38">docenta</a>
     <a class="nav-cta" href="#access">request early access</a>
   </nav>
 
   <header>
-    <div class="placard">Exhibit 001 · The Corpus · 1998 to today</div>
-    <h1>Your machine holds everything you ever wrote.<br>Now it can <em>answer</em>.</h1>
-    <p class="sub">docenta is a <strong>local-first content retrieval engine built for LLM agents</strong>. It turns your files, mail, and chat history into one askable collection. Answers come with receipts: exact file, exact span. <strong>Nothing leaves your machine.</strong></p>
+    <div class="placard">Exhibit · docenta for people who live in mail · The mailbox</div>
+    <h1>246,000 messages out of one mailbox. Every one <em>askable</em>.</h1>
+    <p class="sub">A Google Takeout export becomes a collection in an evening; the live mailbox keeps it current from then on. Threads stay threads, attachments stay with their message, Trash counts too. Ask by sender, by date, by what was said. <strong>All on your machine.</strong></p>
 
-    <div class="terminal" aria-label="Example of an agent asking docenta a question">
+    <div class="terminal" aria-label="The shape of an answer for people who live in mail">
       <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
-      <div class="term-body" id="term">
-        <div class="term-line q">when did we decide to switch the importer to streaming, and why?<span class="caret" id="caret"></span></div>
-        <div class="term-line tool">docenta · semantic_search → timeline channel · 6 ms</div>
-        <div class="term-line hit">1. <span class="path">docs/design/importer-notes.md</span> <span class="span">· "2024-03-08: streaming import decided, batch peak RAM 14 GB was the trigger"</span></div>
-        <div class="term-line hit">2. <span class="path">Mail · "Re: importer memory ceiling"</span> <span class="span">· 2024-03-07 · the thread that forced the call</span></div>
-        <div class="term-line hit">3. <span class="path">agent session · 2024-03-08</span> <span class="span">· the refactor itself, step by step</span></div>
-        <div class="term-line receipt">every claim cited · token budget enforced · gaps disclosed, never papered over</div>
+      <div class="term-body">
+        <div class="term-line q show">find the thread where the landlord agreed to the repair, and the attachment with the invoice</div>
+        <div class="term-line tool show">docenta · evidence_pack → cited spans · token budget enforced</div>
+        <div class="term-line hit show">1. <span class="path">Mail · &quot;Re: Unit 4B - heating&quot; from the landlord</span> <span class="span">· 2025-12-02 · &quot;we will cover the repair&quot;</span></div>
+        <div class="term-line hit show">2. <span class="path">Mail · same thread, 2025-12-09 · attachment</span> <span class="span">· heating_invoice_1288.pdf · $640, paid</span></div>
+        <div class="term-line hit show">3. <span class="path">thread · 11 messages, 2025-11-28 to 2025-12-14</span> <span class="span">· in order, both sides</span></div>
+        <div class="term-line receipt show">every claim cited · gaps disclosed, never papered over · nothing left the machine</div>
       </div>
     </div>
-    <p class="term-note">Real behavior, not a mockup: document search, mail, and past agent sessions are one corpus. The docent answers from all of it.</p>
+    <p class="term-note">An illustration of the shape of an answer. The files are made up; the behavior is docenta's.</p>
   </header>
 
   <section>
-    <div class="placard">Exhibit 002 · Why nothing else does this</div>
-    <h2>File search finds names. grep reads bytes. Cloud RAG reads your life on someone else's disk.</h2>
-    <p class="lead">docenta answers <strong>"which of my files says this"</strong> and proves it. A <em>docent</em> is the museum guide you ask about a collection. <em>Documentum</em> is Latin for "a thing that teaches". Your corpus gets a docent.</p>
+    <div class="placard">What docenta does for people who live in mail</div>
     <div class="cols">
       <div class="card">
-        <h3><span class="k">Local-first.</span> Actually.</h3>
-        <p>Ingest, index, embeddings, answers: all on your hardware. Zero uploads, zero telemetry, zero cloud dependency. Originals are never copied; only searchable derivatives are stored.</p>
+        <h3><span class="k">Fields, not just words.</span></h3>
+        <p>from:, to:, subject:, dates and a sent/received direction are first-class. Numbers match in every spelling. "The newest message about X" is one query.</p>
       </div>
       <div class="card">
-        <h3><span class="k">Agent-native.</span> Not a search box.</h3>
-        <p>The primary user is your AI agent. Token-disciplined <code>content_search</code>, <code>entity_card</code>, <code>timeline</code>, and <code>evidence_pack</code> tools over MCP; your agent already speaks the protocol.</p>
+        <h3><span class="k">Threads and attachments as one.</span></h3>
+        <p>A hit knows its thread; the thread comes back in order. An attachment carries its message, so the invoice and the promise are found together.</p>
       </div>
       <div class="card">
-        <h3><span class="k">Receipts.</span> Every time.</h3>
-        <p>Answers cite exact spans in exact files. Token budgets are enforced and disclosed. When the corpus cannot answer, docenta says so instead of improvising.</p>
+        <h3><span class="k">Setup in four plain steps.</span></h3>
+        <p>docenta opens a page, walks you through making a key at your mail provider, and stores it in the Keychain. From then on new mail arrives on its own, every night.</p>
       </div>
     </div>
-
-    <div class="plaque">
-      <div class="plaque-title">Collection statistics · one real machine</div>
-      <div class="plaque-grid">
-        <div class="stat"><b>815,405</b><span>content objects from 1.7M file instances</span></div>
-        <div class="stat"><b>246,000</b><span>searchable messages out of one 32 GB mailbox</span></div>
-        <div class="stat"><b>4-6 ms</b><span>entity and timeline answers</span></div>
-        <div class="stat"><b>7.5 min</b><span>full ingest of a 463k-file home directory</span></div>
-        <div class="stat"><b>0 bytes</b><span>sent to any cloud, ever</span></div>
-      </div>
-      <div class="plaque-foot">Measured on the maker's own corpus, Apple M4 Max. Every number traces to a committed field run.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="placard">Exhibit 003 · How the docent works</div>
-    <h2>A spine that ingests, three channels that answer, one artifact that proves it.</h2>
-    <div class="spine">
-<b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
-<b>channels</b> exact BM25 <span class="a">·</span> paragraph lexical <span class="a">·</span> dense vectors, fused and re-ranked <span class="a">·</span> entities, timelines, themes on top<br>
-<b>answer</b>   <span class="a">evidence_pack</span>: route plan, cited spans, conflicts, disclosed gaps, enforced token budget<br>
-<b>live</b>     mail, chat exports, and agent sessions stream in continuously <span class="a">·</span> your corpus feeds itself
-    </div>
-    <p class="lead" style="margin-top:26px">In a 48-task agent harness, the evidence pack answered <strong>44 of 48</strong> questions against 39 for iterative search, in <strong>1 to 2.5 tool calls</strong> per task. Deterministic layers, zero learned models in the loop, bit-stable re-runs.</p>
-  </section>
-
-  <section id="for">
-    <div class="placard">Exhibit 004 · Who asks</div>
-    <h2>One engine, your kind of collection.</h2>
-    <p class="lead">The same docent, pointed at what your work actually holds. Each page shows the shape of an answer for one kind of desk.</p>
-    <div class="cols">
-      <div class="card"><h3><a href="/for/lawyers/"><span class="k">Lawyers.</span></a> The matter file</h3><p>Pleadings, scanned exhibits and the mail thread with opposing counsel, cited by page and line. Privilege stays on the machine.</p></div>
-      <div class="card"><h3><a href="/for/insurance/"><span class="k">Insurance.</span></a> The claim file</h3><p>Adjuster notes, policies, forms and photos with their time and place, as one timeline with receipts.</p></div>
-      <div class="card"><h3><a href="/for/home/"><span class="k">Home.</span></a> A life in files</h3><p>Twenty years of mail, photos and documents, asked in plain words, honest when the answer is not there.</p></div>
-      <div class="card"><h3><a href="/for/email/"><span class="k">Mail.</span></a> The mailbox</h3><p>An export in an evening, the live mailbox from then on; threads, attachments and fields that answer.</p></div>
-      <div class="card"><h3><a href="/for/developers/"><span class="k">Developers.</span></a> Repos and sessions</h3><p>Code, git history and every agent session as one corpus over MCP, measured against grep.</p></div>
-      <div class="card"><h3><a href="/for/researchers/"><span class="k">Researchers.</span></a> The reading pile</h3><p>Thousands of PDFs, notes and drafts with a citation for every claim and the conflicts shown.</p></div>
-    </div>
+    <p class="lead" style="margin-top:26px">Gmail, iCloud and Yahoo mail today. Outlook.com is not yet possible: Microsoft allows no password access to personal mail.</p>
+    <p class="lead" style="margin-top:14px"><a href="/">Back to the collection</a> · also for <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, <a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a></p>
   </section>
 
   <section id="access">
     <div class="cta">
-      <div class="placard" style="justify-content:center">Exhibit 005 · The velvet rope</div>
+      <div class="placard" style="justify-content:center">The velvet rope</div>
       <h2>Early access is small on purpose.</h2>
       <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us what your agent needs to remember and we will tell you when the door opens.</p>
-      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access">request early access</a>
+      <a class="btn" href="mailto:docenta@nios.net?subject=docenta%20early%20access%20(email)">request early access</a>
       <span class="alt">or watch <a href="https://github.com/skyllc-ai">github.com/skyllc-ai</a> for the public beta</span>
     </div>
   </section>
@@ -269,34 +231,5 @@
     </div>
   </footer>
 </div>
-
-<script>
-  (function(){
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var lines = document.querySelectorAll('.term-line');
-    var caret = document.getElementById('caret');
-    if (reduced) { lines.forEach(function(l){l.classList.add('show');}); return; }
-    var q = lines[0];
-    var text = q.childNodes[0].nodeValue;
-    q.childNodes[0].nodeValue = '';
-    q.classList.add('show');
-    var i = 0;
-    function type(){
-      if (i <= text.length) {
-        q.childNodes[0].nodeValue = text.slice(0, i);
-        i++;
-        setTimeout(type, 26);
-      } else {
-        var d = 350;
-        for (var n = 1; n < lines.length; n++) {
-          (function(el, delay){ setTimeout(function(){ el.classList.add('show'); }, delay); })(lines[n], d);
-          d += 380;
-        }
-        setTimeout(function(){ caret.style.display = 'none'; }, 400);
-      }
-    }
-    setTimeout(type, 500);
-  })();
-</script>
 </body>
 </html>

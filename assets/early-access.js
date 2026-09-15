@@ -2,6 +2,11 @@
 // front of it, plain words back. Without JavaScript the mail link in
 // <noscript> stands in; when the endpoint or the widget is not
 // reachable the same mail link is offered in the status line.
+//
+// The site key must list every hostname this script runs on. Turnstile
+// refuses to render on a host outside the widget's domain list, and a
+// widget that did not render sends no token, which the worker reads as
+// a failed check.
 (function () {
   var ENDPOINT = "https://license.docenta.ai/v1/early-access";
   var SITE_KEY = "0x4AAAAAAEuUdAlBD_uMZVV0";
@@ -60,7 +65,13 @@
     var email = form.elements.email.value.trim();
     if (!name) { say("Please tell us your name."); form.elements.name.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say("That email address does not look right; please check it."); form.elements.email.focus(); return; }
-    if (mount && !widgetFailed && !token) { say("Please finish the human check above the button, then click again."); return; }
+    // A widget that could not render cannot produce a token, and the
+    // worker refuses an empty one: posting anyway earned the reader
+    // "the human check did not pass" for a check they were never shown
+    // (2026-09-15, the site key was scoped to license.docenta.ai only).
+    // The mail link is the stated fallback; offer it instead.
+    if (widgetFailed) { say("The human check could not load in this browser. Please write to", true); return; }
+    if (mount && !token) { say("Please finish the human check above the button, then click again."); return; }
     button.disabled = true;
     say("Sending ...");
     var body = {

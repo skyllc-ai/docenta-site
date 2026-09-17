@@ -278,7 +278,7 @@ def privacy(rolewords):
     <div class="placard">Ask the sensitive question</div>
     <h2>Ask the sensitive question without first uploading the sensitive file.</h2>
     <p class="lead">{rolewords} stay on your machine: ingest, index, embeddings and answers all run there. Originals are never copied; only searchable derivatives are stored. Your agent gets a small evidence pack, a few kilobytes with the receipts, not your archive. Zero uploads, zero telemetry, and the token budget is printed on every answer.</p>
-    <p class="lead" style="margin-top:14px">Served over MCP, the connector standard Claude, ChatGPT and most coding assistants speak, so the agent you already use asks docenta the way it asks any other tool. Deterministic layers, no learned model in the retrieval loop, bit-stable re-runs.</p>
+    <p class="lead" style="margin-top:14px">It gets it over MCP, the connector standard Claude, ChatGPT and most coding assistants speak, from a server that <strong>runs on your own machine</strong>: the agent talks to a local process, not to a URL in someone's cloud. The only remote MCP addresses on this site are the public doors, sealed collections hosted on purpose; your own collection never has one. Deterministic layers, no learned model in the retrieval loop, bit-stable re-runs.</p>
   </section>
 """
 
@@ -410,7 +410,7 @@ def index_page():
   <section>
     <div class="placard">Exhibit 004 · Ask the sensitive question</div>
     <h2>Ask the sensitive question without first uploading the sensitive file.</h2>
-    <p class="lead">The matter file, the claim, the mail archive, the private source tree, the unpublished paper, the household folder: docenta ingests, indexes and answers on your own hardware. Originals are never copied; only searchable derivatives are stored. Your agent gets a <strong>small evidence pack</strong> with the receipts, not your archive, over MCP, the connector standard it already speaks. Zero uploads, zero telemetry, and the token budget is printed on every answer.</p>
+    <p class="lead">The matter file, the claim, the mail archive, the private source tree, the unpublished paper, the household folder: docenta ingests, indexes and answers on your own hardware. Originals are never copied; only searchable derivatives are stored. Your agent gets a <strong>small evidence pack</strong> with the receipts, not your archive. It gets it over MCP, the connector standard it already speaks, from a server that <strong>runs on your own machine</strong>: your agent talks to a local process, not to a URL in someone's cloud. The only remote MCP addresses on this site are the public doors, sealed collections we host on purpose; your own collection never has one. Zero uploads, zero telemetry, and the token budget is printed on every answer.</p>
     <div class="plaque">
       <div class="plaque-title">Collection statistics · one real machine</div>
       <div class="plaque-grid">

@@ -129,6 +129,7 @@ CSS = r"""
   .status div.done{border-color:var(--tan);color:var(--cream)}
   @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
+  a.live:hover,a.live:focus-visible{background:var(--cream);text-decoration:none}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
   .cta p{color:var(--sand);margin:16px auto 30px;max-width:560px}
@@ -530,7 +531,7 @@ PAGES = {}
 PAGES["contractors"] = dict(
     title="docenta for contractors - ask the rule, get the exact page",
     desc="Which rule actually applies to this project? Ask the city code, the handouts, state law, the utility's standards and the code edition tied to the permit date as one dated collection. Exact pages, city versus state versus utility, contradictions flagged, gaps admitted. The Palo Alto collection is live behind a door.",
-    placard='Exhibit · docenta for contractors · Palo Alto building rules <span class="live">live door</span>',
+    placard='Exhibit · docenta for contractors · Palo Alto building rules <a class="live" href="#plug">live door</a>',
     h1="Which rule <em>actually</em> applies to this project?",
     sub="Ask across the city code, the current handouts, state law, the utility's standards and the code edition tied to the permit date. docenta returns the exact pages, separates city from state from utility, flags where they contradict each other, and says when the answer needs facts that are not in the collection. <strong>The Palo Alto collection is sealed and live today.</strong>",
     chip_qs=["Which code edition applies to this permit date?", "Which setback rule applies to this exact configuration?", "Do the city handout and the ordinance agree?", "What tree rule could affect placement?", "What can this corpus not answer about my project?"],
@@ -577,7 +578,7 @@ PAGES["contractors"] = dict(
 PAGES["lawyers"] = dict(
     title="docenta for lawyers - ask the matter, cite the exhibit",
     desc="Pleadings, correspondence, scanned exhibits, contracts and notes become one private evidence layer. Reconstruct the chronology, find the version that changed, surface contradictions, map factual assertions to exact pages, without uploading the matter to a vendor cloud. Try the engine on the United States Code and public contracts, live.",
-    placard='Exhibit · docenta for lawyers · The matter file <span class="live">live door: the federal code</span>',
+    placard='Exhibit · docenta for lawyers · The matter file <a class="live" href="#plug">live door: the federal code</a>',
     h1="Ask the matter. <em>Cite the exhibit.</em>",
     sub="Pleadings, correspondence, scanned exhibits, contracts and notes become one private evidence layer on your own machine. Reconstruct the chronology, find the version that introduced the clause, surface the contradiction between a declaration and the contemporaneous record, and map every factual assertion to an exact page, <strong>without first uploading the matter to anyone's cloud</strong>.",
     chip_qs=["Where does the other side first acknowledge this fact?", "Does this declaration conflict with an earlier email?", "Which version introduced this clause, and who sent it?", "Which exhibit supports each paragraph of the fact section?", "What can the matter file not establish?"],

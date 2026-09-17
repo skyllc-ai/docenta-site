@@ -136,6 +136,7 @@
   .status div.done{border-color:var(--tan);color:var(--cream)}
   @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
+  a.live:hover,a.live:focus-visible{background:var(--cream);text-decoration:none}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
   .cta p{color:var(--sand);margin:16px auto 30px;max-width:560px}
@@ -173,7 +174,7 @@
   </nav>
 
   <header>
-    <div class="placard">Exhibit · docenta for contractors · Palo Alto building rules <span class="live">live door</span></div>
+    <div class="placard">Exhibit · docenta for contractors · Palo Alto building rules <a class="live" href="#plug">live door</a></div>
     <h1>Which rule <em>actually</em> applies to this project?</h1>
     <p class="sub">Ask across the city code, the current handouts, state law, the utility's standards and the code edition tied to the permit date. docenta returns the exact pages, separates city from state from utility, flags where they contradict each other, and says when the answer needs facts that are not in the collection. <strong>The Palo Alto collection is sealed and live today.</strong></p>
 <div class="chips"><a class="chip" href="#answer">Which code edition applies to this permit date?</a><a class="chip" href="#answer">Which setback rule applies to this exact configuration?</a><a class="chip" href="#answer">Do the city handout and the ordinance agree?</a><a class="chip" href="#answer">What tree rule could affect placement?</a><a class="chip" href="#answer">What can this corpus not answer about my project?</a></div>

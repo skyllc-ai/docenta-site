@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>docenta - ask your collection</title>
-<meta name="description" content="docenta is a local-first content retrieval engine built for LLM agents. It turns everything on your machine into an askable collection and answers with receipts. Nothing leaves your machine.">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
-<meta property="og:title" content="docenta - ask your collection">
-<meta property="og:description" content="A local-first content retrieval engine built for LLM agents. Everything you have ever written, ready to answer, with receipts. Nothing leaves your machine.">
+<title>docenta - your files remember what you forgot</title>
+<meta name="description" content="Private evidence-backed memory for your AI agent. Ask what happened, why, and where the proof is, across files, mail, scans, photos, git and agent sessions. Every answer comes with exact receipts; conflicts are shown; gaps are admitted. It runs on your machine.">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
+<meta property="og:title" content="docenta - your files remember what you forgot">
+<meta property="og:description" content="Private evidence-backed memory for your AI agent. Ask what happened, why, and where the proof is, across files, mail, scans, photos, git and agent sessions. Every answer comes with exact receipts; conflicts are shown; gaps are admitted. It runs on your machine.">
 <meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://docenta.ai/">
@@ -22,90 +22,60 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--charcoal); color:var(--cream);
-    font-family:Inter,'Segoe UI',system-ui,sans-serif;
-    font-size:17px; line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{background:var(--charcoal);color:var(--cream);font-family:Inter,'Segoe UI',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:var(--ember);text-decoration:none}
   a:hover{text-decoration:underline}
   a:focus-visible,button:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
   .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-
   .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-
-  /* ── nav ─────────────────────────────────────────── */
   nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
   .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px;letter-spacing:-.5px;color:var(--cream)}
   .brand img{width:38px;height:38px}
   .brand:hover{text-decoration:none}
-  .nav-cta{
-    font-family:'JetBrains Mono',monospace;font-size:14px;
-    color:var(--charcoal);background:var(--rust);
-    padding:10px 18px;border-radius:8px;font-weight:700;color:var(--cream);
-  }
+  .nav-cta{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--rust);padding:10px 18px;border-radius:8px;font-weight:700;color:var(--cream)}
   .nav-cta:hover{background:var(--crimson);text-decoration:none}
-
-  /* ── placard eyebrow: the museum wall label ──────── */
-  .placard{
-    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;
-    color:var(--tan);text-transform:uppercase;
-    display:flex;align-items:center;gap:14px;margin-bottom:22px;
-  }
+  .placard{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;color:var(--tan);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
   .placard::before{content:"";display:inline-block;width:34px;height:1px;background:var(--tan);opacity:.6}
-
-  /* ── hero ────────────────────────────────────────── */
   header{padding:56px 0 30px}
-  h1{
-    font-weight:800;font-size:clamp(38px,6.4vw,64px);line-height:1.04;
-    letter-spacing:-.03em;max-width:820px;
-  }
+  h1{font-weight:800;font-size:clamp(38px,6.4vw,64px);line-height:1.04;letter-spacing:-.03em;max-width:860px;text-wrap:balance}
   h1 em{font-style:normal;color:var(--ember)}
-  .sub{color:var(--sand);font-size:clamp(17px,2vw,21px);max-width:640px;margin:26px 0 10px}
+  .sub{color:var(--sand);font-size:clamp(17px,2vw,21px);max-width:680px;margin:26px 0 10px}
   .sub strong{color:var(--cream);font-weight:600}
-
-  /* ── the signature: the docent answers ───────────── */
-  .terminal{
-    margin:44px 0 8px;background:var(--charcoal-mid);
-    border:1px solid #2c2620; border-radius:12px;
-    box-shadow:0 24px 60px rgba(0,0,0,.55);
-    overflow:hidden;
-  }
+  /* the prompt rail: what people actually say */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 6px}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--cream);background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:999px;padding:8px 14px}
+  .chip::before{content:"\275D ";color:var(--ember)}
+  .chip:hover{border-color:var(--ember);text-decoration:none}
+  /* the answer, shown as it is reconstructed */
+  .terminal{margin:44px 0 8px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden}
   .term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #2c2620}
   .dot{width:11px;height:11px;border-radius:50%;background:#3a332c}
   .dot.r{background:var(--crimson)}
   .term-title{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--sand)}
-  .term-body{padding:22px 24px 26px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;line-height:1.75;min-height:280px}
-  .q{color:var(--cream)}
-  .q::before{content:"❯ ";color:var(--ember)}
-  .tool{color:var(--sand);font-size:13px}
-  .hit{color:var(--cream)}
-  .hit .path{color:var(--ember)}
-  .hit .span{color:var(--sand)}
-  .receipt{color:var(--tan)}
-  .caret{display:inline-block;width:9px;height:18px;background:var(--ember);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  .term-line{opacity:0}
-  .term-line.show{opacity:1}
-  @media (prefers-reduced-motion:reduce){
-    .term-line{opacity:1}
-    .caret{animation:none}
-    html{scroll-behavior:auto}
-  }
+  .term-body{padding:22px 24px 26px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:14px;line-height:1.7}
+  .q{color:var(--cream);margin-bottom:14px}
+  .q::before{content:"\276F ";color:var(--ember)}
+  .ans{font-family:Inter,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--cream);margin:0 0 16px;max-width:820px}
+  .ans strong{color:var(--ember);font-weight:600}
+  .lbl{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);margin:14px 0 6px}
+  .ev{display:grid;grid-template-columns:22px 1fr;gap:8px;color:var(--cream);margin:4px 0}
+  .ev .n{color:var(--ember)}
+  .ev .path{color:var(--ember)}
+  .ev .span{color:var(--sand)}
+  .box{border-left:3px solid var(--tan);padding:6px 12px;margin:8px 0;color:var(--cream);font-family:Inter,'Segoe UI',system-ui,sans-serif;font-size:15px}
+  .box.conflict{border-color:var(--rust)}
+  .box.gap{border-color:var(--sand)}
+  .box b{color:var(--tan);font-weight:600}
+  .route{color:var(--sand);font-size:13px;margin-top:10px}
+  .route b{color:var(--cream);font-weight:600}
   .term-note{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--sand);margin:14px 2px 0}
-
-  /* ── sections ────────────────────────────────────── */
   section{padding:72px 0 8px}
-  h2{font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;max-width:720px}
-  .lead{color:var(--sand);max-width:660px;margin-top:16px}
+  h2{font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;max-width:760px;text-wrap:balance}
+  .lead{color:var(--sand);max-width:680px;margin-top:16px}
   .lead strong{color:var(--cream);font-weight:600}
-
   .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-  .card{
-    background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;
-    padding:26px 24px;
-  }
+  .cols.two{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;padding:26px 24px}
   .card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
   .card h3 .k{color:var(--ember)}
   a.card{display:block;color:inherit;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
@@ -113,64 +83,63 @@
   a.card:focus-visible{box-shadow:0 0 0 2px var(--ember)}
   a.card h3::after{content:"\00a0\2192";color:var(--ember);font-weight:400}
   a.card.wide{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-color:var(--tan)}
-  a.card.wide .live{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:4px 9px;border-radius:6px;white-space:nowrap}
+  a.card.wide .live{margin:0;white-space:nowrap}
   @media (max-width:820px){a.card.wide{grid-template-columns:1fr}}
   .card p{color:var(--sand);font-size:15.5px}
   .card p code{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--tan)}
-
-  /* ── the plaque: collection statistics ───────────── */
-  .plaque{
-    margin-top:44px;border:1px solid var(--tan);border-radius:12px;
-    padding:8px 0;
-    background:linear-gradient(180deg,#171310,#12100d);
-  }
-  .plaque-title{
-    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--tan);text-align:center;padding:18px 0 6px;
-  }
+  .card .qs{margin-top:12px;color:var(--tan);font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7}
+  /* the prompt wall, grouped by job */
+  .wall{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:36px}
+  .wall .g h4{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);margin-bottom:10px}
+  .wall .g p{color:var(--cream);font-size:14.5px;line-height:1.5;margin-bottom:10px;padding-left:14px;text-indent:-14px}
+  .wall .g p::before{content:"\275D ";color:var(--ember)}
+  @media (max-width:980px){.wall{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.wall{grid-template-columns:1fr}}
+  /* jobs, not brands */
+  table.jobs{width:100%;border-collapse:collapse;margin-top:34px;font-size:15.5px}
+  table.jobs th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);padding:0 14px 12px 0;font-weight:600}
+  table.jobs td{padding:12px 14px 12px 0;border-top:1px solid #2c2620;vertical-align:top;color:var(--sand)}
+  table.jobs td:last-child{color:var(--cream)}
+  .tablewrap{overflow-x:auto}
+  /* the receipts motif */
+  .receipts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+  .receipts div{border:1px dashed var(--tan);border-radius:10px;padding:16px 14px;background:linear-gradient(180deg,#171310,#12100d)}
+  .receipts b{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);margin-bottom:8px}
+  .receipts span{color:var(--sand);font-size:14px;line-height:1.5}
+  @media (max-width:980px){.receipts{grid-template-columns:repeat(2,1fr)}}
+  .limits{margin-top:30px;max-width:760px}
+  .limits p{padding:10px 0;border-top:1px solid #2c2620;color:var(--sand)}
+  .limits p b{color:var(--cream);font-weight:600}
+  .plaque{margin-top:44px;border:1px solid var(--tan);border-radius:12px;padding:8px 0;background:linear-gradient(180deg,#171310,#12100d)}
+  .plaque-title{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tan);text-align:center;padding:18px 0 6px}
   .plaque-grid{display:grid;grid-template-columns:repeat(5,1fr);padding:10px 10px 20px}
   .stat{padding:14px 10px;text-align:center;border-left:1px solid #2c2620}
   .stat:first-child{border-left:none}
-  .stat b{
-    display:block;font-family:'JetBrains Mono',monospace;font-weight:700;
-    font-size:clamp(18px,2.4vw,26px);color:var(--ember);letter-spacing:-.02em;
-  }
+  .stat b{display:block;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(18px,2.4vw,26px);color:var(--ember);letter-spacing:-.02em}
   .stat span{font-size:12.5px;color:var(--sand);display:block;margin-top:6px;line-height:1.45}
   .plaque-foot{font-size:12px;color:var(--sand);text-align:center;padding:0 20px 16px}
-
-  /* ── how it works ───────────────────────────────── */
-  .spine{
-    margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;
-    background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;
-    padding:26px 28px;color:var(--sand);overflow-x:auto;
-  }
+  .spine{margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:12px;padding:26px 28px;color:var(--sand);overflow-x:auto}
   .spine b{color:var(--cream);font-weight:600}
   .spine .a{color:var(--ember)}
-
-  /* ── cta ─────────────────────────────────────────── */
-  .cta{
-    margin:84px 0 0;padding:56px 40px;text-align:center;
-    background:linear-gradient(180deg,var(--charcoal-mid),#171310);
-    border:1px solid #2c2620;border-radius:16px;
-  }
+  .steps{counter-reset:step;margin-top:34px;display:grid;gap:18px;max-width:760px}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .step::before{counter-increment:step;content:counter(step);width:38px;height:38px;border-radius:50%;border:1px solid var(--tan);color:var(--ember);font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .step p{color:var(--sand);font-size:15.5px}
+  .step p strong{color:var(--cream);font-weight:600}
+  pre.cmd{margin-top:12px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:var(--cream);overflow-x:auto;white-space:pre;line-height:1.6}
+  pre.cmd .a{color:var(--ember)}
+  .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
+  .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
   .cta p{color:var(--sand);margin:16px auto 30px;max-width:560px}
-  .btn{
-    display:inline-block;background:var(--rust);color:var(--cream);
-    font-weight:700;font-size:17px;padding:15px 34px;border-radius:10px;
-  }
+  .btn{display:inline-block;background:var(--rust);color:var(--cream);font-weight:700;font-size:17px;padding:15px 34px;border-radius:10px}
   .btn:hover{background:var(--crimson);text-decoration:none}
   .cta .alt{display:block;margin-top:18px;font-size:14px;color:var(--sand)}
-
-  /* ── the early-access form ───────────────────────── */
   .ea{margin:30px auto 0;max-width:640px;text-align:left}
   .ea-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .ea label{display:block;font-size:13.5px;color:var(--sand);margin-bottom:14px}
-  .ea input,.ea select,.ea textarea{
-    display:block;width:100%;margin-top:6px;padding:11px 12px;border-radius:8px;
-    background:var(--charcoal);border:1px solid #2c2620;color:var(--cream);
-    font:inherit;font-size:15.5px;
-  }
+  .ea input,.ea select,.ea textarea{display:block;width:100%;margin-top:6px;padding:11px 12px;border-radius:8px;background:var(--charcoal);border:1px solid #2c2620;color:var(--cream);font:inherit;font-size:15.5px}
   .ea input:focus,.ea select:focus,.ea textarea:focus{outline:2px solid var(--ember);outline-offset:1px;border-color:var(--ember)}
   .ea textarea{resize:vertical;min-height:84px}
   .ea-turnstile{margin:6px 0 16px;min-height:0}
@@ -182,9 +151,8 @@
   footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid #2c2620;color:var(--sand);font-size:13.5px}
   footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
   footer a{color:var(--tan)}
-
   @media (max-width:820px){
-    .cols{grid-template-columns:1fr}
+    .cols,.cols.two{grid-template-columns:1fr}
     .plaque-grid{grid-template-columns:repeat(2,1fr)}
     .stat{border-left:none;border-top:1px solid #2c2620}
     .stat:first-child{border-top:none}
@@ -192,51 +160,67 @@
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <nav>
-    <a class="brand" href="#"><img src="assets/docenta-glyph.svg" alt="" width="38" height="38">docenta</a>
+    <a class="brand" href="/"><img src="/assets/docenta-glyph.svg" alt="" width="38" height="38">docenta</a>
     <a class="nav-cta" href="#access">request early access</a>
   </nav>
 
   <header>
     <div class="placard">Exhibit 001 · The Corpus · 1998 to today</div>
-    <h1>Your machine holds everything you ever wrote.<br>Now it can <em>answer</em>.</h1>
-    <p class="sub">docenta is a <strong>local-first content retrieval engine built for LLM agents</strong>. It turns your files, mail, and chat history into one askable collection. Answers come with receipts: exact file, exact span. <strong>Nothing leaves your machine.</strong></p>
-
-    <div class="terminal" aria-label="Example of an agent asking docenta a question">
+    <h1>Your machine holds everything you ever wrote. Now ask it <em>what happened</em>.</h1>
+    <p class="sub">Your documents know the terms. Your mail knows the conversation. Your photos know when and where. Your git history knows what changed. Your agent sessions know what it already tried. docenta makes them <strong>one private evidence layer</strong>, and every answer points back to the source. <strong>Nothing leaves your machine.</strong></p>
+<div class="chips"><a class="chip" href="#answer">When did we decide this, and why?</a><a class="chip" href="#answer">Which version did we actually approve?</a><a class="chip" href="#answer">Where is the message where we agreed?</a><a class="chip" href="#answer">What did the policy say on that date?</a><a class="chip" href="#answer">Which source contradicts this?</a><a class="chip" href="#answer">What proof am I missing?</a></div>
+    <div class="terminal" id="answer" aria-label="An answer, shown as it was reconstructed">
       <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
-      <div class="term-body" id="term">
-        <div class="term-line q">when did we decide to switch the importer to streaming, and why?<span class="caret" id="caret"></span></div>
-        <div class="term-line tool">docenta · semantic_search → timeline channel · 6 ms</div>
-        <div class="term-line hit">1. <span class="path">docs/design/importer-notes.md</span> <span class="span">· "2024-03-08: streaming import decided, batch peak RAM 14 GB was the trigger"</span></div>
-        <div class="term-line hit">2. <span class="path">Mail · "Re: importer memory ceiling"</span> <span class="span">· 2024-03-07 · the thread that forced the call</span></div>
-        <div class="term-line hit">3. <span class="path">agent session · 2024-03-08</span> <span class="span">· the refactor itself, step by step</span></div>
-        <div class="term-line receipt">every claim cited · token budget enforced · gaps disclosed, never papered over</div>
+      <div class="term-body">
+        <div class="q">when did we decide to switch the importer to streaming, and why?</div>
+        <div class="lbl">Answer</div>
+        <p class="ans">The team decided on <strong>8 March 2024</strong> to switch the importer to streaming after the batch implementation peaked at <strong>14 GB of RAM</strong>. A mail thread the day before framed the memory ceiling as the blocking issue; the agent session on 8 March records the refactor itself.</p>
+        <div class="lbl">Evidence</div>
+        <div class="ev"><span class="n">1.</span><span><span class="path">docs/design/importer-notes.md</span> <span class="span">· 2024-03-08 · &quot;streaming import decided, batch peak RAM 14 GB was the trigger&quot;</span></span></div><div class="ev"><span class="n">2.</span><span><span class="path">Mail · &quot;Re: importer memory ceiling&quot;</span> <span class="span">· 2024-03-07 · the thread that forced the call</span></span></div><div class="ev"><span class="n">3.</span><span><span class="path">agent session · 2024-03-08</span> <span class="span">· the refactor, step by step</span></span></div>
+        <div class="box"><b>Conflict.</b> None found in the retrieved evidence.</div>
+        <div class="box gap"><b>Gap.</b> No benchmark report in the corpus independently reproduces the 14 GB measurement.</div>
+        <div class="route"><b>Evidence path</b> · semantic and timeline lanes · 7 to 8 March · one design note, one thread, one session joined · 3 sources kept, 11 dropped · 20 KB handed to the agent</div>
       </div>
     </div>
-    <p class="term-note">Real behavior, not a mockup: document search, mail, and past agent sessions are one corpus. The docent answers from all of it.</p>
+    <p class="term-note">Real behavior, not a mockup: document search, mail and past agent sessions are one corpus, and the docent answers from all of it. A question public search cannot answer, answered with receipts.</p>
+
   </header>
 
   <section>
-    <div class="placard">Exhibit 002 · Why nothing else does this</div>
-    <h2>File search finds names. grep reads bytes. Cloud RAG reads your life on someone else's disk.</h2>
-    <p class="lead">docenta answers <strong>"which of my files says this"</strong> and proves it. A <em>docent</em> is the museum guide you ask about a collection. <em>Documentum</em> is Latin for "a thing that teaches". Your corpus gets a docent.</p>
-    <div class="cols">
-      <div class="card">
-        <h3><span class="k">Local-first.</span> Actually.</h3>
-        <p>Ingest, index, embeddings, answers: all on your hardware. Zero uploads, zero telemetry, zero cloud dependency. Originals are never copied; only searchable derivatives are stored.</p>
-      </div>
-      <div class="card">
-        <h3><span class="k">Agent-native.</span> Not a search box.</h3>
-        <p>The primary user is your AI agent. Token-disciplined <code>content_search</code>, <code>entity_card</code>, <code>timeline</code>, and <code>evidence_pack</code> tools over MCP; your agent already speaks the protocol.</p>
-      </div>
-      <div class="card">
-        <h3><span class="k">Receipts.</span> Every time.</h3>
-        <p>Answers cite exact spans in exact files. Token budgets are enforced and disclosed. When the corpus cannot answer, docenta says so instead of improvising.</p>
-      </div>
-    </div>
+    <div class="placard">Exhibit 002 · The questions ordinary search misses</div>
+    <h2>Search finds files. You want to know what happened.</h2>
+    <p class="lead">Nobody wakes up wanting semantic search. People want to know <strong>where the proof is</strong>, which version stands, what the record says on a date, and what it does not say. Those are memory questions: several artifacts, a chronology, a source that outranks another, and a way to inspect the proof. That is what docenta is built for.</p>
+    <div class="tablewrap"><table class="jobs">
+      <tr><th>What you type into search</th><th>What you actually want to know</th></tr>
+      <tr><td>files containing "streaming"</td><td>When did we decide streaming, why, and what happened next?</td></tr>
+      <tr><td>emails from the contractor</td><td>Which quote replaced the old one, and did they confirm it stands?</td></tr>
+      <tr><td>PDF search for "mold"</td><td>Which policy text applied on the date of loss, and what in the notes conflicts with the claim?</td></tr>
+      <tr><td>git blame</td><td>Why was this line introduced, and which incident, note or session explains it?</td></tr>
+      <tr><td>papers containing "low dose"</td><td>Which papers in my own library agree, which disagree, and on which page?</td></tr>
+      <tr><td>"Palo Alto ADU setback"</td><td>For this configuration, under the edition that governs this permit, which setback applies, and do the city and the state agree?</td></tr>
+    </table></div>
+    <p class="lead" style="margin-top:26px">Local evidence, exact receipts, explicit conflicts and gaps, served to the agent you already use. <strong>Built for evidence questions ordinary search misses.</strong> A <em>docent</em> is the museum guide you ask about a collection. Your corpus gets one.</p>
+  </section>
 
+  <section>
+    <div class="placard">Exhibit 003 · Receipts, every time</div>
+    <h2>Answers come with receipts. Five kinds.</h2>
+    <div class="receipts">
+      <div><b>Answer receipt</b><span>The exact source, the exact span, page or message behind every claim.</span></div>
+      <div><b>Timeline receipt</b><span>Every event on the timeline carries the source that dates it.</span></div>
+      <div><b>Version receipt</b><span>Old and new side by side: what changed, and which one stands.</span></div>
+      <div><b>Conflict receipt</b><span>Both contradicting sources visible. Never smoothed into one confident sentence.</span></div>
+      <div><b>Gap receipt</b><span>What was searched and what the collection does not establish. "I don't know" you can trust.</span></div>
+    </div>
+    <p class="lead" style="margin-top:26px">Gaps disclosed, never papered over. When the corpus cannot answer, docenta says so, shows what it did find, and names the document that would settle it.</p>
+  </section>
+
+  <section>
+    <div class="placard">Exhibit 004 · Ask the sensitive question</div>
+    <h2>Ask the sensitive question without first uploading the sensitive file.</h2>
+    <p class="lead">The matter file, the claim, the mail archive, the private source tree, the unpublished paper, the household folder: docenta ingests, indexes and answers on your own hardware. Originals are never copied; only searchable derivatives are stored. Your agent gets a <strong>small evidence pack</strong> with the receipts, not your archive, over MCP, the connector standard it already speaks. Zero uploads, zero telemetry, and the token budget is printed on every answer.</p>
     <div class="plaque">
       <div class="plaque-title">Collection statistics · one real machine</div>
       <div class="plaque-grid">
@@ -250,8 +234,23 @@
     </div>
   </section>
 
+  <section id="for">
+    <div class="placard">Exhibit 005 · Who asks</div>
+    <h2>One engine, your kind of collection.</h2>
+    <p class="lead">The same docent, pointed at what your desk actually holds. Each page shows one real question and the shape of its answer; two collections are live behind a door today.</p>
+    <div class="cols">
+      <a class="card wide" href="/for/contractors/"><div><h3><span class="k">Contractors.</span> Ask the rule. Get the exact page.</h3><p>City code, handouts, state law, utility standards and the code edition tied to the permit date, as one dated collection. Which rule applies, where the exception lives, whether the sources agree, and what the corpus cannot establish.</p><p class="qs">"Which code edition applies to this permit date?" · "Do the city handout and the ordinance agree?"</p></div><span class="live">live door</span></a>
+      <a class="card wide" href="/for/lawyers/"><div><h3><span class="k">Lawyers.</span> Ask the matter. Cite the exhibit.</h3><p>Pleadings, correspondence, scanned exhibits, contracts and notes become one private evidence layer. Reconstruct the chronology, find the version that changed, surface the contradiction, map each assertion to a page, without uploading the matter anywhere. Try the engine today on the federal code and public contracts.</p><p class="qs">"Where does the other side first acknowledge this?" · "Does the declaration conflict with an earlier email?"</p></div><span class="live">live door</span></a>
+      <a class="card" href="/for/insurance/"><h3><span class="k">Insurance.</span> Ask the claim, not the folders.</h3><p>Policy, notes, mail, forms, estimates and photos as one timeline with receipts: what happened, which version applies, where the file conflicts, what proof is missing.</p><p class="qs">"Which policy was in force on the loss date?"</p></a>
+      <a class="card" href="/for/home/"><h3><span class="k">Home.</span> Your files remember what you forgot.</h3><p>Twenty years of mail, documents and photos, asked in plain words: the receipt tied to the warranty, the quote that replaced the old quote, the letter you half remember.</p><p class="qs">"Is the dishwasher still under warranty?"</p></a>
+      <a class="card" href="/for/email/"><h3><span class="k">Mail.</span> Ask what was said, not what the subject line was.</h3><p>The promise, the latest number, the attachment that went with it and the whole thread in order, even when you remember the meaning and not the sender.</p><p class="qs">"What was the last delivery date they committed to?"</p></a>
+      <a class="card" href="/for/developers/"><h3><span class="k">Developers.</span> Ask why the code is this way.</h3><p>Code, git history, design notes and every agent session as one cited memory layer. The decision behind a workaround, the attempts that failed, what the next agent should read first.</p><p class="qs">"Why is retry_window capped at 45 seconds?"</p></a>
+      <a class="card" href="/for/researchers/"><h3><span class="k">Researchers.</span> Ask your library where it disagrees.</h3><p>PDFs, scans, notes, drafts and co-author mail as one evidence layer: the paper you half remember, the results that conflict, the sentence in your draft that has no support.</p><p class="qs">"Which papers support this, and which contradict it?"</p></a>
+    </div>
+  </section>
+
   <section>
-    <div class="placard">Exhibit 003 · How the docent works</div>
+    <div class="placard">Exhibit 006 · How the docent works</div>
     <h2>A spine that ingests, three channels that answer, one artifact that proves it.</h2>
     <div class="spine">
 <b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
@@ -262,42 +261,18 @@
     <p class="lead" style="margin-top:26px">The same 48 judged questions over the same corpus, asked by the same scripted agent two ways. With the evidence pack it cited the right document on <strong>44 of 48</strong>, in <strong>1 to 2.5 tool calls</strong> per task. Limited to search-and-fetch loops, the way an agent works without the pack, it cited it on <strong>39 of 48</strong>, in more calls. The pack reads about four times the tokens; that trade is printed, never hidden. Deterministic layers, zero learned models in the loop, bit-stable re-runs.</p>
   </section>
 
-  <section id="for">
-    <div class="placard">Exhibit 004 · Who asks</div>
-    <h2>One engine, your kind of collection.</h2>
-    <p class="lead">The same docent, pointed at what your work actually holds. Each page shows the shape of an answer for one kind of desk; the first collection is live behind a door.</p>
-    <div class="cols">
-      <a class="card wide" href="/for/contractors/"><div><h3><span class="k">Contractors.</span> Palo Alto building rules</h3><p>The municipal code, the City's handouts, the utility's standards and the state ADU law, sealed and served as a connector your assistant can ask today. Every answer cites the page.</p></div><span class="live">live door</span></a>
-      <a class="card wide" href="/for/lawyers/"><div><h3><span class="k">Lawyers.</span> United States Code and public contracts</h3><p>All 54 titles of the federal code, the recent public laws and two open contract collections, sealed and served as a connector your assistant can ask today. Every answer cites the section.</p></div><span class="live">live door</span></a>
-      <a class="card" href="/for/insurance/"><h3><span class="k">Insurance.</span> The claim file</h3><p>Adjuster notes, policies, forms and photos with their time and place, as one timeline with receipts.</p></a>
-      <a class="card" href="/for/home/"><h3><span class="k">Home.</span> A life in files</h3><p>Twenty years of mail, photos and documents, asked in plain words, honest when the answer is not there.</p></a>
-      <a class="card" href="/for/email/"><h3><span class="k">Mail.</span> The mailbox</h3><p>An export in an evening, the live mailbox from then on; threads, attachments and fields that answer.</p></a>
-      <a class="card" href="/for/developers/"><h3><span class="k">Developers.</span> Repos and sessions</h3><p>Code, git history and every agent session as one corpus over MCP, measured against grep.</p></a>
-      <a class="card" href="/for/researchers/"><h3><span class="k">Researchers.</span> The reading pile</h3><p>Thousands of PDFs, notes and drafts with a citation for every claim and the conflicts shown.</p></a>
-    </div>
-  </section>
-
   <section id="access">
     <div class="cta">
-      <div class="placard" style="justify-content:center">Exhibit 005 · The velvet rope</div>
-      <h2>Early access is small on purpose.</h2>
-      <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us what your agent needs to remember and we will tell you when the door opens.</p>
+      <div class="placard" style="justify-content:center">The velvet rope</div>
+      <h2>What is one question your files should be able to answer today?</h2>
+      <p>docenta is a commercial product of SKY, LLC, now in private preview. Tell us the question; we will tell you when the door opens, and the questions we hear shape what we build.</p>
 <form class="ea" id="early-access" data-audience="site" novalidate>
         <div class="ea-grid">
           <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
           <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
         </div>
-        <label>Which collection, or which desk<select name="audience">
-        <option value="contractors">Contractors: the Palo Alto building rules door</option>
-        <option value="lawyers">Lawyers: the matter file</option>
-        <option value="insurance">Insurance: the claim file</option>
-        <option value="home">Home: a life in files</option>
-        <option value="email">Mail: the mailbox</option>
-        <option value="developers">Developers: repos and sessions</option>
-        <option value="researchers">Researchers: the reading pile</option>
-        <option value="other">Something else (say what below)</option>
-        </select></label>
-        <label>What should your assistant be able to ask? (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
+        <label>Which collection, or which desk<select name="audience"><option value="contractors">Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="other">Something else (say what below)</option></select></label>
+        <label>The question your files should be able to answer (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
         <div class="ea-turnstile"></div>
         <button class="btn" type="submit">request early access</button>
         <p class="ea-status" role="status" aria-live="polite"></p>
@@ -315,34 +290,5 @@
     </div>
   </footer>
 </div>
-
-<script>
-  (function(){
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var lines = document.querySelectorAll('.term-line');
-    var caret = document.getElementById('caret');
-    if (reduced) { lines.forEach(function(l){l.classList.add('show');}); return; }
-    var q = lines[0];
-    var text = q.childNodes[0].nodeValue;
-    q.childNodes[0].nodeValue = '';
-    q.classList.add('show');
-    var i = 0;
-    function type(){
-      if (i <= text.length) {
-        q.childNodes[0].nodeValue = text.slice(0, i);
-        i++;
-        setTimeout(type, 26);
-      } else {
-        var d = 350;
-        for (var n = 1; n < lines.length; n++) {
-          (function(el, delay){ setTimeout(function(){ el.classList.add('show'); }, delay); })(lines[n], d);
-          d += 380;
-        }
-        setTimeout(function(){ caret.style.display = 'none'; }, 400);
-      }
-    }
-    setTimeout(type, 500);
-  })();
-</script>
 </body>
 </html>

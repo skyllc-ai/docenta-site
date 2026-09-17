@@ -291,24 +291,24 @@ def plug(name, host, mcp_name, word, placard="Plug the collection into your assi
     <h2>{h2}</h2>
     <p class="lead">{lead}</p>
     <div class="steps">
-      <div class="step">
+      <div class="step"><div>
         <h3>Ask for a key</h3>
         <p>Use the form at the bottom of this page and say "{word}". You get back a key, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in.</p>
-      </div>
-      <div class="step">
+      </div></div>
+      <div class="step"><div>
         <h3>Claude Code: one command</h3>
         <p>Paste this line with your key in place of the words in angle brackets, then start a new session; the collection shows up as <strong>{mcp_name}</strong>.</p>
         <pre class="cmd">claude mcp add --transport http {mcp_name} <span class="a">https://{host}/mcp</span> \\
   --header "Authorization: Bearer &lt;your key&gt;"</pre>
-      </div>
-      <div class="step">
+      </div></div>
+      <div class="step"><div>
         <h3>Claude.ai or ChatGPT: a custom connector</h3>
         <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://{host}/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer &lt;your key&gt;</strong>. Save, then ask in a new chat.</p>
-      </div>
-      <div class="step">
+      </div></div>
+      <div class="step"><div>
         <h3>Ask, and read the citation</h3>
         <p>Every answer names the document and the page it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
-      </div>
+      </div></div>
     </div>
     <p class="lead" style="margin-top:26px">The door never sees your files, holds nothing you send beyond the question, and cannot be changed by anyone, us included, without a new seal and a new date on this page.</p>
   </section>

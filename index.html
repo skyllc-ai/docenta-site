@@ -174,17 +174,17 @@
     <div class="terminal" id="answer" aria-label="An answer, shown as it was reconstructed">
       <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
       <div class="term-body">
-        <div class="q">when did we decide to switch the importer to streaming, and why?</div>
+        <div class="q">when did we decide to split the sparse encode from the index step, and why?</div>
         <div class="lbl">Answer</div>
-        <p class="ans">The team decided on <strong>8 March 2024</strong> to switch the importer to streaming after the batch implementation peaked at <strong>14 GB of RAM</strong>. A mail thread the day before framed the memory ceiling as the blocking issue; the agent session on 8 March records the refactor itself.</p>
+        <p class="ans">On <strong>17 September 2026</strong>, in the design record, on the numbers from the winbox rebuild: of the 13,176 seconds the serial index apply spent, about 13,150 were 13,154 calls into the sparse encoder, so the lexical index of 7.5 million representations was hostage to one model lane. That reversed the decision of <strong>4 September</strong> (commit b4f63231), which had put a measured gate on the encode inside the index step after one 2,675-unit batch took 86 minutes on an Intel laptop. The split landed the same day as commit ebffa66b: the index step never encodes, and a new sparse step back-fills.</p>
         <div class="lbl">Evidence</div>
-        <div class="ev"><span class="n">1.</span><span><span class="path">docs/design/importer-notes.md</span> <span class="span">· 2024-03-08 · &quot;streaming import decided, batch peak RAM 14 GB was the trigger&quot;</span></span></div><div class="ev"><span class="n">2.</span><span><span class="path">Mail · &quot;Re: importer memory ceiling&quot;</span> <span class="span">· 2024-03-07 · the thread that forced the call</span></span></div><div class="ev"><span class="n">3.</span><span><span class="path">agent session · 2024-03-08</span> <span class="span">· the refactor, step by step</span></span></div>
-        <div class="box"><b>Conflict.</b> None found in the retrieved evidence.</div>
-        <div class="box gap"><b>Gap.</b> No benchmark report in the corpus independently reproduces the 14 GB measurement.</div>
-        <div class="route"><b>Evidence path</b> · semantic and timeline lanes · 7 to 8 March · one design note, one thread, one session joined · 3 sources kept, 11 dropped · 20 KB handed to the agent</div>
+        <div class="ev"><span class="n">1.</span><span><span class="path">docs/architecture/sparse-split-2026-09-17.md</span> <span class="span">· &quot;The measurement that decided it&quot;: 13,176 s of apply, about 13,150 s in 13,154 encoder calls</span></span></div><div class="ev"><span class="n">2.</span><span><span class="path">git · b4f63231 · 2026-09-04</span> <span class="span">· &quot;the index step measures its sparse encode and stops at the line&quot;: &quot;one 2,675-unit batch took 86 minutes&quot;</span></span></div><div class="ev"><span class="n">3.</span><span><span class="path">git · ebffa66b · 2026-09-17</span> <span class="span">· &quot;the index step indexes bare units and counts them, the encoder and the gate leave the index write path&quot;</span></span></div><div class="ev"><span class="n">4.</span><span><span class="path">agent session · 2026-09-17</span> <span class="span">· the winbox log and the ledger rows that produced the numbers</span></span></div>
+        <div class="box conflict"><b>Conflict.</b> None: the 4 September record is superseded, not contradicted; the 17 September record names it.</div>
+        <div class="box gap"><b>Gap.</b> The pack ranks the sources and dates them; it does not yet flag a reversed decision as a version change on its own. The dates do.</div>
+        <div class="route"><b>Evidence path</b> · lexical, semantic and git lanes · design record, two commits, the session and the changelog · 16 sources kept of 28 · 1,082 tokens handed to the agent</div>
       </div>
     </div>
-    <p class="term-note">Real behavior, not a mockup: document search, mail and past agent sessions are one corpus, and the docent answers from all of it. A question public search cannot answer, answered with receipts.</p>
+    <p class="term-note">Real, from the maker's own corpus, answered today: the design record, the git history and the agent session that made the decision are one collection, and the docent answers from all of it. A question public search cannot answer, answered with receipts.</p>
 
   </header>
 

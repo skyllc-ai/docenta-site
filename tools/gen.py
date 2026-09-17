@@ -353,15 +353,16 @@ def index_page():
         "What proof am I missing?",
     ]))
     out.append(answer(
-        "when did we decide to switch the importer to streaming, and why?",
-        "The team decided on <strong>8 March 2024</strong> to switch the importer to streaming after the batch implementation peaked at <strong>14 GB of RAM</strong>. A mail thread the day before framed the memory ceiling as the blocking issue; the agent session on 8 March records the refactor itself.",
-        [("docs/design/importer-notes.md", "2024-03-08 · \"streaming import decided, batch peak RAM 14 GB was the trigger\""),
-         ("Mail · \"Re: importer memory ceiling\"", "2024-03-07 · the thread that forced the call"),
-         ("agent session · 2024-03-08", "the refactor, step by step")],
-        None,
-        "No benchmark report in the corpus independently reproduces the 14 GB measurement.",
-        "semantic and timeline lanes · 7 to 8 March · one design note, one thread, one session joined · 3 sources kept, 11 dropped · 20 KB handed to the agent",
-        "Real behavior, not a mockup: document search, mail and past agent sessions are one corpus, and the docent answers from all of it. A question public search cannot answer, answered with receipts.",
+        "when did we decide to split the sparse encode from the index step, and why?",
+        "On <strong>17 September 2026</strong>, in the design record, on the numbers from the winbox rebuild: of the 13,176 seconds the serial index apply spent, about 13,150 were 13,154 calls into the sparse encoder, so the lexical index of 7.5 million representations was hostage to one model lane. That reversed the decision of <strong>4 September</strong> (commit b4f63231), which had put a measured gate on the encode inside the index step after one 2,675-unit batch took 86 minutes on an Intel laptop. The split landed the same day as commit ebffa66b: the index step never encodes, and a new sparse step back-fills.",
+        [("docs/architecture/sparse-split-2026-09-17.md", "\"The measurement that decided it\": 13,176 s of apply, about 13,150 s in 13,154 encoder calls"),
+         ("git · b4f63231 · 2026-09-04", "\"the index step measures its sparse encode and stops at the line\": \"one 2,675-unit batch took 86 minutes\""),
+         ("git · ebffa66b · 2026-09-17", "\"the index step indexes bare units and counts them, the encoder and the gate leave the index write path\""),
+         ("agent session · 2026-09-17", "the winbox log and the ledger rows that produced the numbers")],
+        "None: the 4 September record is superseded, not contradicted; the 17 September record names it.",
+        "The pack ranks the sources and dates them; it does not yet flag a reversed decision as a version change on its own. The dates do.",
+        "lexical, semantic and git lanes · design record, two commits, the session and the changelog · 16 sources kept of 28 · 1,082 tokens handed to the agent",
+        "Real, from the maker's own corpus, answered today: the design record, the git history and the agent session that made the decision are one collection, and the docent answers from all of it. A question public search cannot answer, answered with receipts.",
     ))
     out.append("""
   </header>

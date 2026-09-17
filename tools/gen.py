@@ -353,17 +353,16 @@ def index_page():
         "What proof am I missing?",
     ]))
     out.append(answer(
-        "for a detached ADU replacing an existing garage, what side and rear setbacks apply, which code edition governs a permit deemed complete in 2025, and does the tree guidance still affect where it can go?",
-        "State law sets the ceiling: <strong>no setback</strong> for a unit built in the same location and to the same dimensions as the existing structure, and <strong>no more than four feet</strong> from the side and rear lot lines for a new detached unit (Gov. Code 66310 to 66342, item 7). The City's ordinance implementing that law says ADUs comply with the underlying zone setbacks, requires none for a converted garage, and caps a unit above a garage at five feet. The City's 2018 summary handout still prints <strong>six feet</strong> for a detached unit. The <strong>2022</strong> edition of Title 24 governs a permit deemed complete before 2026. For an ADU on the state pathway (one detached unit up to 800 sq ft) trees, protected ones included, may be removed without meeting the tree ordinance, but a Tree Disclosure Statement on the T1 sheet is still required; a larger unit removes a protected tree only under PAMC 8.10.050.",
-        [("california-statutes/gov-code-66310-66342-accessory-dwelling-units.txt", "\"a setback of no more than four feet from the side and rear lot lines shall be required for an accessory dwelling unit that is not converted from an existing structure\""),
-         ("palo-alto-handouts/adu-ordinance-5412.pdf", "18.42.040, Setbacks and Daylight Plane: comply with the underlying zone; no setback for a converted existing garage; no more than five feet above a garage"),
-         ("palo-alto-handouts/adu-summary-handout-2018-12-05.pdf", "the summary table: \"6 feet from interior side/rear property line\" for a detached unit"),
-         ("title24-2022-APPLIES/EDITION.txt", "\"a permit is governed by the code in effect when its application was deemed complete\"; the 2022 parts, and which parts only the 2025 folder has"),
-         ("palo-alto-handouts/trees-and-adus-guidelines.pdf", "state-pathway ADUs: trees may be removed without meeting the ordinance, Tree Disclosure Statement still required; Table 2 units: PAMC 8.10.050")],
-        "The City's 2018 handout says six feet; the state statute in the same collection caps a local agency at four. The handout predates the current statute and the ordinance defers to it. Both are shown; neither is silently preferred.",
-        "The collection holds no permit records and no site survey. Whether this garage is nonconforming, and whether a tree on the lot is protected, are project facts outside the corpus; the plan checker settles them, not this answer.",
-        "lexical and semantic lanes over 5 sources · state, city, utility and code-edition documents kept apart · 20 candidates, 5 kept · answered from a collection sealed 2026-09-12",
-        "A real answer from a live public collection, paths shortened, reproducible through the contractors door below. Google answers \"Palo Alto ADU setback\"; this answers the configuration, under the edition that governs the permit, and it caught the City's own handout contradicting the state statute. That is the moment: not a better search, a docent that read all of it and said where the sources disagree.",
+        "which version of the proposal did we actually agree to, and where is the confirmation?",
+        "The version that stands is <strong>v3</strong>, sent on <strong>March 14</strong>: it lowered the price by 8 percent and moved delivery to the end of April. Their reply on March 15 confirms it, and nothing later in the collection changes it. Your own calendar note from the call still says \"v2 agreed\", which the record does not support.",
+        [("Mail · \"Proposal for the spring rollout\" · March 3", "v1 attached: the original price and a March delivery"),
+         ("Mail · \"Re: Proposal for the spring rollout\" · March 14", "v3 attached: \"8 percent lower, delivery end of April\""),
+         ("Mail · \"Re: Proposal for the spring rollout\" · March 15", "their confirmation: \"v3 works for us, let\'s proceed\""),
+         ("notes/call-2026-03-12.md · line 4", "\"v2 agreed on the call\"")],
+        "Your call note says v2; the thread shows v3 sent two days later and confirmed the day after. Both are shown with their dates.",
+        "No countersigned copy of v3 is in the collection. If a signature matters, that is the document to find.",
+        "mail, attachments and notes on one timeline · versions ordered by date · 4 sources kept, 19 dropped · 14 KB handed to the agent",
+        "An illustration of the shape of every docenta answer: the proposal is made up, the behavior is real. The real ones are on the desk pages below and behind the two live doors, where any visitor can ask.",
     ))
     out.append("""
   </header>

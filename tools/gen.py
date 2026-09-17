@@ -174,6 +174,7 @@ AUDIENCES = [
     ("faith", "Faith: the three traditions together (door in preparation)"),
     ("sleep", "Sleep research: the open corpus (door in preparation)"),
     ("diabetes", "Diabetes research: the open corpus (in collection)"),
+    ("git", "The Git project: the code, its history and the list (door in preparation)"),
 ]
 
 def e(s):
@@ -453,6 +454,7 @@ def index_page():
       <a class="card" href="/for/faith/"><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture.</p><p class="qs">"Where do the three scriptures treat this theme, in their own words?"</p></a>
       <a class="card" href="/for/sleep/"><h3><span class="k">Sleep.</span> The open research corpus</h3><p>Open-access full texts from PubMed Central, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines: sleep biology, disorders, treatment, the lifespan.</p><p class="qs">"Which studies report this effect at this dose, and where do they disagree?"</p></a>
       <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research: biology, types, therapy, technology, complications and the study families, with the trials that tested them.</p><p class="qs">"Which trials tested this intervention, and what did they measure?"</p></a>
+      <a class="card" href="/for/git/"><h3><span class="k">The Git project.</span> The code, every commit, the whole mailing list</h3><p>git/git with its complete history rendered as correspondence, and the git mailing list from lore.kernel.org from 2005 on: the line, the commit that changed it, the thread where it was argued.</p><p class="qs">"Why does this option exist, who asked for it, and what was the objection?"</p></a>
     </div>
   </section>
 
@@ -937,6 +939,21 @@ PLACEHOLDERS = {
                ("Not yet.", "", "Collection started on 2026-09-17; normalization and the seal follow.")],
         status=[("collected", False), ("rights sorted", False), ("sealed", False), ("door", False)],
         note="Being gathered now; the door opens after the sleep collection and the three traditions.",
+    ),
+    "git": dict(
+        title="docenta for the Git project - the code, its history and the list",
+        desc="A sealed collection of the Git project's own record: the git/git source tree, every commit since 2005 rendered as correspondence, and the git mailing list from lore.kernel.org, answering why a line is the way it is with the commit and the thread. In preparation; the door opens when the collection is sealed.",
+        placard="Exhibit · docenta for developers · The Git project",
+        h1="Ask why the line is this way. <em>Get the commit and the thread.</em>",
+        sub="The git/git source tree and its Documentation at the sealed commit, all 82,305 commits of its history rendered as correspondence (author, date, subject, message, the files it changed), and the git mailing list from the lore.kernel.org archive, 552,249 messages from the list's beginning to the seal. <strong>The line, the commit that changed it, the thread where it was argued, cited to the message.</strong>",
+        chip_qs=["Why does git rerere exist, and who asked for it?", "When did git switch and git restore appear, and what was the argument against splitting checkout?", "What was the objection to the name --force-with-lease?", "Which thread settled the SHA-256 transition plan?"],
+        card="The Git project's own record: the git/git source tree and its Documentation at the sealed commit, every commit of its history since 2005 rendered as correspondence (author, date, subject, message, the files it changed), and the git mailing list (git@vger.kernel.org) from the lore.kernel.org archive, message by message, thread by thread, from the list's beginning to the seal. It answers why a line is this way with the commit that introduced it and the thread where it was argued, cited to the message. It holds no other project, no GitHub issues or pull requests, and nothing after the seal date; GPL-2.0 for the code, the authors' words for the list, quoted with attribution.",
+        reads=[("The code.", "", "The working tree at the sealed commit, Documentation included, under GPL-2.0: the door serves excerpts with the path and the line."),
+               ("The history.", "", "Every commit as a message from its author: subject, body, date and the files it touched, so a question about a line finds the change that made it."),
+               ("The list.", "", "The git mailing list as the public archive holds it, one message at a time, threads intact: the review, the objection, the version that was merged."),
+               ("What stays out.", "", "Other projects, GitHub issues and pull requests, and anything after the seal. A question outside the collection is answered not in this corpus.")],
+        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
+        note="Collected on 2026-09-17: the repository, both archive epochs of the list, the yearly mailboxes. The store is built next, then the seal, then the door at git.docenta.ai. The developers page will show this collection's real answers.",
     ),
 }
 

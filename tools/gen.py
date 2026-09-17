@@ -282,12 +282,13 @@ def privacy(rolewords):
   </section>
 """
 
-def plug(name, host, mcp_name, word):
+def plug(name, host, mcp_name, word, placard="Plug the collection into your assistant", h2="One address, one key, every question cited.", lead=None):
+    lead = lead or f"The collection is served as an MCP server at <strong>https://{host}/mcp</strong>: the one kind of remote address on this site, a sealed public collection we host on purpose. You add it once; from then on your assistant asks it the way it asks any other tool."
     return f"""
   <section id="plug">
-    <div class="placard">Try the engine on public material <span class="live">live door</span></div>
-    <h2>One address, one key, every question cited.</h2>
-    <p class="lead">This collection is served as an MCP server at <strong>https://{host}/mcp</strong>. You add the address once; from then on your assistant asks it the way it asks any other tool.</p>
+    <div class="placard">{placard} <span class="live">live door</span></div>
+    <h2>{h2}</h2>
+    <p class="lead">{lead}</p>
     <div class="steps">
       <div class="step">
         <h3>Ask for a key</h3>
@@ -565,7 +566,10 @@ PAGES["contractors"] = dict(
         ("Verify before relying.", "docenta finds and cites; your assistant reads and you decide. For anything load-bearing, open the official text the citation points to."),
     ],
     rolewords="Your own plan sets, site photos, client mail and estimates",
-    plug_html=plug("palo-alto", "door.docenta.ai", "docenta-palo-alto", "contractors"),
+    plug_html=plug("palo-alto", "door.docenta.ai", "docenta-palo-alto", "contractors",
+                   placard="The Palo Alto collection, plugged into your assistant",
+                   h2="One address, one key, every question cited to the page.",
+                   lead="The sealed collection above is served as an MCP server at <strong>https://door.docenta.ai/mcp</strong>: the one kind of remote address on this site, a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asks any other tool, and every answer names the document and the page."),
     subject_word="contractors",
 )
 
@@ -625,7 +629,10 @@ PAGES["lawyers"] = dict(
         ("What the matter cannot establish is listed.", "\"Not established by the file as indexed\" is printed as an answer, with the searches that were run, so the missing exhibit has a name."),
     ],
     rolewords="The matter, the privileged notes and the client's mail",
-    plug_html=plug("legal", "lawyers.docenta.ai", "docenta-legal", "lawyers"),
+    plug_html=plug("legal", "lawyers.docenta.ai", "docenta-legal", "lawyers",
+                   placard="Try the engine on public material",
+                   h2="The federal code and public contracts: one address, one key, every question cited to the section.",
+                   lead="The public collection shown above is served as an MCP server at <strong>https://lawyers.docenta.ai/mcp</strong>: the one kind of remote address on this site, a sealed public collection we host on purpose. Your matter file never has one; this door is where you try the engine before it runs on your own machine."),
     subject_word="lawyers",
 )
 

@@ -353,16 +353,17 @@ def index_page():
         "What proof am I missing?",
     ]))
     out.append(answer(
-        "when did we decide to split the sparse encode from the index step, and why?",
-        "On <strong>17 September 2026</strong>, in the design record, on the numbers from the winbox rebuild: of the 13,176 seconds the serial index apply spent, about 13,150 were 13,154 calls into the sparse encoder, so the lexical index of 7.5 million representations was hostage to one model lane. That reversed the decision of <strong>4 September</strong> (commit b4f63231), which had put a measured gate on the encode inside the index step after one 2,675-unit batch took 86 minutes on an Intel laptop. The split landed the same day as commit ebffa66b: the index step never encodes, and a new sparse step back-fills.",
-        [("docs/architecture/sparse-split-2026-09-17.md", "\"The measurement that decided it\": 13,176 s of apply, about 13,150 s in 13,154 encoder calls"),
-         ("git · b4f63231 · 2026-09-04", "\"the index step measures its sparse encode and stops at the line\": \"one 2,675-unit batch took 86 minutes\""),
-         ("git · ebffa66b · 2026-09-17", "\"the index step indexes bare units and counts them, the encoder and the gate leave the index write path\""),
-         ("agent session · 2026-09-17", "the winbox log and the ledger rows that produced the numbers")],
-        "None: the 4 September record is superseded, not contradicted; the 17 September record names it.",
-        "The pack ranks the sources and dates them; it does not yet flag a reversed decision as a version change on its own. The dates do.",
-        "lexical, semantic and git lanes · design record, two commits, the session and the changelog · 16 sources kept of 28 · 1,082 tokens handed to the agent",
-        "Real, from the maker's own corpus, answered today: the design record, the git history and the agent session that made the decision are one collection, and the docent answers from all of it. A question public search cannot answer, answered with receipts.",
+        "for a detached ADU replacing an existing garage, what side and rear setbacks apply, which code edition governs a permit deemed complete in 2025, and does the tree guidance still affect where it can go?",
+        "State law sets the ceiling: <strong>no setback</strong> for a unit built in the same location and to the same dimensions as the existing structure, and <strong>no more than four feet</strong> from the side and rear lot lines for a new detached unit (Gov. Code 66310 to 66342, item 7). The City's ordinance implementing that law says ADUs comply with the underlying zone setbacks, requires none for a converted garage, and caps a unit above a garage at five feet. The City's 2018 summary handout still prints <strong>six feet</strong> for a detached unit. The <strong>2022</strong> edition of Title 24 governs a permit deemed complete before 2026. For an ADU on the state pathway (one detached unit up to 800 sq ft) trees, protected ones included, may be removed without meeting the tree ordinance, but a Tree Disclosure Statement on the T1 sheet is still required; a larger unit removes a protected tree only under PAMC 8.10.050.",
+        [("california-statutes/gov-code-66310-66342-accessory-dwelling-units.txt", "\"a setback of no more than four feet from the side and rear lot lines shall be required for an accessory dwelling unit that is not converted from an existing structure\""),
+         ("palo-alto-handouts/adu-ordinance-5412.pdf", "18.42.040, Setbacks and Daylight Plane: comply with the underlying zone; no setback for a converted existing garage; no more than five feet above a garage"),
+         ("palo-alto-handouts/adu-summary-handout-2018-12-05.pdf", "the summary table: \"6 feet from interior side/rear property line\" for a detached unit"),
+         ("title24-2022-APPLIES/EDITION.txt", "\"a permit is governed by the code in effect when its application was deemed complete\"; the 2022 parts, and which parts only the 2025 folder has"),
+         ("palo-alto-handouts/trees-and-adus-guidelines.pdf", "state-pathway ADUs: trees may be removed without meeting the ordinance, Tree Disclosure Statement still required; Table 2 units: PAMC 8.10.050")],
+        "The City's 2018 handout says six feet; the state statute in the same collection caps a local agency at four. The handout predates the current statute and the ordinance defers to it. Both are shown; neither is silently preferred.",
+        "The collection holds no permit records and no site survey. Whether this garage is nonconforming, and whether a tree on the lot is protected, are project facts outside the corpus; the plan checker settles them, not this answer.",
+        "lexical and semantic lanes over 5 sources · state, city, utility and code-edition documents kept apart · 20 candidates, 5 kept · answered from a collection sealed 2026-09-12",
+        "A real answer from a live public collection, paths shortened, reproducible through the contractors door below. Google answers \"Palo Alto ADU setback\"; this answers the configuration, under the edition that governs the permit, and it caught the City's own handout contradicting the state statute. That is the moment: not a better search, a docent that read all of it and said where the sources disagree.",
     ))
     out.append("""
   </header>
@@ -423,7 +424,7 @@ def index_page():
       <a class="card" href="/for/insurance/"><h3><span class="k">Insurance.</span> Ask the claim, not the folders.</h3><p>Policy, notes, mail, forms, estimates and photos as one timeline with receipts: what happened, which version applies, where the file conflicts, what proof is missing.</p><p class="qs">"Which policy was in force on the loss date?"</p></a>
       <a class="card" href="/for/home/"><h3><span class="k">Home.</span> Your files remember what you forgot.</h3><p>Twenty years of mail, documents and photos, asked in plain words: the receipt tied to the warranty, the quote that replaced the old quote, the letter you half remember.</p><p class="qs">"Is the dishwasher still under warranty?"</p></a>
       <a class="card" href="/for/email/"><h3><span class="k">Mail.</span> Ask what was said, not what the subject line was.</h3><p>The promise, the latest number, the attachment that went with it and the whole thread in order, even when you remember the meaning and not the sender.</p><p class="qs">"What was the last delivery date they committed to?"</p></a>
-      <a class="card" href="/for/developers/"><h3><span class="k">Developers.</span> Ask why the code is this way.</h3><p>Code, git history, design notes and every agent session as one cited memory layer. The decision behind a workaround, the attempts that failed, what the next agent should read first.</p><p class="qs">"Why is retry_window capped at 45 seconds?"</p></a>
+      <a class="card" href="/for/developers/"><h3><span class="k">Developers.</span> Ask why the code is this way.</h3><p>Code, git history, design notes and every agent session as one cited memory layer. The decision behind a workaround, the attempts that failed, what the next agent should read first.</p><p class="qs">"When did we decide to split this step, and why?"</p></a>
       <a class="card" href="/for/researchers/"><h3><span class="k">Researchers.</span> Ask your library where it disagrees.</h3><p>PDFs, scans, notes, drafts and co-author mail as one evidence layer: the paper you half remember, the results that conflict, the sentence in your draft that has no support.</p><p class="qs">"Which papers support this, and which contradict it?"</p></a>
     </div>
   </section>
@@ -741,16 +742,16 @@ PAGES["developers"] = dict(
     sub="Ask \"why is this here?\", \"what did we already try?\" or \"when did we decide this?\" across code, commits, design notes and every previous agent session. docenta hands the next agent the <strong>small set of evidence it needs</strong>, with exact citations and a disclosed token budget, over MCP, instead of the whole repository.",
     chip_qs=["Why does this guard exist?", "What did we try before this, and why did it fail?", "Which agent session introduced this pattern?", "Where do the README, the code and git history disagree?", "What should the next agent read before touching this module?"],
     demo=answer(
-        "why is retry_window capped at 45 seconds? it looks arbitrary",
-        "The cap was introduced in commit <strong>abc123</strong> after a February incident in which retries accumulated faster than the upstream queue drained. A design note from the following day records that 60 seconds caused duplicate work under load and recommends 45 as the tested ceiling. The agent session of February 14 implemented the cap and added the regression test that still guards it. No later design record in the corpus revises that rationale.",
-        [("docs/incidents/2026-02-12-queue-backlog.md", "\"retries arrived faster than the queue drained; duplicates observed at 60 s\""),
-         ("commit abc123 · 2026-02-14", "queue.rs: retry_window capped at 45 s; test_retry_window_ceiling added"),
-         ("docs/design/retry-ceiling.md · 2026-02-13", "\"45 s was the tested ceiling; 60 s duplicated work under load\""),
-         ("agent session · 2026-02-14", "the implementation path, the test, the run that passed")],
-        "README.md still says 60 seconds. The code, the commit and the design note say 45.",
-        "The benchmark raw data the design note refers to is not in the corpus; the 45-second figure rests on the note's statement of it.",
-        "code, git, docs and session lanes · co-change: queue.rs moves with retry tests · 4 sources kept, 17 dropped · 16 KB handed to the agent",
-        "An illustration of the shape of an answer. The repository is made up; the behavior is docenta's, and it is how the maker's own agents work: code, git history and every Claude Code session as one corpus over MCP, measured against grep.",
+        "when did we decide to split the sparse encode from the index step, and why?",
+        "On <strong>17 September 2026</strong>, in the design record, on the numbers from the winbox rebuild: of the 13,176 seconds the serial index apply spent, about 13,150 were 13,154 calls into the sparse encoder, so the lexical index of 7.5 million representations was hostage to one model lane. That reversed the decision of <strong>4 September</strong> (commit b4f63231), which had put a measured gate on the encode inside the index step after one 2,675-unit batch took 86 minutes on an Intel laptop. The split landed the same day as commit ebffa66b: the index step never encodes, and a new sparse step back-fills.",
+        [("docs/architecture/sparse-split-2026-09-17.md", "\"The measurement that decided it\": 13,176 s of apply, about 13,150 s in 13,154 encoder calls"),
+         ("git · b4f63231 · 2026-09-04", "\"the index step measures its sparse encode and stops at the line\": \"one 2,675-unit batch took 86 minutes\""),
+         ("git · ebffa66b · 2026-09-17", "\"the index step indexes bare units and counts them, the encoder and the gate leave the index write path\""),
+         ("agent session · 2026-09-17", "the winbox log and the ledger rows that produced the numbers")],
+        "None: the 4 September record is superseded, not contradicted; the 17 September record names it.",
+        "The pack ranks the sources and dates them; it does not yet flag a reversed decision as a version change on its own. The dates do.",
+        "lexical, semantic and git lanes · design record, two commits, the session and the changelog · 16 sources kept of 28 · 1,082 tokens handed to the agent",
+        "Real, from the maker's own corpus, answered today: the design record, the git history and the agent session that made the decision are one collection over MCP, and the docent answers from all of it. This is how the maker's own coding agents work; the grep comparison below is the measurement.",
     ),
     wall_groups=[
         ("Why", ["Why does this guard or workaround exist? Show the bug, incident, commit or session that introduced it.", "Why was this dependency chosen over the other one?", "Which incident or benchmark caused this retry, cache or timeout behavior?"]),

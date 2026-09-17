@@ -122,6 +122,12 @@ CSS = r"""
   .step p strong{color:var(--cream);font-weight:600}
   pre.cmd{margin-top:12px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:var(--cream);overflow-x:auto;white-space:pre;line-height:1.6}
   pre.cmd .a{color:var(--ember)}
+  .soon{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);border:1px solid var(--tan);padding:2px 8px;border-radius:6px;vertical-align:middle;white-space:nowrap}
+  .status{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px}
+  .status div{border:1px solid #2c2620;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--sand)}
+  .status div b{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);margin-bottom:6px}
+  .status div.done{border-color:var(--tan);color:var(--cream)}
+  @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
@@ -160,6 +166,12 @@ AUDIENCES = [
     ("email", "Mail: the mailbox"),
     ("developers", "Developers: repos and sessions"),
     ("researchers", "Researchers: the reading pile"),
+    ("judaism", "Judaism: Tanakh, Mishnah, Talmud and commentary (door in preparation)"),
+    ("christianity", "Christianity: scripture and classical commentary (door in preparation)"),
+    ("islam", "Islam: the Koran in three translations (door in preparation)"),
+    ("faith", "Faith: the three traditions together (door in preparation)"),
+    ("sleep", "Sleep research: the open corpus (door in preparation)"),
+    ("diabetes", "Diabetes research: the open corpus (in collection)"),
 ]
 
 def e(s):
@@ -428,8 +440,22 @@ def index_page():
     </div>
   </section>
 
+  <section id="coming">
+    <div class="placard">Exhibit 006 · Collections in preparation</div>
+    <h2>The next doors. Each a sealed collection with its own card.</h2>
+    <p class="lead">Public material only, one collection per subject, never mixed: a card says exactly what is inside and what is not, and the door opens when the collection is sealed. Ask for a key now and you are told the day it opens.</p>
+    <div class="cols">
+      <a class="card" href="/for/judaism/"><h3><span class="k">Judaism.</span> Tanakh, Mishnah, Talmud and commentary</h3><p>The Hebrew Bible with morphology, and the openly licensed versions and translations of the Sefaria library, cited to the passage and version.</p><p class="qs">"Where does Rashi comment on this verse, and which other commentary disagrees?"</p></a>
+      <a class="card" href="/for/christianity/"><h3><span class="k">Christianity.</span> Scripture and classical commentary</h3><p>The Berean and World English Bibles, Matthew Henry, sixty-three volumes of Spurgeon, the SBL Greek New Testament, STEPBible, the Patristic Text Archive.</p><p class="qs">"Which translations render this verse differently, and what does Henry say on it?"</p></a>
+      <a class="card" href="/for/islam/"><h3><span class="k">Islam.</span> The Koran in three English translations</h3><p>Pickthall, Yusuf Ali and Shakir side by side, cited to the surah and verse; the Arabic text, tafsir and hadith wait on their rights.</p><p class="qs">"How do the three translations render this verse?"</p></a>
+      <a class="card" href="/for/faith/"><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture.</p><p class="qs">"Where do the three scriptures treat this theme, in their own words?"</p></a>
+      <a class="card" href="/for/sleep/"><h3><span class="k">Sleep.</span> The open research corpus</h3><p>Open-access full texts from PubMed Central, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines: sleep biology, disorders, treatment, the lifespan.</p><p class="qs">"Which studies report this effect at this dose, and where do they disagree?"</p></a>
+      <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research: biology, types, therapy, technology, complications and the study families, with the trials that tested them.</p><p class="qs">"Which trials tested this intervention, and what did they measure?"</p></a>
+    </div>
+  </section>
+
   <section>
-    <div class="placard">Exhibit 006 · How the docent works</div>
+    <div class="placard">Exhibit 007 · How the docent works</div>
     <h2>A spine that ingests, three channels that answer, one artifact that proves it.</h2>
     <div class="spine">
 <b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
@@ -819,12 +845,136 @@ PAGES["researchers"] = dict(
     subject_word="researchers",
 )
 
+PLACEHOLDERS = {
+    "judaism": dict(
+        title="docenta for Judaism - Tanakh, Mishnah, Talmud and commentary",
+        desc="A sealed collection of Judaism's scripture and commentary in the public domain or under open licenses, answering with the passage and the version. In preparation; the door opens when the collection is sealed.",
+        placard="Exhibit · docenta for Judaism · Tanakh, Mishnah, Talmud and commentary",
+        h1="Ask the library. <em>Get the passage and the version.</em>",
+        sub="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions and translations of the Sefaria library: Tanakh, Mishnah, Talmud and commentary, cited to the passage and the version it comes from. <strong>Versions under other licenses are not in this collection, and it gives no halachic ruling.</strong>",
+        chip_qs=["Where does Rashi comment on this verse, and which other commentary disagrees?", "Which tractate discusses this ruling, and what does the Mishnah say first?", "Which versions of this passage does the library hold, and under which license?", "Where does this phrase first appear, and where is it cited later?"],
+        card="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions of the Sefaria library (public domain and CC BY texts and translations of Tanakh, Mishnah, Talmud and commentary). Versions under other licenses are not in this collection; it gives no halachic ruling; cite the passage and version it returns.",
+        reads=[("Scripture.", "", "The Westminster Leningrad Codex (public domain) with Open Scriptures morphology (CC BY): every word tagged."),
+               ("The Sefaria library.", "", "Every version whose license is public domain or CC BY: Tanakh, Mishnah, Talmud, Midrash and commentary, in Hebrew, Aramaic and English, each cited with its version."),
+               ("What stays out.", "", "Versions under other licenses, and anything the registry files as research-only. The card names the cut; the door serves nothing else.")],
+        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
+        note="The sources are collected. The version whitelist that keeps only the openly licensed texts is the step in progress; the collection is sealed and the door opens after it.",
+    ),
+    "christianity": dict(
+        title="docenta for Christianity - scripture and classical commentary",
+        desc="A sealed collection of Christian scripture and classical commentary in the public domain or under open licenses, answering with the passage, the translation and the volume. In preparation; the door opens when the collection is sealed.",
+        placard="Exhibit · docenta for Christianity · Scripture and classical commentary",
+        h1="Ask the shelf. <em>Get the verse, the translation and the volume.</em>",
+        sub="The Berean Standard Bible and the Majority Standard Bible, the World English Bible, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament with its apparatus, STEPBible's tagged Hebrew and Greek texts and lexicons, the Patristic Text Archive and the First Thousand Years of Greek. <strong>English first, Greek and Hebrew where the source is tagged.</strong>",
+        chip_qs=["Which translations render this verse differently, and how?", "What does Matthew Henry say on this chapter, and what does Spurgeon preach on it?", "Which patristic text first uses this term, and where?", "What does the Greek say here, and how does the apparatus read?"],
+        card="Christian scripture and classical commentary in the public domain or under open licenses: the Berean Standard Bible and the Majority Standard Bible, the World English Bible, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament with its apparatus, STEPBible's tagged Hebrew and Greek texts and lexicons, the Patristic Text Archive and the First Thousand Years of Greek. English first, Greek and Hebrew where the source is tagged. It holds no catechisms or denominational statements beyond the sources named, nothing from the Christian Classics Ethereal Library, and gives no pastoral advice; cite the passage or volume it returns.",
+        reads=[("Scripture, several ways.", "", "Berean and Majority Standard (CC0), World English (public domain), the SBL Greek New Testament with apparatus (CC BY), STEPBible's tagged texts and lexicons (CC BY)."),
+               ("Commentary and sermons.", "", "Matthew Henry complete and concise (CC0), Spurgeon's sermons in sixty-three volumes (CC0), the Patristic Text Archive (CC BY-SA, Zenodo release CC0), the First Thousand Years of Greek (CC BY-SA)."),
+               ("What stays out.", "", "The Christian Classics Ethereal Library (its terms), and every source filed as mixed by version until each file's license is read.")],
+        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
+        note="The sources are collected and their rights are filed; the collection is next in the sequence to be built and sealed, then the door opens.",
+    ),
+    "islam": dict(
+        title="docenta for Islam - the Koran in three English translations",
+        desc="A sealed collection of the Koran in three public-domain English translations, cited to the surah and verse. In preparation; the door opens when the collection is sealed.",
+        placard="Exhibit · docenta for Islam · The Koran in three English translations",
+        h1="Ask the text. <em>Get the surah, the verse and the translator.</em>",
+        sub="The Koran in three English translations, Pickthall, Yusuf Ali and Shakir, side by side and cited to the surah and verse. <strong>No Arabic text, no hadith and no tafsir are in this cut</strong>: the Arabic corpora and the hadith collections wait on their rights, and the card will say so until they do.",
+        chip_qs=["How do the three translations render this verse?", "Where does the Koran treat this theme, surah by surah?", "Which translator uses this word, and where?", "What does this cut not contain?"],
+        card="The Koran in three English translations (Pickthall, Yusuf Ali, Shakir; Project Gutenberg). No Arabic text, no hadith and no tafsir are in this collection; it gives no religious ruling; cite the surah and verse it returns.",
+        reads=[("Three translations.", "", "Pickthall, Yusuf Ali and Shakir, from Project Gutenberg, public domain in the United States, aligned verse by verse."),
+               ("Waiting on rights.", "", "The Arabic text and translations from Tanzil, the OpenITI corpus and the Quranic Arabic Corpus are filed research-only under their terms; the hadith mirrors are quarantined until their text rights are resolved."),
+               ("What the card promises.", "", "Exactly what is inside, with the translator named on every answer, and \"not in this corpus\" for everything else.")],
+        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
+        note="The public cut is small by design until the rights of the Arabic sources are settled; it is built after the Christianity collection.",
+    ),
+    "faith": dict(
+        title="docenta for faith - the three traditions together",
+        desc="The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture. In preparation; the door opens when the three are sealed.",
+        placard="Exhibit · docenta for faith · The three traditions together",
+        h1="One question, three scriptures, <em>each in its own words</em>.",
+        sub="The union of the Judaism, Christianity and Islam collections, each described on its own card: scripture, classical commentary and interpretive tradition in the public domain or under open licenses. An answer names the tradition and cites its own source; <strong>nothing is blended into a single voice</strong>.",
+        chip_qs=["Where do the three scriptures treat this theme, in their own words?", "How do the traditions' commentators read this shared figure?", "Which tradition's text is this phrase from, and where else does it appear?", "What does each collection not contain?"],
+        card="Scripture, classical commentary and interpretive tradition of Judaism, Christianity and Islam, in the public domain or under open licenses: the union of the judaism, christianity and islam collections, each described on its own card. It gives no religious ruling; cite the passage, version or volume it returns.",
+        reads=[("Three collections, one door.", "", "Everything the Judaism, Christianity and Islam doors hold, served together, with the tradition named on every answer."),
+               ("Kept apart inside.", "", "Each source stays cited to its own tradition and version; a question that spans them returns three answers, not one blend."),
+               ("The same limits.", "", "No religious ruling, nothing under a restrictive license, and \"not in this corpus\" when a tradition's cut lacks the text.")],
+        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
+        note="Built last, from the three sealed collections.",
+    ),
+    "sleep": dict(
+        title="docenta for sleep research - the open corpus",
+        desc="A sealed collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines. In preparation; the door opens when the collection is sealed.",
+        placard="Exhibit · docenta for sleep research · The open corpus",
+        h1="Ask the literature. <em>Get the paper, the page and the trial.</em>",
+        sub="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. <strong>Abstract-only records and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice.</strong>",
+        chip_qs=["Which studies report this effect at this dose, and where do they disagree?", "Which trials registered this intervention, and what did they measure?", "Which guideline says this, and which paper does it cite?", "What is the earliest paper here making this claim, and did a replication fail?"],
+        card="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. Abstract-only records, author manuscripts and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice; cite the article or trial it returns and read it at its DOI or registry entry.",
+        reads=[("Full texts, openly licensed.", "", "PubMed Central articles under CC0, CC BY and CC BY-SA, normalized with their license flags, cited to the page."),
+               ("Trials, books, guidelines.", "", "ClinicalTrials.gov registrations tied to the papers that report them; the Bookshelf titles and clinical guidelines that carry an open license."),
+               ("What stays out.", "", "Abstract-only records, author manuscripts and publisher open access under other licenses, and the literature indexes that need the reader's own subscription.")],
+        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
+        note="Collected and normalized with license flags; the collection is first in the sequence to be built and sealed, then the door opens.",
+    ),
+    "diabetes": dict(
+        title="docenta for diabetes research - the open corpus",
+        desc="A sealed collection of open-access human diabetes research in the same shape as the sleep collection. In preparation; the collection is being gathered.",
+        placard="Exhibit · docenta for diabetes research · The open corpus",
+        h1="Ask the literature. <em>Get the paper, the page and the trial.</em>",
+        sub="Human diabetes research from the public biomedical infrastructure, in the same shape as the sleep collection: open-access full texts, trial registrations, open Bookshelf titles and guidelines, across biology, types, the life course, therapy, technology, complications and the study families. <strong>Under collection; the card is written when the cut is known.</strong>",
+        chip_qs=["Which trials tested this intervention, and what did they measure?", "Which papers report this outcome in this population, and where do they disagree?", "Which guideline recommends this, and on which studies?", "What does the collection not contain?"],
+        card="The card is written when the collection is sealed: it will name the licenses inside, the registries tied to the papers, and everything left out, in the sleep collection's shape.",
+        reads=[("The same infrastructure.", "", "PubMed, Europe PMC, PMC open access, OpenAlex, ClinicalTrials.gov, NCBI Bookshelf and curated guidelines, with the diabetes query library."),
+               ("The same rights discipline.", "", "Every record carries its license; only the openly licensed full texts, trials and guidelines reach the public door."),
+               ("Not yet.", "", "Collection started on 2026-09-17; normalization and the seal follow.")],
+        status=[("collected", False), ("rights sorted", False), ("sealed", False), ("door", False)],
+        note="Being gathered now; the door opens after the sleep collection and the three traditions.",
+    ),
+}
+
+def placeholder(slug, title, desc, placard, h1, sub, chip_qs, card, reads, status, note):
+    out = [head(title, desc, f"https://docenta.ai/for/{slug}/")]
+    out.append(f"""
+  <header>
+    <div class="placard">{placard} <span class="soon">door in preparation</span></div>
+    <h1>{h1}</h1>
+    <p class="sub">{sub}</p>
+""")
+    out.append(chips(chip_qs))
+    st = "".join(f'<div class="{"done" if done else ""}"><b>{e(name)}</b>{"done" if done else "next"}</div>' for name, done in status)
+    out.append(f"""
+    <div class="status">{st}</div>
+    <p class="term-note">{e(note)}</p>
+  </header>
+
+  <section>
+    <div class="placard">The card, as the door will say it</div>
+    <h2>What is in the collection, and what is not.</h2>
+    <p class="lead">Every door carries a card, sealed with the collection and shown to your assistant on every connection. This one will read:</p>
+    <div class="terminal" style="margin-top:26px"><div class="term-body"><p class="ans" style="margin:0">{e(card)}</p></div></div>
+""")
+    out.append(cards(reads))
+    out.append(ALSO)
+    out.append("""
+  </section>
+""")
+    out.append(cta(slug, slug))
+    out.append(FOOT)
+    return "".join(out)
+
 def main():
     written = []
     path = os.path.join(ROOT, "index.html")
     with open(path, "w", encoding="utf-8") as f:
         f.write(index_page())
     written.append(path)
+    for slug, spec in PLACEHOLDERS.items():
+        d = os.path.join(ROOT, "for", slug)
+        os.makedirs(d, exist_ok=True)
+        path = os.path.join(d, "index.html")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(placeholder(slug, **spec))
+        written.append(path)
     for slug, spec in PAGES.items():
         d = os.path.join(ROOT, "for", slug)
         os.makedirs(d, exist_ok=True)

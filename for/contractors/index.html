@@ -129,6 +129,12 @@
   .step p strong{color:var(--cream);font-weight:600}
   pre.cmd{margin-top:12px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:var(--cream);overflow-x:auto;white-space:pre;line-height:1.6}
   pre.cmd .a{color:var(--ember)}
+  .soon{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);border:1px solid var(--tan);padding:2px 8px;border-radius:6px;vertical-align:middle;white-space:nowrap}
+  .status{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px}
+  .status div{border:1px solid #2c2620;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--sand)}
+  .status div b{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);margin-bottom:6px}
+  .status div.done{border-color:var(--tan);color:var(--cream)}
+  @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
@@ -256,7 +262,7 @@
           <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
           <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
         </div>
-        <label>Which collection, or which desk<select name="audience"><option value="contractors" selected>Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="other">Something else (say what below)</option></select></label>
+        <label>Which collection, or which desk<select name="audience"><option value="contractors" selected>Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="judaism">Judaism: Tanakh, Mishnah, Talmud and commentary (door in preparation)</option><option value="christianity">Christianity: scripture and classical commentary (door in preparation)</option><option value="islam">Islam: the Koran in three translations (door in preparation)</option><option value="faith">Faith: the three traditions together (door in preparation)</option><option value="sleep">Sleep research: the open corpus (door in preparation)</option><option value="diabetes">Diabetes research: the open corpus (in collection)</option><option value="other">Something else (say what below)</option></select></label>
         <label>The question your files should be able to answer (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
         <div class="ea-turnstile"></div>
         <button class="btn" type="submit">request early access</button>

@@ -129,6 +129,12 @@
   .step p strong{color:var(--cream);font-weight:600}
   pre.cmd{margin-top:12px;background:var(--charcoal-mid);border:1px solid #2c2620;border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:var(--cream);overflow-x:auto;white-space:pre;line-height:1.6}
   pre.cmd .a{color:var(--ember)}
+  .soon{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);border:1px solid var(--tan);padding:2px 8px;border-radius:6px;vertical-align:middle;white-space:nowrap}
+  .status{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px}
+  .status div{border:1px solid #2c2620;border-radius:10px;padding:12px 14px;font-size:14px;color:var(--sand)}
+  .status div b{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);margin-bottom:6px}
+  .status div.done{border-color:var(--tan);color:var(--cream)}
+  @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
   .cta h2{max-width:none}
@@ -249,8 +255,22 @@
     </div>
   </section>
 
+  <section id="coming">
+    <div class="placard">Exhibit 006 · Collections in preparation</div>
+    <h2>The next doors. Each a sealed collection with its own card.</h2>
+    <p class="lead">Public material only, one collection per subject, never mixed: a card says exactly what is inside and what is not, and the door opens when the collection is sealed. Ask for a key now and you are told the day it opens.</p>
+    <div class="cols">
+      <a class="card" href="/for/judaism/"><h3><span class="k">Judaism.</span> Tanakh, Mishnah, Talmud and commentary</h3><p>The Hebrew Bible with morphology, and the openly licensed versions and translations of the Sefaria library, cited to the passage and version.</p><p class="qs">"Where does Rashi comment on this verse, and which other commentary disagrees?"</p></a>
+      <a class="card" href="/for/christianity/"><h3><span class="k">Christianity.</span> Scripture and classical commentary</h3><p>The Berean and World English Bibles, Matthew Henry, sixty-three volumes of Spurgeon, the SBL Greek New Testament, STEPBible, the Patristic Text Archive.</p><p class="qs">"Which translations render this verse differently, and what does Henry say on it?"</p></a>
+      <a class="card" href="/for/islam/"><h3><span class="k">Islam.</span> The Koran in three English translations</h3><p>Pickthall, Yusuf Ali and Shakir side by side, cited to the surah and verse; the Arabic text, tafsir and hadith wait on their rights.</p><p class="qs">"How do the three translations render this verse?"</p></a>
+      <a class="card" href="/for/faith/"><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture.</p><p class="qs">"Where do the three scriptures treat this theme, in their own words?"</p></a>
+      <a class="card" href="/for/sleep/"><h3><span class="k">Sleep.</span> The open research corpus</h3><p>Open-access full texts from PubMed Central, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines: sleep biology, disorders, treatment, the lifespan.</p><p class="qs">"Which studies report this effect at this dose, and where do they disagree?"</p></a>
+      <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research: biology, types, therapy, technology, complications and the study families, with the trials that tested them.</p><p class="qs">"Which trials tested this intervention, and what did they measure?"</p></a>
+    </div>
+  </section>
+
   <section>
-    <div class="placard">Exhibit 006 · How the docent works</div>
+    <div class="placard">Exhibit 007 · How the docent works</div>
     <h2>A spine that ingests, three channels that answer, one artifact that proves it.</h2>
     <div class="spine">
 <b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
@@ -271,7 +291,7 @@
           <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
           <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
         </div>
-        <label>Which collection, or which desk<select name="audience"><option value="contractors">Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="other">Something else (say what below)</option></select></label>
+        <label>Which collection, or which desk<select name="audience"><option value="contractors">Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="judaism">Judaism: Tanakh, Mishnah, Talmud and commentary (door in preparation)</option><option value="christianity">Christianity: scripture and classical commentary (door in preparation)</option><option value="islam">Islam: the Koran in three translations (door in preparation)</option><option value="faith">Faith: the three traditions together (door in preparation)</option><option value="sleep">Sleep research: the open corpus (door in preparation)</option><option value="diabetes">Diabetes research: the open corpus (in collection)</option><option value="other">Something else (say what below)</option></select></label>
         <label>The question your files should be able to answer (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
         <div class="ea-turnstile"></div>
         <button class="btn" type="submit">request early access</button>

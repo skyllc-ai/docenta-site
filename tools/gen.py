@@ -347,7 +347,10 @@ def cta(audience, subject_word):
 
 ALSO = ('<p class="lead" style="margin-top:14px"><a href="/#for">Back to the collections</a> · also for '
         '<a href="/for/contractors/">contractors</a>, <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, '
-        '<a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a></p>')
+        '<a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a> '
+        '· <a href="/#coming">in preparation</a>: <a href="/for/judaism/">Judaism</a>, <a href="/for/christianity/">Christianity</a>, '
+        '<a href="/for/islam/">Islam</a>, <a href="/for/faith/">faith</a>, <a href="/for/sleep/">sleep</a>, <a href="/for/diabetes/">diabetes</a>, '
+        '<a href="/for/git/">the Git project</a></p>')
 
 # ---------------------------------------------------------------- the landing page
 def index_page():

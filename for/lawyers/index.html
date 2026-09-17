@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>docenta for lawyers</title>
-<meta name="description" content="Pleadings, contracts, scanned exhibits, the mail thread with opposing counsel and the attachment they sent on a Friday night: one collection, on your own machine, answering with the exact page and line. Nothing leaves the office.">
+<meta name="description" content="The United States Code, all 54 titles, the public laws of recent Congresses and two open contract collections, sealed and served as an MCP connector your assistant can ask today. Every answer cites the section. No case law, no regulations, no state law, no legal advice.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
 <meta property="og:title" content="docenta for lawyers">
-<meta property="og:description" content="Pleadings, contracts, scanned exhibits, the mail thread with opposing counsel and the attachment they sent on a Friday night: one collection, on your own machine, answering with the exact page and line. Nothing leaves the office.">
+<meta property="og:description" content="The United States Code, all 54 titles, the public laws of recent Congresses and two open contract collections, sealed and served as an MCP connector your assistant can ask today. Every answer cites the section. No case law, no regulations, no state law, no legal advice.">
 <meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://docenta.ai/for/lawyers/">
@@ -193,26 +193,72 @@
   </nav>
 
   <header>
-    <div class="placard">Exhibit · docenta for lawyers · The matter file</div>
-    <h1>Every matter you ever touched, answering with <em>exhibits</em>.</h1>
-    <p class="sub">Pleadings, contracts, scanned exhibits, the mail thread with opposing counsel and the attachment they sent on a Friday night: one collection, on your own machine, answering with the exact page and line. <strong>Nothing leaves the office.</strong></p>
+    <div class="placard">Exhibit · docenta for lawyers · United States Code and public contracts <span class="live">live door</span></div>
+    <h1>The federal statutes and public contracts, answering with the <em>exact section</em>.</h1>
+    <p class="sub">The United States Code, all 54 titles in the House Office of the Law Revision Counsel's current text, the public laws of recent Congresses, and two open contract collections, CUAD and ContractNLI: one sealed collection your assistant can ask. <strong>No case law, no regulations, no state law, no legal advice.</strong></p>
 
     <div class="terminal" aria-label="The shape of an answer for lawyers">
       <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">agent session · docenta over MCP</span></div>
       <div class="term-body">
-        <div class="term-line q show">what did we tell the client about the indemnity cap, and when did opposing counsel first push back?</div>
-        <div class="term-line tool show">docenta · evidence_pack → cited spans · token budget enforced</div>
-        <div class="term-line hit show">1. <span class="path">Mail · &quot;Re: Draft SPA v7 - indemnity&quot;</span> <span class="span">· 2025-11-03 · your advice: cap at 15% of purchase price</span></div>
-        <div class="term-line hit show">2. <span class="path">matters/acme/SPA_v7_redline.pdf</span> <span class="span">· p. 41, cl. 9.3 · the 15% cap, tracked change</span></div>
-        <div class="term-line hit show">3. <span class="path">Mail · &quot;SPA - our comments&quot; from opposing counsel</span> <span class="span">· 2025-11-12 · first push-back, asks for 10%</span></div>
-        <div class="term-line receipt show">every claim cited · gaps disclosed, never papered over · nothing left the machine</div>
+        <div class="term-line q show">what does a non-disclosure agreement carve out from the definition of confidential information?</div>
+        <div class="term-line tool show">docenta · semantic_search → three sources, reranked · answered in 2.2 s</div>
+        <div class="term-line hit show">1. <span class="path">contractnli/290-non-disclosure-agreement.md</span> <span class="span">· the definition clause: what the agreement counts as confidential</span></div>
+        <div class="term-line hit show">2. <span class="path">contractnli/292-nda-uw-oshkosh.md</span> <span class="span">· the third-party carve-out, as the annotated agreement states it</span></div>
+        <div class="term-line hit show">3. <span class="path">contractnli/48-basic-non-disclosure-agreement.md</span> <span class="span">· a basic NDA and its exclusions</span></div>
+        <div class="term-line receipt show">every claim cited to the section · sealed collection, frozen 2026-09-13 · a question it cannot answer is answered "not in this corpus"</div>
       </div>
     </div>
-    <p class="term-note">An illustration of the shape of an answer. The files are made up; the behavior is docenta's.</p>
+    <p class="term-note">A real answer from the live door, paths shortened. The collection was sealed on 2026-09-13: nothing is added or changed, so what it says today it says tomorrow.</p>
   </header>
 
   <section>
-    <div class="placard">What docenta does for lawyers</div>
+    <div class="placard">What is in the collection</div>
+    <div class="cols">
+      <div class="card">
+        <h3><span class="k">The United States Code.</span></h3>
+        <p>All 54 titles, section by section, in the current text published by the House Office of the Law Revision Counsel, with the public laws of recent Congresses from GovInfo beside them.</p>
+      </div>
+      <div class="card">
+        <h3><span class="k">Two open contract collections.</span></h3>
+        <p>CUAD, 510 commercial contracts with expert clause annotations from The Atticus Project, and ContractNLI, non-disclosure agreements with their annotated hypotheses. Both CC BY 4.0, both cited by name.</p>
+      </div>
+      <div class="card">
+        <h3><span class="k">What it is not.</span></h3>
+        <p>Federal statutes and contracts only. It holds no case law, no regulations (CFR, Federal Register), no state law and no legal advice. Read the official text at uscode.house.gov or govinfo.gov before you rely on a section.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:26px">docenta finds and cites; your assistant reads and you decide. When a question falls outside the collection, the answer says so instead of guessing.</p>
+  </section>
+
+  <section id="plug">
+    <div class="placard">Plug it into your assistant</div>
+    <h2>One address, one key, every question cited.</h2>
+    <p class="lead">The collection is served as an MCP server, the connector standard Claude, ChatGPT and most coding assistants speak. You add the address once; from then on your assistant asks it the way it asks any other tool.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Ask for a key</h3>
+        <p>Use the form at the bottom of this page and say "lawyers". You get back a key, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in.</p>
+      </div>
+      <div class="step">
+        <h3>Claude Code: one command</h3>
+        <p>Open a terminal and paste this line, with your key in place of the words in angle brackets. Then start a new session; the collection shows up as <strong>docenta-legal</strong>.</p>
+        <pre class="cmd">claude mcp add --transport http docenta-legal <span class="a">https://lawyers.docenta.ai/mcp</span> \
+  --header "Authorization: Bearer &lt;your key&gt;"</pre>
+      </div>
+      <div class="step">
+        <h3>Claude.ai or ChatGPT: a custom connector</h3>
+        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://lawyers.docenta.ai/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer &lt;your key&gt;</strong>. Save, then ask your question in a new chat.</p>
+      </div>
+      <div class="step">
+        <h3>Ask, and read the citation</h3>
+        <p>Every answer names the section or the contract it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:26px">What the door does not do: it never sees your files, it holds nothing you send beyond the question you ask, and it cannot be changed by anyone, us included, without a new seal and a new date on this page.</p>
+  </section>
+
+  <section>
+    <div class="placard">And on your own machine: the matter file</div>
     <div class="cols">
       <div class="card">
         <h3><span class="k">Exhibits, not summaries.</span></h3>

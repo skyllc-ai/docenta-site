@@ -365,16 +365,15 @@ def index_page():
         "What proof am I missing?",
     ]))
     out.append(answer(
-        "which version of the proposal did we actually agree to, and where is the confirmation?",
-        "The version that stands is <strong>v3</strong>, sent on <strong>March 14</strong>: it lowered the price by 8 percent and moved delivery to the end of April. Their reply on March 15 confirms it, and nothing later in the collection changes it. Your own calendar note from the call still says \"v2 agreed\", which the record does not support.",
-        [("Mail · \"Proposal for the spring rollout\" · March 3", "v1 attached: the original price and a March delivery"),
-         ("Mail · \"Re: Proposal for the spring rollout\" · March 14", "v3 attached: \"8 percent lower, delivery end of April\""),
-         ("Mail · \"Re: Proposal for the spring rollout\" · March 15", "their confirmation: \"v3 works for us, let\'s proceed\""),
-         ("notes/call-2026-03-12.md · line 4", "\"v2 agreed on the call\"")],
-        "Your call note says v2; the thread shows v3 sent two days later and confirmed the day after. Both are shown with their dates.",
-        "No countersigned copy of v3 is in the collection. If a signature matters, that is the document to find.",
-        "mail, attachments and notes on one timeline · versions ordered by date · 4 sources kept, 19 dropped · 14 KB handed to the agent",
-        "An illustration of the shape of every docenta answer: the proposal is made up, the behavior is real. The real ones are on the desk pages below and behind the two live doors, where any visitor can ask.",
+        "which price did we actually approve for the roof, and how long was it valid?",
+        "The revised quote of <strong>July 29</strong> is the one that stands: <strong>$2,400 below</strong> the original and the latest price in the collection. An August 1 email from the contractor says the revised number \"stands through September\". No later quote or retraction appears in the indexed material.",
+        [("Mail · \"Roof - estimate\" · July 27", "the original quote, PDF attached"),
+         ("roof_estimate_v2.pdf · July 29", "the revised amount, $2,400 lower"),
+         ("Mail · \"Re: Roof - estimate\" · August 1", "\"the revised number stands through September\"")],
+        None,
+        "No signed work order is in the collection. If you need one, that is the document to find.",
+        "the contractor as an entity, plus roof, estimate and quote as concepts · thread and attachments grouped · ordered by date · the later formal artifact preferred · checked for a later contradicting amount · 3 sources kept, 11 dropped · 12 KB handed to the agent",
+        "An illustration of the shape of every docenta answer: the files are made up, the behavior is real. The real ones are on the desk pages below and behind the two live doors, where any visitor can ask.",
     ))
     out.append("""
   </header>

@@ -135,6 +135,7 @@
   .status div b{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);margin-bottom:6px}
   .status div.done{border-color:var(--tan);color:var(--cream)}
   @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
+  .key{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--charcoal);background:var(--ember);padding:1px 7px;border-radius:5px;white-space:nowrap}
   .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal);background:var(--ember);padding:3px 8px;border-radius:6px;vertical-align:middle}
   a.live:hover,a.live:focus-visible{background:var(--cream);text-decoration:none}
   .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--charcoal-mid),#171310);border:1px solid #2c2620;border-radius:16px}
@@ -233,17 +234,17 @@
     <div class="steps">
       <div class="step"><div>
         <h3>Ask for a key</h3>
-        <p>Use the form at the bottom of this page and say "contractors". You get back a key, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in.</p>
+        <p>Use the form at the bottom of this page and say "contractors". You get back <span class="key">your key</span>, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in, and it goes exactly where the same color appears below.</p>
       </div></div>
       <div class="step"><div>
         <h3>Claude Code: one command</h3>
-        <p>Paste this line with your key in place of the words in angle brackets, then start a new session; the collection shows up as <strong>docenta-palo-alto</strong>.</p>
+        <p>Paste this line with <span class="key">your key</span> in place of the colored words, then start a new session; the collection shows up as <strong>docenta-palo-alto</strong>.</p>
         <pre class="cmd">claude mcp add --transport http docenta-palo-alto <span class="a">https://door.docenta.ai/mcp</span> \
-  --header "Authorization: Bearer &lt;your key&gt;"</pre>
+  --header "Authorization: Bearer <span class="key">&lt;your key&gt;</span>"</pre>
       </div></div>
       <div class="step"><div>
         <h3>Claude.ai or ChatGPT: a custom connector</h3>
-        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://door.docenta.ai/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer &lt;your key&gt;</strong>. Save, then ask in a new chat.</p>
+        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://door.docenta.ai/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer <span class="key">&lt;your key&gt;</span></strong>. Save, then ask in a new chat.</p>
       </div></div>
       <div class="step"><div>
         <h3>Ask, and read the citation</h3>

@@ -457,7 +457,7 @@ def index_page():
       <a class="card" href="/for/faith/"><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture.</p><p class="qs">"Where do the three scriptures treat this theme, in their own words?"</p></a>
       <a class="card" href="/for/sleep/"><h3><span class="k">Sleep.</span> The open research corpus</h3><p>Open-access full texts from PubMed Central, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines: sleep biology, disorders, treatment, the lifespan.</p><p class="qs">"Which studies report this effect at this dose, and where do they disagree?"</p></a>
       <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research: biology, types, therapy, technology, complications and the study families, with the trials that tested them.</p><p class="qs">"Which trials tested this intervention, and what did they measure?"</p></a>
-      <a class="card" href="/for/git/"><h3><span class="k">The Git project.</span> The code, every commit, the whole mailing list</h3><p>git/git with its complete history rendered as correspondence, and the git mailing list from lore.kernel.org from 2005 on: the line, the commit that changed it, the thread where it was argued.</p><p class="qs">"Why does this option exist, who asked for it, and what was the objection?"</p></a>
+      <a class="card" href="/for/git/"><h3><span class="k">The Git project.</span> Sealed: the code, every commit, the whole mailing list</h3><p>git/git with its complete history rendered as correspondence, and the git mailing list from lore.kernel.org from 2005 on: the line, the commit that changed it, the thread where it was argued.</p><p class="qs">"Why does this option exist, who asked for it, and what was the objection?"</p></a>
     </div>
   </section>
 
@@ -797,6 +797,7 @@ PAGES["developers"] = dict(
         ("When", ["When did we decide to switch the importer to streaming, and why?", "Which commit changed this schema or API, and what discussion explains it?", "What is the last known-good commit before this regression, and what changed right after?"]),
         ("Contradiction", ["Where do the docs, the code, git history and agent sessions disagree about intended behavior?", "Which TODO or comment is stale against later code and decisions?"]),
         ("Evidence and gaps", ["What context should a fresh coding agent read before modifying this subsystem?", "Which design note states the invariant this function is supposed to preserve?", "What can the current corpus not explain about this code path?"]),
+        ("On the Git project, public", ["Why is it called --force-with-lease, and what was wrong with the other names?", "Why does git rerere exist, and who asked for it?", "Which thread settled the SHA-256 transition plan?", "When did git switch and git restore appear, and what did they refuse that checkout allowed?"]),
     ],
     reads=[
         ("Code and git.", "", "Every repository with its history: the commit that introduced the line, the files that change together, the message that explained it. Code-aware lanes, identifiers as terms."),
@@ -809,6 +810,32 @@ PAGES["developers"] = dict(
         ("Absent rationale is reported absent.", "\"No design record in the corpus explains this\" is an answer, and a useful one before the next rewrite."),
         ("The budget is on every answer.", "How many tokens the agent was handed, and what was dropped to stay inside them."),
     ],
+    extra_after_demo="""
+  <section id="git">
+    <div class="placard">Exhibit · the same docent on a project you know · The Git project</div>
+    <h2>Try the questions on git itself.</h2>
+    <p class="lead">Your repositories are private, so the exhibit above is the maker's own. To let you test the claim on code you know, we sealed a public collection of the Git project: git/git at the sealed commit, all 82,305 commits since 2005 rendered as correspondence, and the git mailing list from lore.kernel.org, 552,249 messages. Below, four questions asked of it on 18 September 2026, answered the way the door answers over MCP. <a href="/for/git/">The collection's card</a>; the door opens shortly.</p>
+""" + answer(
+        "Why is it called --force-with-lease, and what was wrong with the other names?",
+        "Because nobody liked the first two. On <strong>22 July 2013</strong> Junio C Hamano sent the third round of the series that had introduced the option as <strong>--cas</strong> and then <strong>--lockref</strong>, renamed: \"Nobody liked 'cas' as it was too technical, many disliked 'lockref' because 'lock' sounded as if push by others were excluded by it while in fact this is to fail us.\" The name chosen says it is a kind of --force, and \"with-lease\" says the forcing holds only while the lease you took on the ref, the state you observed before you rebased, is unbroken. The same letter warns that the default lease, the remote-tracking branch, had been shown fragile in the discussion and is documented as experimental.",
+        [("git list · Junio C Hamano · 2013-07-22", "[PATCH v3 0/6] \"git push --cas/--lockref\" renamed to \"--force-with-lease\": the paragraph quoted above"),
+         ("git list · 2013-07-08", "remote.c: add command line option parser for \"--force-with-lease\", the patch the letter carries"),
+         ("git list · 2017-07-05", "[PATCH] push: add config option to --force-with-lease by default, and the replies"),
+         ("git list · 2018-08-27", "Would a config var for --force-with-lease be useful?")],
+        "",
+        "The pack ranks twenty messages and dates them; it does not say who first proposed the winning name. The thread holds that one hop away.",
+        "lexical and semantic lanes over 552,249 list messages and 82,305 commits · 20 messages cited, 19 shown · 1,324 of 1,400 tokens",
+        "Real, from the sealed git collection, asked through the same engine the door serves. Three more, asked the same day:",
+        title="docenta over MCP · the Git project",
+    ) + """
+    <div class="limits">
+      <p><b>Why does git rerere exist?</b> Since 29 January 2006: Junio C Hamano's commit 8389b52b, "reuse recorded resolve", for a workflow of long-lived topic branches where the same conflict is resolved over and over; the list saw it the same day as [PATCH/RFC]. In July 2006 Shawn Pearce proposed a second tool so that git merge could reuse resolutions on its own, and in July 2007 a patch to enable rerere by default drew a thread of nine replies.</p>
+      <p><b>Which thread settled the SHA-256 transition?</b> The plan was argued as "RFC: Another proposed hash function transition plan" through 2017, v3 in September; the function was settled in July 2018, when the cover letter "document that NewHash is now SHA-256" quoted Linus Torvalds on the libgit2 argument that the system's crypto libraries already carry it: "I think this is probably the single strongest argument for sha256. It's just there." The base SHA-256 implementation landed in November 2018.</p>
+      <p><b>When did git switch and git restore appear, and what did they refuse?</b> Duy Nguyen's RFC v3 of 29 November 2018 introduced switch-branch and restore-files after two rounds of renames, listing what they refuse that checkout allowed: no invocation that does nothing, no implicit detach, no pathspec on switch. The branch nd/switch-and-restore cooked from April 2019 and merged on 9 July 2019; in May 2021 the list was still asking whether the two are experimental.</p>
+    </div>
+    <p class="term-note">Each answer names the message or the commit it came from; the door returns the same citations to your assistant, and a question the collection cannot answer is answered "not in this corpus".</p>
+  </section>
+""",
     rolewords="Private source trees, incident notes and agent transcripts",
     plug_html="",
     subject_word="developers",
@@ -949,14 +976,14 @@ PLACEHOLDERS = {
         placard="Exhibit · docenta for developers · The Git project",
         h1="Ask why the line is this way. <em>Get the commit and the thread.</em>",
         sub="The git/git source tree and its Documentation at the sealed commit, all 82,305 commits of its history rendered as correspondence (author, date, subject, message, the files it changed), and the git mailing list from the lore.kernel.org archive, 552,249 messages from the list's beginning to the seal. <strong>The line, the commit that changed it, the thread where it was argued, cited to the message.</strong>",
-        chip_qs=["Why does git rerere exist, and who asked for it?", "When did git switch and git restore appear, and what was the argument against splitting checkout?", "What was the objection to the name --force-with-lease?", "Which thread settled the SHA-256 transition plan?"],
+        chip_qs=["Why is it called --force-with-lease, and what was wrong with the other names?", "Why does git rerere exist, and who asked for it?", "Which thread settled the SHA-256 transition plan?", "When did git switch and git restore appear, and what did they refuse that checkout allowed?"],
         card="The Git project's own record: the git/git source tree and its Documentation at the sealed commit, every commit of its history since 2005 rendered as correspondence (author, date, subject, message, the files it changed), and the git mailing list (git@vger.kernel.org) from the lore.kernel.org archive, message by message, thread by thread, from the list's beginning to the seal. It answers why a line is this way with the commit that introduced it and the thread where it was argued, cited to the message. It holds no other project, no GitHub issues or pull requests, and nothing after the seal date; GPL-2.0 for the code, the authors' words for the list, quoted with attribution.",
         reads=[("The code.", "", "The working tree at the sealed commit, Documentation included, under GPL-2.0: the door serves excerpts with the path and the line."),
                ("The history.", "", "Every commit as a message from its author: subject, body, date and the files it touched, so a question about a line finds the change that made it."),
                ("The list.", "", "The git mailing list as the public archive holds it, one message at a time, threads intact: the review, the objection, the version that was merged."),
                ("What stays out.", "", "Other projects, GitHub issues and pull requests, and anything after the seal. A question outside the collection is answered not in this corpus.")],
-        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
-        note="Collected on 2026-09-17: the repository, both archive epochs of the list, the yearly mailboxes. The store is built next, then the seal, then the door at git.docenta.ai. The developers page will show this collection's real answers.",
+        status=[("collected", True), ("rights sorted", True), ("sealed", True), ("door", False)],
+        note="Sealed on 2026-09-18 with 654,047 objects: the tree, all 82,305 commits, 552,249 list messages. The door at git.docenta.ai opens when its image is deployed; the developers page already shows four of this collection's answers.",
     ),
 }
 

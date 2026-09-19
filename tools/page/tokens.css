@@ -12,6 +12,8 @@
   --note:#8A5A3A;--note-bg:#F5EADB;--shadow:0 10px 30px rgba(70,45,20,.10);--focus:#CE422B;
   --sans:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* How long a landing glows. The one place to change it. */
+  --glow-time:2s;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){

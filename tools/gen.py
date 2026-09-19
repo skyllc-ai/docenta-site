@@ -148,6 +148,9 @@ CSS = r"""
   .ea .btn[disabled]{opacity:.6;cursor:wait}
   .ea-status{margin-top:14px;font-size:14.5px;color:var(--cream);min-height:1.4em}
   .ea-status a{color:var(--ember)}
+  .ea-done{margin:18px auto 0;max-width:560px;padding:22px 26px;border:1px solid var(--ember);border-radius:10px;text-align:left}
+  .ea-done h3{margin:0 0 8px;font-size:20px}
+  .ea-done p{margin:0;font-size:15px;line-height:1.55;color:var(--cream)}
   @media (max-width:640px){.ea-grid{grid-template-columns:1fr}}
   footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid #2c2620;color:var(--sand);font-size:13.5px}
   footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}

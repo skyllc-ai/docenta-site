@@ -119,9 +119,20 @@
       return response.json().then(function (data) { return { ok: response.ok, status: response.status, data: data }; });
     }).then(function (result) {
       if (result.ok) {
-        say("Thank you. We wrote it down and will write back to " + email + " when the door opens.");
-        form.reset();
-        if (widget !== null && window.turnstile) window.turnstile.reset(widget);
+        // The form gives way to a plain confirmation: the widget's own
+        // reset spinner and a small line under the button read as
+        // "nothing happened" (2026-09-19).
+        var done = document.createElement("div");
+        done.className = "ea-done";
+        done.setAttribute("role", "status");
+        var h = document.createElement("h3");
+        h.textContent = "Request sent. Thank you.";
+        var p1 = document.createElement("p");
+        p1.textContent = "We wrote it down and mailed it to the " + (form.elements.audience.value || "docenta") + " desk. We write back to " + email + " when the door opens; nothing else is sent, and there is no newsletter.";
+        done.appendChild(h);
+        done.appendChild(p1);
+        form.parentNode.insertBefore(done, form);
+        form.hidden = true;
         token = "";
         return;
       }

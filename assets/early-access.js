@@ -128,7 +128,7 @@
         var h = document.createElement("h3");
         h.textContent = "Request sent. Thank you.";
         var p1 = document.createElement("p");
-        p1.textContent = "We wrote it down and mailed it to the " + (form.elements.audience.value || "docenta") + " desk. We write back to " + email + " when the door opens; nothing else is sent, and there is no newsletter.";
+        p1.textContent = "We wrote it down and mailed it to the " + (form.elements.audience.value || "docenta") + " desk; a copy with your question is on its way to " + email + ". We write back there when the door opens; nothing else is sent, and there is no newsletter.";
         done.appendChild(h);
         done.appendChild(p1);
         form.parentNode.insertBefore(done, form);

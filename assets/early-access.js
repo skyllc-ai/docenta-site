@@ -22,6 +22,36 @@
   var token = "";
   var widget = null;
   var widgetFailed = false;
+  // The page's own clock when the form was shown: the worker treats a
+  // submission younger than three seconds as not typed by a person.
+  var startedAt = Date.now();
+
+  // Back from the confirm link (?ea=confirmed|expired|invalid): the
+  // verdict replaces the form, the query is cleaned off the address.
+  var verdict = (window.location.search.match(/[?&]ea=([a-z]+)/) || [])[1];
+  if (verdict) {
+    var back = document.createElement("div");
+    back.className = "ea-done";
+    back.setAttribute("role", "status");
+    var bh = document.createElement("h3");
+    var bp = document.createElement("p");
+    if (verdict === "confirmed") {
+      bh.textContent = "Confirmed. Thank you.";
+      bp.textContent = "Your address is verified and the desk has your question now. We write back to it when the door opens; nothing else is sent, and there is no newsletter.";
+      form.hidden = true;
+    } else if (verdict === "expired") {
+      bh.textContent = "That link has expired.";
+      bp.textContent = "A confirm link lasts 48 hours. Send the form again and click the new one.";
+    } else {
+      bh.textContent = "That link is not valid.";
+      bp.textContent = "It was used already, or the request it belonged to is gone. Send the form again if you still want in.";
+    }
+    back.appendChild(bh);
+    back.appendChild(bp);
+    form.parentNode.insertBefore(back, form);
+    try { window.history.replaceState(null, "", window.location.pathname + window.location.hash); } catch (e) {}
+    try { back.scrollIntoView({ block: "center" }); } catch (e) {}
+  }
 
   function say(text, link) {
     status.textContent = text;
@@ -109,6 +139,8 @@
       email: email,
       audience: form.elements.audience.value,
       message: form.elements.message.value.trim(),
+      website: form.elements.website ? form.elements.website.value : "",
+      started_at: startedAt,
       turnstile_token: token
     };
     fetch(ENDPOINT, {
@@ -126,9 +158,9 @@
         done.className = "ea-done";
         done.setAttribute("role", "status");
         var h = document.createElement("h3");
-        h.textContent = "Request sent. Thank you.";
+        h.textContent = "One more step: check your mail.";
         var p1 = document.createElement("p");
-        p1.textContent = "We wrote it down and mailed it to the " + (form.elements.audience.value || "docenta") + " desk; a copy with your question is on its way to " + email + ". We write back there when the door opens; nothing else is sent, and there is no newsletter.";
+        p1.textContent = "We sent one message to " + email + " with a confirm link; it lasts 48 hours. The " + (form.elements.audience.value || "docenta") + " desk sees your question only after you click it, so nobody can sign you up but you. Nothing else is sent, and there is no newsletter.";
         done.appendChild(h);
         done.appendChild(p1);
         form.parentNode.insertBefore(done, form);

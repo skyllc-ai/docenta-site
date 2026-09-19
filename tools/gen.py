@@ -148,6 +148,7 @@ CSS = r"""
   .ea .btn[disabled]{opacity:.6;cursor:wait}
   .ea-status{margin-top:14px;font-size:14.5px;color:var(--cream);min-height:1.4em}
   .ea-status a{color:var(--ember)}
+  .ea-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
   .ea-done{margin:18px auto 0;max-width:560px;padding:22px 26px;border:1px solid var(--ember);border-radius:10px;text-align:left}
   .ea-done h3{margin:0 0 8px;font-size:20px}
   .ea-done p{margin:0;font-size:15px;line-height:1.55;color:var(--cream)}
@@ -339,12 +340,13 @@ def cta(audience, subject_word):
         </div>
         <label>Which collection, or which desk<select name="audience">{opts}</select></label>
         <label>The question your files should be able to answer (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
+        <label class="ea-hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
         <div class="ea-turnstile"></div>
         <button class="btn" type="submit">request early access</button>
         <p class="ea-status" role="status" aria-live="polite"></p>
       </form>
       <noscript><a class="btn" href="mailto:{mail}?subject={subj}">request early access by mail</a></noscript>
-      <span class="alt">No account and no newsletter: we write back when the door opens. Prefer mail? <a href="mailto:{mail}?subject={subj}">{mail}</a></span>
+      <span class="alt">No account and no newsletter: you confirm your address by mail, then we write back when the door opens. Prefer mail? <a href="mailto:{mail}?subject={subj}">{mail}</a></span>
       <script src="/assets/early-access.js" defer></script>
     </div>
   </section>

@@ -79,7 +79,7 @@
     // check in sight). Run it and wait up to twelve seconds; a token
     // sends the form, none offers the mail link.
     if (mount && !token) {
-      say("Checking that you are human ...");
+      say("Checking that you are human ... if a box asks you to verify, click it.");
       if (widget !== null && window.turnstile) {
         try { window.turnstile.reset(widget); } catch (e) {}
         try { if (window.turnstile.execute) window.turnstile.execute(widget); } catch (e) {}

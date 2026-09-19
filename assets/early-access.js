@@ -56,6 +56,7 @@
       script.onload = renderWidget;
       script.onerror = function () { widgetFailed = true; mount.hidden = true; };
       document.head.appendChild(script);
+      setTimeout(function () { if (!window.turnstile) { widgetFailed = true; mount.hidden = true; } }, 8000);
     }
   }
 
@@ -71,8 +72,34 @@
     // (2026-09-15, the site key was scoped to license.docenta.ai only).
     // The mail link is the stated fallback; offer it instead.
     if (widgetFailed) { say("The human check could not load in this browser. Please write to", true); return; }
-    if (mount && !token) { say("Please finish the human check above the button, then click again."); return; }
     button.disabled = true;
+    // No token yet: the widget may still be verifying, or its frame may
+    // be blocked by the browser with no error callback ever fired
+    // (2026-09-19: "finish the human check above the button" with no
+    // check in sight). Run it and wait up to twelve seconds; a token
+    // sends the form, none offers the mail link.
+    if (mount && !token) {
+      say("Checking that you are human ...");
+      if (widget !== null && window.turnstile) {
+        try { window.turnstile.reset(widget); } catch (e) {}
+        try { if (window.turnstile.execute) window.turnstile.execute(widget); } catch (e) {}
+      }
+      var waited = 0;
+      var poll = setInterval(function () {
+        waited += 250;
+        if (token) { clearInterval(poll); send(name, email); return; }
+        if (waited >= 12000) {
+          clearInterval(poll);
+          button.disabled = false;
+          say("The human check did not complete in this browser. Please write to", true);
+        }
+      }, 250);
+      return;
+    }
+    send(name, email);
+  });
+
+  function send(name, email) {
     say("Sending ...");
     var body = {
       name: name,
@@ -111,5 +138,5 @@
       button.disabled = false;
       say("The form is not open right now. Please write to", true);
     });
-  });
+  }
 })();

@@ -48,9 +48,22 @@
     }
     back.appendChild(bh);
     back.appendChild(bp);
-    form.parentNode.insertBefore(back, form);
+    if (verdict === "confirmed") settle(back); else form.parentNode.insertBefore(back, form);
     try { window.history.replaceState(null, "", window.location.pathname + window.location.hash); } catch (e) {}
     try { back.scrollIntoView({ block: "center" }); } catch (e) {}
+  }
+
+  // A panel that ends the conversation takes the whole rope: the
+  // heading, the invitation and the mail line go with the form, so
+  // the verdict is the only thing left to read (2026-09-19).
+  function settle(panel) {
+    var cta = form.parentNode;
+    Array.prototype.forEach.call(cta.children, function (node) {
+      if (node === panel) return;
+      if (node.classList && node.classList.contains("placard")) return;
+      node.hidden = true;
+    });
+    cta.insertBefore(panel, form);
   }
 
   function say(text, link) {
@@ -163,8 +176,7 @@
         p1.textContent = "We sent one message to " + email + " with a confirm link; it lasts 48 hours. The " + (form.elements.audience.value || "docenta") + " desk sees your question only after you click it, so nobody can sign you up but you. Nothing else is sent, and there is no newsletter.";
         done.appendChild(h);
         done.appendChild(p1);
-        form.parentNode.insertBefore(done, form);
-        form.hidden = true;
+        settle(done);
         token = "";
         return;
       }

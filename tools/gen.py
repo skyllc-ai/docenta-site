@@ -320,6 +320,9 @@ def cta(audience, subject_word):
         f'<option value="{v}"{" selected" if v == audience else ""}>{e(t)}</option>' for v, t in AUDIENCES
     ) + '<option value="other">Something else (say what below)</option>'
     subj = "docenta%20early%20access" + (f"%20({subject_word})" if subject_word else "")
+    # The mail fallback goes where the form would have gone: the topic's
+    # own address on docenta.ai (the domain's catch-all delivers every one).
+    mail = f"{audience if audience and audience != 'site' else 'docenta'}@docenta.ai"
     return f"""
   <section id="access">
     <div class="cta">
@@ -337,8 +340,8 @@ def cta(audience, subject_word):
         <button class="btn" type="submit">request early access</button>
         <p class="ea-status" role="status" aria-live="polite"></p>
       </form>
-      <noscript><a class="btn" href="mailto:docenta@nios.net?subject={subj}">request early access by mail</a></noscript>
-      <span class="alt">No account and no newsletter: we write back when the door opens. Prefer mail? <a href="mailto:docenta@nios.net?subject={subj}">docenta@nios.net</a></span>
+      <noscript><a class="btn" href="mailto:{mail}?subject={subj}">request early access by mail</a></noscript>
+      <span class="alt">No account and no newsletter: we write back when the door opens. Prefer mail? <a href="mailto:{mail}?subject={subj}">{mail}</a></span>
       <script src="/assets/early-access.js" defer></script>
     </div>
   </section>

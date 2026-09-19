@@ -9,10 +9,13 @@
 // a failed check.
 (function () {
   var ENDPOINT = "https://license.docenta.ai/v1/early-access";
-  var SITE_KEY = "0x4AAAAAAEuUdAlBD_uMZVV0";
-  var MAIL = "docenta@nios.net";
   var form = document.getElementById("early-access");
   if (!form) return;
+  var SITE_KEY = "0x4AAAAAAEuUdAlBD_uMZVV0";
+  // The mail fallback goes where the form would have gone: the topic's own
+  // address on docenta.ai (the domain's catch-all delivers every one).
+  var topic = (form && form.dataset.audience) || "";
+  var MAIL = (topic && topic !== "site" ? topic : "docenta") + "@docenta.ai";
   var status = form.querySelector(".ea-status");
   var button = form.querySelector("button[type=submit]");
   var mount = form.querySelector(".ea-turnstile");

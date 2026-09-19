@@ -306,29 +306,31 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 
   <section id="plug">
     <div class="placard">The Palo Alto collection, plugged into your assistant <span class="live">live door</span></div>
-    <h2>One address, one key, every question cited to the page.</h2>
+    <h2>One address, one sign-in, every question cited to the page.</h2>
     <p class="lead">The sealed collection above is served as an MCP server at <strong>https://door.docenta.ai/mcp</strong>: the one kind of remote address on this site, a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asks any other tool, and every answer names the document and the page.</p>
     <div class="steps">
       <div class="step"><div>
-        <h3>Ask for a key</h3>
-        <p>Use the form at the bottom of this page and say "contractors". You get back <span class="key">your key</span>, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in, and it goes exactly where the same color appears below.</p>
+        <h3>Register once</h3>
+        <p>Use the form at the bottom of this page and say "contractors". You confirm your address with one click, and that registration is what opens the collection for you. There is <strong>no key to copy</strong>, ever: the address below is not a secret, and signing in is what makes it yours.</p>
       </div></div>
       <div class="step"><div>
-        <h3>Claude Code: one command</h3>
-        <p>Paste this line with <span class="key">your key</span> in place of the colored words, then start a new session; the collection shows up as <strong>docenta-palo-alto</strong>.</p>
-        <pre class="cmd">claude mcp add --transport http docenta-palo-alto <span class="a">https://door.docenta.ai/mcp</span> \
-  --header "Authorization: Bearer <span class="key">&lt;your key&gt;</span>"</pre>
+        <h3>Add the address to your assistant</h3>
+        <pre class="cmd"><span class="a">https://door.docenta.ai/mcp</span></pre>
+        <p><strong>Claude Code</strong>: one line, then type <strong>/mcp</strong> and press Enter on <strong>docenta-palo-alto</strong>.</p>
+        <pre class="cmd">claude mcp add --transport http docenta-palo-alto <span class="a">https://door.docenta.ai/mcp</span></pre>
+        <p><strong>Claude</strong> (web and desktop): Settings, Connectors, Add custom connector, paste the address, Connect. <strong>ChatGPT</strong>: Settings, Connectors, Create, paste the address, choose OAuth.</p>
+        <p style="margin-top:14px"><a class="chip" href="cursor://anysphere.cursor-deeplink/mcp/install?name=docenta-palo-alto&amp;config=eyJ1cmwiOiJodHRwczovL2Rvb3IuZG9jZW50YS5haS9tY3AifQ==">Add to Cursor</a> <a class="chip" href="vscode:mcp/install?%7B%22name%22%3A%22docenta-palo-alto%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//door.docenta.ai/mcp%22%7D">Add to VS Code</a></p>
       </div></div>
       <div class="step"><div>
-        <h3>Claude.ai or ChatGPT: a custom connector</h3>
-        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://door.docenta.ai/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer <span class="key">&lt;your key&gt;</span></strong>. Save, then ask in a new chat.</p>
+        <h3>Allow it, once</h3>
+        <p>Your assistant opens a docenta page by itself. It asks who you are (your address and six digits from your mail; nothing at all if you come from your start page) and shows one sentence: which assistant, which collection. Press <strong>Allow</strong>. You can disconnect any assistant later on your start page.</p>
       </div></div>
       <div class="step"><div>
         <h3>Ask, and read the citation</h3>
         <p>Every answer names the document and the page it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
       </div></div>
     </div>
-    <p class="lead" style="margin-top:26px">The door never sees your files, holds nothing you send beyond the question, and cannot be changed by anyone, us included, without a new seal and a new date on this page.</p>
+    <p class="lead" style="margin-top:26px">The door never sees your files, and cannot be changed by anyone, us included, without a new seal and a new date on this page. It knows that a registered person asked, so each person gets a fair share of it; it does not keep what you asked, unless you tick "tell me when this can be answered" and the collection could not answer.</p>
   </section>
 
   <section id="access">

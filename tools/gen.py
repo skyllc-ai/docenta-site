@@ -297,8 +297,15 @@ def privacy(rolewords):
   </section>
 """
 
-def plug(name, host, mcp_name, word, placard="Plug the collection into your assistant", h2="One address, one key, every question cited.", lead=None):
-    lead = lead or f"The collection is served as an MCP server at <strong>https://{host}/mcp</strong>: the one kind of remote address on this site, a sealed public collection we host on purpose. You add it once; from then on your assistant asks it the way it asks any other tool."
+def plug(name, host, mcp_name, word, placard="Plug the collection into your assistant", h2="One address, one sign-in, every question cited.", lead=None):
+    # No key anywhere: the door is an OAuth protected resource (docenta repo,
+    # docs/architecture/door-authorization-plan-2026-09.md). A person adds
+    # the address; the assistant opens our sign-in page by itself.
+    import base64, json, urllib.parse
+    url = f"https://{host}/mcp"
+    cursor = "cursor://anysphere.cursor-deeplink/mcp/install?name=" + urllib.parse.quote(mcp_name) + "&config=" + base64.b64encode(json.dumps({"url": url}, separators=(",", ":")).encode()).decode()
+    vscode = "vscode:mcp/install?" + urllib.parse.quote(json.dumps({"name": mcp_name, "type": "http", "url": url}, separators=(",", ":")))
+    lead = lead or f"The collection is served as an MCP server at <strong>{url}</strong>: the one kind of remote address on this site, a sealed public collection we host on purpose. You add it once; from then on your assistant asks it the way it asks any other tool."
     return f"""
   <section id="plug">
     <div class="placard">{placard} <span class="live">live door</span></div>
@@ -306,25 +313,27 @@ def plug(name, host, mcp_name, word, placard="Plug the collection into your assi
     <p class="lead">{lead}</p>
     <div class="steps">
       <div class="step"><div>
-        <h3>Ask for a key</h3>
-        <p>Use the form at the bottom of this page and say "{word}". You get back <span class="key">your key</span>, a long line of letters and numbers. Keep it like a password: it is what lets your assistant in, and it goes exactly where the same color appears below.</p>
+        <h3>Register once</h3>
+        <p>Use the form at the bottom of this page and say "{word}". You confirm your address with one click, and that registration is what opens the collection for you. There is <strong>no key to copy</strong>, ever: the address below is not a secret, and signing in is what makes it yours.</p>
       </div></div>
       <div class="step"><div>
-        <h3>Claude Code: one command</h3>
-        <p>Paste this line with <span class="key">your key</span> in place of the colored words, then start a new session; the collection shows up as <strong>{mcp_name}</strong>.</p>
-        <pre class="cmd">claude mcp add --transport http {mcp_name} <span class="a">https://{host}/mcp</span> \\
-  --header "Authorization: Bearer <span class="key">&lt;your key&gt;</span>"</pre>
+        <h3>Add the address to your assistant</h3>
+        <pre class="cmd"><span class="a">{url}</span></pre>
+        <p><strong>Claude Code</strong>: one line, then type <strong>/mcp</strong> and press Enter on <strong>{mcp_name}</strong>.</p>
+        <pre class="cmd">claude mcp add --transport http {mcp_name} <span class="a">{url}</span></pre>
+        <p><strong>Claude</strong> (web and desktop): Settings, Connectors, Add custom connector, paste the address, Connect. <strong>ChatGPT</strong>: Settings, Connectors, Create, paste the address, choose OAuth.</p>
+        <p style="margin-top:14px"><a class="chip" href="{e(cursor)}">Add to Cursor</a> <a class="chip" href="{e(vscode)}">Add to VS Code</a></p>
       </div></div>
       <div class="step"><div>
-        <h3>Claude.ai or ChatGPT: a custom connector</h3>
-        <p>In the settings, under connectors, add a remote MCP server with the address <strong>https://{host}/mcp</strong>. Where it asks for a header or a token, enter <strong>Authorization: Bearer <span class="key">&lt;your key&gt;</span></strong>. Save, then ask in a new chat.</p>
+        <h3>Allow it, once</h3>
+        <p>Your assistant opens a docenta page by itself. It asks who you are (your address and six digits from your mail; nothing at all if you come from your start page) and shows one sentence: which assistant, which collection. Press <strong>Allow</strong>. You can disconnect any assistant later on your start page.</p>
       </div></div>
       <div class="step"><div>
         <h3>Ask, and read the citation</h3>
         <p>Every answer names the document and the page it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
       </div></div>
     </div>
-    <p class="lead" style="margin-top:26px">The door never sees your files, holds nothing you send beyond the question, and cannot be changed by anyone, us included, without a new seal and a new date on this page.</p>
+    <p class="lead" style="margin-top:26px">The door never sees your files, and cannot be changed by anyone, us included, without a new seal and a new date on this page. It knows that a registered person asked, so each person gets a fair share of it; it does not keep what you asked, unless you tick "tell me when this can be answered" and the collection could not answer.</p>
   </section>
 """
 
@@ -464,7 +473,7 @@ def index_page():
   <section id="coming">
     <div class="placard">Exhibit 006 · Collections in preparation</div>
     <h2>The next doors. Each a sealed collection with its own card.</h2>
-    <p class="lead">Public material only, one collection per subject, never mixed: a card says exactly what is inside and what is not, and the door opens when the collection is sealed. Ask for a key now and you are told the day it opens.</p>
+    <p class="lead">Public material only, one collection per subject, never mixed: a card says exactly what is inside and what is not, and the door opens when the collection is sealed. Register now and you are told the day it opens.</p>
     <div class="cols">
       <a class="card" href="/for/judaism/"><h3><span class="k">Judaism.</span> Tanakh, Mishnah, Talmud and commentary</h3><p>The Hebrew Bible with morphology, and the openly licensed versions and translations of the Sefaria library, cited to the passage and version.</p><p class="qs">"Where does Rashi comment on this verse, and which other commentary disagrees?"</p></a>
       <a class="card" href="/for/christianity/"><h3><span class="k">Christianity.</span> Scripture and classical commentary</h3><p>The Berean and World English Bibles, Matthew Henry, sixty-three volumes of Spurgeon, the SBL Greek New Testament, STEPBible, the Patristic Text Archive.</p><p class="qs">"Which translations render this verse differently, and what does Henry say on it?"</p></a>
@@ -589,7 +598,7 @@ PAGES["contractors"] = dict(
     rolewords="Your own plan sets, site photos, client mail and estimates",
     plug_html=plug("palo-alto", "door.docenta.ai", "docenta-palo-alto", "contractors",
                    placard="The Palo Alto collection, plugged into your assistant",
-                   h2="One address, one key, every question cited to the page.",
+                   h2="One address, one sign-in, every question cited to the page.",
                    lead="The sealed collection above is served as an MCP server at <strong>https://door.docenta.ai/mcp</strong>: the one kind of remote address on this site, a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asks any other tool, and every answer names the document and the page."),
     subject_word="contractors",
 )
@@ -652,7 +661,7 @@ PAGES["lawyers"] = dict(
     rolewords="The matter, the privileged notes and the client's mail",
     plug_html=plug("legal", "lawyers.docenta.ai", "docenta-legal", "lawyers",
                    placard="Try the engine on public material",
-                   h2="The federal code and public contracts: one address, one key, every question cited to the section.",
+                   h2="The federal code and public contracts: one address, one sign-in, every question cited to the section.",
                    lead="The public collection shown above is served as an MCP server at <strong>https://lawyers.docenta.ai/mcp</strong>: the one kind of remote address on this site, a sealed public collection we host on purpose. Your matter file never has one; this door is where you try the engine before it runs on your own machine."),
     subject_word="lawyers",
 )

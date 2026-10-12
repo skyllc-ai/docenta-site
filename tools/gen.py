@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # The docenta.ai pages, generated from one copy source.
-# Run from the site root: python3 tools/gen.py  (writes index.html and for/*/index.html)
+# Run from the site root: python3 tools/gen.py  (writes index.html, for/*/index.html, privacy/ and terms/)
 # Copy follows docs/go-to-market/positioning-and-question-library-2026-09-17.md
 # in the docenta repo: pain before mechanism, questions as the hero content,
 # every answer shown as answer + evidence + conflicts + gaps + evidence path.
@@ -37,6 +37,15 @@ CSS = r"""
   .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
   .nav-cta{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--accent-2);padding:10px 18px;border-radius:8px;font-weight:700;color:#fff}
   .nav-cta:hover{background:var(--accent-3);color:#fff;text-decoration:none}
+  /* Plain prose pages (privacy, terms): the same chrome, running text. */
+  .prose{max-width:720px}
+  .prose h2{font-size:clamp(22px,2.8vw,28px);margin-top:48px}
+  .prose h3{font-size:18px;font-weight:700;margin-top:28px;margin-bottom:6px}
+  .prose p{margin-top:14px;color:var(--text)}
+  .prose ul{margin:12px 0 0 22px}
+  .prose li{margin-top:8px}
+  .prose code{font-family:var(--mono);font-size:14px;background:var(--code);padding:1px 6px;border-radius:5px}
+  .prose .eff{color:var(--text-2);font-size:14px;margin-top:10px}
   .placard{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;color:var(--label);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
   .placard::before{content:"";display:inline-block;width:34px;height:1px;background:var(--label);opacity:.6}
   header{padding:56px 0 30px}
@@ -224,7 +233,7 @@ FOOT = """
   <footer>
     <div class="frow">
       <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
-      <div>Built in Rust. Runs on macOS, Windows, Linux.</div>
+      <div>Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
     </div>
   </footer>
 </div>
@@ -1025,6 +1034,102 @@ def placeholder(slug, title, desc, placard, h1, sub, chip_qs, card, reads, statu
     out.append(FOOT)
     return "".join(out)
 
+# ---------------------------------------------------------------- the plain pages
+# Privacy and terms: the same chrome, running text. The privacy page is
+# what the Google OAuth consent screen links to (Branding, 2026-10-12),
+# so its Google user data section states the Limited Use compliance.
+def plain(path, title, desc, placard, body):
+    out = [head(title, desc, f"https://docenta.ai{path}").replace('href="#access"', 'href="/#access"')]
+    out.append(f"""
+  <header>
+    <div class="placard">{placard}</div>
+    {body}
+  </header>
+""")
+    out.append(FOOT)
+    return "".join(out)
+
+PLAIN = {}
+PLAIN["privacy"] = dict(
+    title="docenta privacy policy - your files, mail and history stay on your machine",
+    desc="What docenta sends to SKY, LLC and what it never does: your content stays on your computer; Google user data is read over IMAP on your machine only, under the Limited Use requirements.",
+    placard="Exhibit · docenta · Privacy",
+    body=r"""<h1>Privacy policy. <em>Your files, mail and history stay on your machine.</em></h1>
+    <p class="eff">SKY, LLC &middot; docenta &middot; effective 2026-10-12</p>
+<div class="prose">
+<h2>What docenta is</h2>
+<p>docenta is software you install on your own computer. It reads the files, mail archives, mail accounts, repositories and AI session transcripts you point it at, builds a searchable index of them on that computer, and answers questions from it. Originals are never copied anywhere, and the index, the extracted text and the models that run over them live on your machine. SKY, LLC operates no service that holds your content.</p>
+
+<h2>What the software sends to SKY, LLC</h2>
+<p>docenta talks to our servers for four things and nothing else.</p>
+<ul>
+<li><strong>Downloads.</strong> Binaries, models and updates come from dl.docenta.ai. Like any web server, it logs the address a request came from and the time.</li>
+<li><strong>Licensing.</strong> Your installation generates a key pair on your machine. The public half identifies the machine to our license service at license.docenta.ai, which issues and renews a lease. The service learns that key, the time of each renewal and the address the request came from. It does not learn what you indexed or asked.</li>
+<li><strong>Turbo, only on your word.</strong> When you consent to the turbo lane, docenta packs the extracted text of your pending documents, seals it with encryption to a key that exists only on your machine, and sends the sealed pack through our relay to a GPU rented for that one job. The relay sees ciphertext only. The rented machine computes search vectors, returns them sealed, and is destroyed afterwards. Nothing ships without an explicit consent naming the hours, and <code>docenta turbo consent 0</code> withdraws it.</li>
+<li><strong>Early access requests.</strong> If you fill in the form on this site, we keep the name, address and question you typed, after you confirm the address by mail, to write back when the door opens. Nothing else is collected and there is no newsletter.</li>
+</ul>
+<p>docenta sends no telemetry, no usage statistics and no crash reports.</p>
+
+<h2>Google user data</h2>
+<p>When you connect a Google account with "Sign in with Google", docenta asks Google for the mail scope (<code>https://mail.google.com/</code>) so it can read your mailbox over IMAP, the same way a desktop mail program does. This section describes how that data is handled.</p>
+<ul>
+<li><strong>Where the permission lives.</strong> The token Google hands back is stored in your operating system's credential store on your computer (Keychain on macOS, Credential Manager on Windows, the secret service on Linux). It is never written to a file and never sent to SKY, LLC.</li>
+<li><strong>What docenta does with your mail.</strong> It fetches messages and attachments to your computer, extracts their text, and indexes them there so you can search and ask questions about them. That is the only use.</li>
+<li><strong>What docenta does not do.</strong> Your mail is not transferred to SKY, LLC servers, not sold, not used for advertising, not used to build models or profiles, and not read by any person at SKY, LLC. The one transfer that can occur is the turbo lane described above: extracted text sealed to your own key, sent only on your explicit consent, processed on a machine rented for your job alone, for the sole purpose of building your own search index, and destroyed afterwards.</li>
+<li><strong>Limited use.</strong> docenta's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+<li><strong>Taking it back.</strong> Remove docenta at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and it stops fetching mail and says so. <code>docenta remove mail</code> revokes the grant, deletes the token from the credential store and removes the fetched mail from your machine. <code>docenta remove --everything</code> removes everything docenta kept.</li>
+</ul>
+
+<h2>Other mail providers</h2>
+<p>An account at another provider is connected with an app password you make on the provider's own page. docenta stores it in the same operating system credential store, uses it only to fetch your mail to your computer, and never sends it anywhere.</p>
+
+<h2>Retention and deletion</h2>
+<p>Everything docenta builds is on your computer, under your control, and the remove command above takes it away part by part or all at once. License records are kept while your installation holds a lease. An early access request is kept until we have written back or you ask us to drop it. Write to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a> and we delete what we hold about you.</p>
+
+<h2>Children</h2>
+<p>docenta is not directed to children under 13 and we do not knowingly collect information from them.</p>
+
+<h2>Changes and contact</h2>
+<p>When this policy changes, the date at the top changes with it and the current text is always at docenta.ai/privacy. Questions go to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a>. SKY, LLC, California, United States.</p>
+</div>""")
+PLAIN["terms"] = dict(
+    title="docenta terms of service - a private preview, on your own machine",
+    desc="The terms under which SKY, LLC licenses docenta: a proprietary private preview, your content stays yours, no warranty, California law.",
+    placard="Exhibit · docenta · Terms",
+    body=r"""<h1>Terms of service. <em>A private preview, on your own machine, on these terms.</em></h1>
+    <p class="eff">SKY, LLC &middot; docenta &middot; effective 2026-10-12</p>
+<div class="prose">
+<h2>The agreement</h2>
+<p>These terms are between you and SKY, LLC ("SKY", "we") and govern docenta, the software, its updates, the docenta.ai site and the services the software talks to. By installing or using docenta you accept them. If you use docenta for an organization, you accept them on its behalf.</p>
+
+<h2>The license</h2>
+<p>docenta is proprietary software. SKY grants you a personal, non-exclusive, non-transferable license to install and run it on machines you control, for the term of your lease, under the license text that ships with it. You may not sell, sublicense, reverse engineer or redistribute it, or use it to build a competing product. docenta is in private preview: features, prices and terms may change, and access may end, with notice where we can give it.</p>
+
+<h2>Your content</h2>
+<p>Everything docenta indexes stays yours. We claim no rights to your files, mail, repositories or transcripts, and the <a href="/privacy/">privacy policy</a> says exactly what the software sends us, which is not your content. You are responsible for having the right to index what you point docenta at, including mail accounts and shared drives.</p>
+
+<h2>Connected accounts</h2>
+<p>When you connect a mail account, you authorize docenta to fetch that account's mail to your computer. A Google account connected with "Sign in with Google" is subject to Google's terms as well as these, and our handling of Google user data is described in the privacy policy. You can disconnect an account at any time from the provider's permissions page or with <code>docenta remove mail</code>.</p>
+
+<h2>The turbo lane</h2>
+<p>The turbo lane rents a GPU on your explicit consent, which names a number of hours. The consent is the authorization to spend that amount on your behalf; the rate card shown before you consent is the price. Sealed packs are processed on a machine rented for your job alone and destroyed afterwards.</p>
+
+<h2>Acceptable use</h2>
+<p>Do not use docenta to index content you have no right to hold, to break the law, or to attack, probe or overload our services. Do not share license leases between people.</p>
+
+<h2>No warranty</h2>
+<p>docenta is provided as is and as available. To the fullest extent the law allows, SKY disclaims all warranties, express or implied, including merchantability, fitness for a particular purpose and non-infringement. Answers are reconstructed from your own material and cite it; verify them before you act on them.</p>
+
+<h2>Limitation of liability</h2>
+<p>To the fullest extent the law allows, SKY is not liable for indirect, incidental, special, consequential or punitive damages, or for lost data, profits or revenue, arising from docenta or these terms, and SKY's total liability for any claim is limited to the amount you paid SKY for docenta in the twelve months before the claim.</p>
+
+<h2>Termination</h2>
+<p>You may stop using docenta at any time; <code>docenta remove --everything</code> removes what it kept. We may end your access if you break these terms. Sections on your content, no warranty, limitation of liability and governing law survive.</p>
+
+<h2>Governing law and contact</h2>
+<p>These terms are governed by the laws of the State of California, United States, without regard to its conflict of law rules. When these terms change, the date at the top changes with them and the current text is always at docenta.ai/terms. Questions go to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a>.</p>
+</div>""")
+
 def main():
     written = []
     path = os.path.join(ROOT, "index.html")
@@ -1044,6 +1149,13 @@ def main():
         path = os.path.join(d, "index.html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(specialty(slug, **spec))
+        written.append(path)
+    for slug, spec in PLAIN.items():
+        d = os.path.join(ROOT, slug)
+        os.makedirs(d, exist_ok=True)
+        path = os.path.join(d, "index.html")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(plain(f"/{slug}/", **spec))
         written.append(path)
     for p in written:
         print("wrote", os.path.relpath(p, ROOT))

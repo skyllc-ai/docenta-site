@@ -34,7 +34,7 @@
 [hidden]{display:none!important}
 /* A jump is a jump: on a long page a smooth scroll across the whole book
    is a wait, not a courtesy (owner 2026-09-19). */
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;--zoom:1}
 body{background:var(--bg);color:var(--text);font:16.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -56,5 +56,13 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 .btn kbd{font:11px var(--mono);color:var(--text-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
 .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .icon{width:34px;padding:0;justify-content:center}
+/* The text size: a zoom of the page alone, stepped from the bar and
+   remembered per browser (the browser's zoom reaches every tab). */
+body{zoom:var(--zoom)}
+.size{display:inline-flex;align-items:center;gap:4px}
+#size{font:600 12.5px var(--mono);padding:0 10px;min-width:60px;justify-content:center;letter-spacing:.02em}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:disabled:hover{border-color:var(--line-2)}
+@media (max-width:600px){#size{display:none}}
 #theme svg{display:none}
 #theme[data-mode="system"] .auto,#theme[data-mode="light"] .sun,#theme[data-mode="dark"] .moon{display:block}

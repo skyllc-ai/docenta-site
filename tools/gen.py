@@ -191,11 +191,11 @@ AUDIENCES = [
     ("email", "Mail: the mailbox"),
     ("developers", "Developers: repos and sessions"),
     ("researchers", "Researchers: the reading pile"),
-    ("judaism", "Judaism: Tanakh, Mishnah, Talmud and commentary (door in preparation)"),
-    ("christianity", "Christianity: scripture and classical commentary (door in preparation)"),
-    ("islam", "Islam: the Koran in three translations (door in preparation)"),
-    ("faith", "Faith: the three traditions together (door in preparation)"),
-    ("sleep", "Sleep research: the open corpus (door in preparation)"),
+    ("judaism", "Judaism: Tanakh, Mishnah, Talmud and commentary (live door)"),
+    ("christianity", "Christianity: scripture and classical commentary (live door)"),
+    ("islam", "Islam: the Koran in six translations and Arabic, and the hadith (live door)"),
+    ("faith", "Faith: the three traditions together (live door)"),
+    ("sleep", "Sleep research: the open corpus (live door)"),
     ("diabetes", "Diabetes research: the open corpus (in collection)"),
 ]
 
@@ -233,7 +233,7 @@ FOOT = """
   <footer>
     <div class="frow">
       <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
-      <div>Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+      <div>docenta 0.3.1, October 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
     </div>
   </footer>
 </div>
@@ -382,8 +382,9 @@ def cta(audience, subject_word):
 ALSO = ('<p class="lead" style="margin-top:14px"><a href="/#for">Back to the collections</a> · also for '
         '<a href="/for/contractors/">contractors</a>, <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, '
         '<a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a> '
-        '· <a href="/#coming">in preparation</a>: <a href="/for/judaism/">Judaism</a>, <a href="/for/christianity/">Christianity</a>, '
-        '<a href="/for/islam/">Islam</a>, <a href="/for/faith/">faith</a>, <a href="/for/sleep/">sleep</a>, <a href="/for/diabetes/">diabetes</a></p>')
+        '· <a href="/#doors">public collections, live</a>: <a href="/for/judaism/">Judaism</a>, <a href="/for/christianity/">Christianity</a>, '
+        '<a href="/for/islam/">Islam</a>, <a href="/for/faith/">faith</a>, <a href="/for/sleep/">sleep</a> · in preparation: <a href="/for/diabetes/">diabetes</a> '
+        '· <a href="/handbook/">the handbook</a></p>')
 
 # ---------------------------------------------------------------- the landing page
 def index_page():
@@ -413,7 +414,7 @@ def index_page():
         None,
         "No signed work order is in the collection. If you need one, that is the document to find.",
         "the contractor as an entity, plus roof, estimate and quote as concepts · thread and attachments grouped · ordered by date · the later formal artifact preferred · checked for a later contradicting amount · 3 sources kept, 11 dropped · 12 KB handed to the agent",
-        "An illustration of the shape of every docenta answer: the files are made up, the behavior is real. The real ones are on the desk pages below and behind the two live doors, where any visitor can ask.",
+        "An illustration of the shape of every docenta answer: the files are made up, the behavior is real. The real ones are on the desk pages below and behind the eight live doors, where any visitor can ask.",
     ))
     out.append("""
   </header>
@@ -432,6 +433,7 @@ def index_page():
       <tr><td>"Palo Alto ADU setback"</td><td>For this configuration, under the edition that governs this permit, which setback applies, and do the city and the state agree?</td></tr>
     </table></div>
     <p class="lead" style="margin-top:26px">Local evidence, exact receipts, explicit conflicts and gaps, served to the agent you already use. <strong>Built for evidence questions ordinary search misses.</strong> A <em>docent</em> is the museum guide you ask about a collection. Your corpus gets one.</p>
+    <p class="lead" style="margin-top:14px">The one question that sums it up, and the one a retrieval box bolted onto a chatbot cannot answer: <strong>what do my own records actually prove about this, and what do they not prove?</strong> It needs the sources ranked, dated and compared, the contradiction kept visible, and an honest "not established" at the end. That is the whole product.</p>
   </section>
 
   <section>
@@ -454,42 +456,42 @@ def index_page():
     <div class="plaque">
       <div class="plaque-title">Collection statistics · one real machine</div>
       <div class="plaque-grid">
-        <div class="stat"><b>815,405</b><span>content objects from 1.7M file instances</span></div>
-        <div class="stat"><b>246,000</b><span>searchable messages out of one 32 GB mailbox</span></div>
+        <div class="stat"><b>832,265</b><span>content objects from 3.0M file instances</span></div>
+        <div class="stat"><b>315,351</b><span>searchable messages out of one mailbox</span></div>
+        <div class="stat"><b>2,766</b><span>AI conversations and 13,368 commits, rendered and searchable</span></div>
         <div class="stat"><b>4-6 ms</b><span>entity and timeline answers</span></div>
-        <div class="stat"><b>7.5 min</b><span>full ingest of a 463k-file home directory</span></div>
-        <div class="stat"><b>0 bytes</b><span>sent to any cloud, ever</span></div>
+        <div class="stat"><b>0</b><span>readable bytes leave your machine</span></div>
       </div>
-      <div class="plaque-foot">Measured on the maker's own corpus, Apple M4 Max. Every number traces to a committed field run.</div>
+      <div class="plaque-foot">Measured on the maker's own corpus, Apple M4 Max, 12 October 2026. Every number traces to a committed field run; the turbo lane ships only text sealed to a key this machine holds.</div>
     </div>
   </section>
 
   <section id="for">
     <div class="placard">Exhibit 005 · Who asks</div>
     <h2>One engine, your kind of collection.</h2>
-    <p class="lead">The same docent, pointed at what your desk actually holds. Each page shows one real question and the shape of its answer; two collections are live behind a door today.</p>
+    <p class="lead">The same docent, pointed at what your desk actually holds. Each page shows one real question and the shape of its answer; eight public collections are live behind doors today, and every door answer below was asked through the same engine.</p>
     <div class="cols">
       <a class="card wide" href="/for/contractors/"><div><h3><span class="k">Contractors.</span> Ask the rule. Get the exact page.</h3><p>City code, handouts, state law, utility standards and the code edition tied to the permit date, as one dated collection. Which rule applies, where the exception lives, whether the sources agree, and what the corpus cannot establish.</p><p class="qs">"Which code edition applies to this permit date?" · "Do the city handout and the ordinance agree?"</p></div><span class="live">live door</span></a>
       <a class="card wide" href="/for/lawyers/"><div><h3><span class="k">Lawyers.</span> Ask the matter. Cite the exhibit.</h3><p>Pleadings, correspondence, scanned exhibits, contracts and notes become one private evidence layer. Reconstruct the chronology, find the version that changed, surface the contradiction, map each assertion to a page, without uploading the matter anywhere. Try the engine today on the federal code and public contracts.</p><p class="qs">"Where does the other side first acknowledge this?" · "Does the declaration conflict with an earlier email?"</p></div><span class="live">live door</span></a>
       <a class="card" href="/for/insurance/"><h3><span class="k">Insurance.</span> Ask the claim, not the folders.</h3><p>Policy, notes, mail, forms, estimates and photos as one timeline with receipts: what happened, which version applies, where the file conflicts, what proof is missing.</p><p class="qs">"Which policy was in force on the loss date?"</p></a>
       <a class="card" href="/for/home/"><h3><span class="k">Home.</span> Your files remember what you forgot.</h3><p>Twenty years of mail, documents and photos, asked in plain words: the receipt tied to the warranty, the quote that replaced the old quote, the letter you half remember.</p><p class="qs">"Is the dishwasher still under warranty?"</p></a>
       <a class="card" href="/for/email/"><h3><span class="k">Mail.</span> Ask what was said, not what the subject line was.</h3><p>The promise, the latest number, the attachment that went with it and the whole thread in order, even when you remember the meaning and not the sender.</p><p class="qs">"What was the last delivery date they committed to?"</p></a>
-      <a class="card" href="/for/developers/"><h3><span class="k">Developers.</span> Ask why the code is this way.</h3><p>Code, git history, design notes and every agent session as one cited memory layer. Test it on a project you know: the Git project, every commit since 2005 and the whole mailing list, sealed as a public collection.</p><p class="qs">"Why is it called --force-with-lease, and what was wrong with the other names?"</p></a>
+      <a class="card wide" href="/for/developers/"><div><h3><span class="k">Developers.</span> Ask why the code is this way.</h3><p>Code, git history, design notes and every agent session as one cited memory layer. Test it on a project you know: the Git project, every commit since 2005 and the whole mailing list, sealed as a public collection behind its own door.</p><p class="qs">"Why is it called --force-with-lease, and what was wrong with the other names?"</p></div><span class="live">live door</span></a>
       <a class="card" href="/for/researchers/"><h3><span class="k">Researchers.</span> Ask your library where it disagrees.</h3><p>PDFs, scans, notes, drafts and co-author mail as one evidence layer: the paper you half remember, the results that conflict, the sentence in your draft that has no support.</p><p class="qs">"Which papers support this, and which contradict it?"</p></a>
     </div>
   </section>
 
-  <section id="coming">
-    <div class="placard">Exhibit 006 · Collections in preparation</div>
-    <h2>The next doors. Each a sealed collection with its own card.</h2>
-    <p class="lead">Public material only, one collection per subject, never mixed: a card says exactly what is inside and what is not, and the door opens when the collection is sealed. Register now and you are told the day it opens.</p>
+  <section id="doors">
+    <div class="placard">Exhibit 006 · Public collections, live behind doors</div>
+    <h2>Eight sealed collections you can ask today. Each with its own card.</h2>
+    <p class="lead">Public material only, one collection per subject, never mixed. Every door carries a card sealed with the collection and shown to your assistant on every connection: exactly what is inside, what is not, and the date nothing changed after. Register once on any page and the doors are open to you; each page below has a real answer asked through its door.</p>
     <div class="cols">
-      <a class="card" href="/for/judaism/"><h3><span class="k">Judaism.</span> Tanakh, Mishnah, Talmud and commentary</h3><p>The Hebrew Bible with morphology, and the openly licensed versions and translations of the Sefaria library, cited to the passage and version.</p><p class="qs">"Where does Rashi comment on this verse, and which other commentary disagrees?"</p></a>
-      <a class="card" href="/for/christianity/"><h3><span class="k">Christianity.</span> Scripture and classical commentary</h3><p>The Berean and World English Bibles, Matthew Henry, sixty-three volumes of Spurgeon, the SBL Greek New Testament, STEPBible, the Patristic Text Archive.</p><p class="qs">"Which translations render this verse differently, and what does Henry say on it?"</p></a>
-      <a class="card" href="/for/islam/"><h3><span class="k">Islam.</span> The Koran in three English translations</h3><p>Pickthall, Yusuf Ali and Shakir side by side, cited to the surah and verse; the Arabic text, tafsir and hadith wait on their rights.</p><p class="qs">"How do the three translations render this verse?"</p></a>
-      <a class="card" href="/for/faith/"><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture.</p><p class="qs">"Where do the three scriptures treat this theme, in their own words?"</p></a>
-      <a class="card" href="/for/sleep/"><h3><span class="k">Sleep.</span> The open research corpus</h3><p>Open-access full texts from PubMed Central, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines: sleep biology, disorders, treatment, the lifespan.</p><p class="qs">"Which studies report this effect at this dose, and where do they disagree?"</p></a>
-      <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research: biology, types, therapy, technology, complications and the study families, with the trials that tested them.</p><p class="qs">"Which trials tested this intervention, and what did they measure?"</p></a>
+      <a class="card wide" href="/for/judaism/"><div><h3><span class="k">Judaism.</span> Tanakh, Mishnah, Talmud and commentary</h3><p>The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions of the Sefaria library: Tanakh, Mishnah, Talmud, Midrash and commentary in Hebrew, Aramaic and English, about 183,000 documents, each cited with its version and license.</p><p class="qs">"Why does the Torah begin with creation and not with the first commandment, and where does Rashi get that from?"</p></div><span class="live">live door</span></a>
+      <a class="card wide" href="/for/christianity/"><div><h3><span class="k">Christianity.</span> Scripture and classical commentary</h3><p>The Berean Standard and World English Bibles chapter by chapter, Matthew Henry complete and concise, sixty-three volumes of Spurgeon, the SBL Greek New Testament, the Patristic Text Archive and the First Thousand Years of Greek: 51,876 documents, English first, Greek where the source is Greek.</p><p class="qs">"What does Matthew Henry make of Psalm 23:4, and did Spurgeon preach on that verse?"</p></div><span class="live">live door</span></a>
+      <a class="card wide" href="/for/islam/"><div><h3><span class="k">Islam.</span> The Koran in six translations and Arabic, and the hadith</h3><p>Pickthall, Yusuf Ali, Shakir, Sale, Rodwell and Palmer sura by sura, the Arabic text with and without diacritics, and the ten hadith collections in English and Arabic, every hadith under its number with its gradings. No tafsir; the rights in the hadith texts are stated as unresolved on every record.</p><p class="qs">"How do the six translations render Surah 112:1, and which hadith say what the surah is worth?"</p></div><span class="live">live door</span></a>
+      <a class="card wide" href="/for/faith/"><div><h3><span class="k">Faith.</span> The three traditions together</h3><p>The union of the three collections, 237,496 documents, nothing re-weighted: every answer says how its matches divide among Judaism, Christianity and Islam, and a question can be put to one of them alone.</p><p class="qs">"Where do the three scriptures tell of Joseph sold by his brothers, and do the commentators agree who sold him?"</p></div><span class="live">live door</span></a>
+      <a class="card wide" href="/for/sleep/"><div><h3><span class="k">Sleep.</span> The open research corpus</h3><p>77,899 openly licensed texts: PubMed Central full texts under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, one AHRQ evidence report. Research literature, not medical advice; no subscription literature and no abstracts of closed articles.</p><p class="qs">"Which trials tested melatonin for insomnia in older adults, what did they measure, and does the meta-analysis agree?"</p></div><span class="live">live door</span></a>
+      <a class="card" href="/for/diabetes/"><h3><span class="k">Diabetes.</span> The open research corpus</h3><p>The same shape as sleep, for human diabetes research. Being gathered; the card is written when the collection is sealed.</p><p class="qs"><span class="soon">door in preparation</span></p></a>
     </div>
   </section>
 
@@ -500,14 +502,33 @@ def index_page():
 <b>ingest</b>   walk → hash → extract → index <span class="a">·</span> containers explode into members <span class="a">·</span> re-scan costs O(changes)<br>
 <b>channels</b> exact BM25 <span class="a">·</span> paragraph lexical <span class="a">·</span> dense vectors, fused and re-ranked <span class="a">·</span> entities, timelines, themes on top<br>
 <b>answer</b>   <span class="a">evidence_pack</span>: route plan, cited spans, conflicts, disclosed gaps, enforced token budget<br>
-<b>live</b>     mail, chat exports, and agent sessions stream in continuously <span class="a">·</span> your corpus feeds itself
+<b>live</b>     mail, chat exports, git and agent sessions stream in every hour <span class="a">·</span> your corpus feeds itself<br>
+<b>tools</b>    <span class="a">search</span> <span class="a">search_meaning</span> <span class="a">evidence</span> <span class="a">read</span> <span class="a">thread</span> <span class="a">related</span> <span class="a">who_is</span> <span class="a">timeline</span> <span class="a">verify_quote</span> <span class="a">status</span> and ten more, over MCP <span class="a">·</span> every page says what was searched, what was dropped and why, and how many documents held every term
     </div>
     <p class="lead" style="margin-top:26px">The same 48 judged questions over the same corpus, asked by the same scripted agent two ways. With the evidence pack it cited the right document on <strong>44 of 48</strong>, in <strong>1 to 2.5 tool calls</strong> per task. Limited to search-and-fetch loops, the way an agent works without the pack, it cited it on <strong>39 of 48</strong>, in more calls. The pack reads about four times the tokens; that trade is printed, never hidden. Deterministic layers, zero learned models in the loop, bit-stable re-runs.</p>
   </section>
 """)
+    out.append(READS_TODAY)
     out.append(cta("site", ""))
     out.append(FOOT)
     return "".join(out)
+
+READS_TODAY = r"""
+  <section id="reads">
+    <div class="placard">Exhibit 008 · What docenta reads today · 0.3.1</div>
+    <h2>Everything on the machine, by what it is.</h2>
+    <p class="lead">One engine, every lane. Originals stay where they are; docenta keeps searchable derivatives and a map back to the path. The list below is what the current build reads, as the handbook states it.</p>
+    <div class="cols">
+      <div class="card"><h3><span class="k">Files.</span></h3><p>Text, Markdown, PDF, Office, ODF, RTF, property lists, XML, JSON record by record, archives down to their members. The author, the dates and the sensitivity label of a document; the time and place inside a photo; ten copies of one file cost one index entry.</p></div>
+      <div class="card"><h3><span class="k">Mail.</span></h3><p>A Takeout or mbox export in an evening, then the live account every hour: <strong>Sign in with Google</strong> for Gmail and Workspace, an app password elsewhere, Apple Mail and Outlook messages read as mail. Every folder the server lists, attachments as members, labels kept.</p></div>
+      <div class="card"><h3><span class="k">Chats and agent sessions.</span></h3><p>Claude Code, Codex, ChatGPT and claude.ai exports, WhatsApp drops: every session rendered as it happens, so what the last agent learned is one search away for the next, and a compaction loses nothing.</p></div>
+      <div class="card"><h3><span class="k">Git.</span></h3><p>Every repository on the machine, end to end: each commit rendered as correspondence with the files it changed, so a hash finds its commit and a line finds the message that introduced it.</p></div>
+      <div class="card"><h3><span class="k">Scans and photos.</span></h3><p>OCR over scanned PDFs, images, HEIC and camera RAW previews, the pictures inside documents and animated images, on the machine's own GPU where it has one; a warning where a page's text order is unreliable.</p></div>
+      <div class="card"><h3><span class="k">Code.</span></h3><p>C, C++, Go, Java, JavaScript, Kotlin, Python, Rust and TypeScript parsed by structure: functions, forms and identifiers as terms, with the commit and the thread that explain a line.</p></div>
+    </div>
+    <p class="lead" style="margin-top:26px">Runs on macOS (Apple silicon and Intel), Windows and Linux, identically. Speaks MCP to Claude Code, Claude, ChatGPT, Codex, Cursor and VS Code. People, places and dates become entities with timelines; meaning search works across languages; a rented GPU takes the heavy arithmetic for an hour on your say-so, sealed. <a href="/handbook/">The handbook</a> is the full account.</p>
+  </section>
+"""
 
 # ---------------------------------------------------------------- the specialty pages
 def specialty(slug, title, desc, placard, h1, sub, chip_qs, demo, wall_groups, reads, wont, rolewords, plug_html, subject_word, extra_after_demo=""):
@@ -746,8 +767,8 @@ PAGES["home"] = dict(
     ],
     reads=[
         ("Plain words work.", "", "Ask the way you would ask a friend who read everything. docenta corrects spelling against your own files and tells you when it dropped a word to find an answer."),
-        ("Your mail, past and present.", "", "Bring the mailbox export in once; from then on docenta fetches new mail on its own, every hour, from a key you make in four steps. Your real password is never typed anywhere."),
-        ("Photos and documents.", "", "The time and place inside a photo, the text inside a scan, the attachment inside a thread. Twenty years of it, on a normal Mac or PC; the heavy work runs at night or on a rented GPU for an hour with your say-so."),
+        ("Your mail, past and present.", "", "Bring the mailbox export in once; from then on docenta fetches new mail on its own, every hour. A Google account signs in with one click on Allow; any other provider takes an app password you make in four steps. Your real password is never typed anywhere."),
+        ("Photos and documents.", "", "The time and place inside a photo, the words on the receipt you photographed, the text inside a scan, the attachment inside a thread. Twenty years of it, HEIC and camera RAW included, on a normal Mac or PC; the heavy work runs at night or on a rented GPU for an hour with your say-so."),
     ],
     wont=[
         ("Honest when it does not know.", "If the answer is not in your files, docenta says \"not in the collection\" and shows what it did find. No invented facts about your own life."),
@@ -788,7 +809,7 @@ PAGES["email"] = dict(
         ("Evidence and gaps", ["Which open questions in this thread never received an answer?", "What did the message say versus what the attached PDF said?", "What cannot be established because part of the thread or the attachments is missing?"]),
     ],
     reads=[
-        ("The export, then the live mailbox.", "", "A Takeout or mbox in an evening, then a live IMAP tail every hour from an app password kept in the OS store. Trash and spam included, so nothing is invisible."),
+        ("The export, then the live mailbox.", "", "A Takeout or mbox in an evening, then the live account every hour: Sign in with Google for a Google account, one click on Allow; an app password elsewhere, kept in the OS credential store. Every folder the server lists, trash and spam included, so nothing is invisible."),
         ("Fields that answer.", "", "From, to, subject, date, labels, thread: query fields that narrow like a database, and a \"latest first\" that never relaxes the question to fit an answer."),
         ("Attachments as members.", "", "A PDF inside a message is a document of its own, still tied to the message that carried it, so the invoice and the promise are one chain."),
     ],
@@ -832,7 +853,7 @@ PAGES["developers"] = dict(
         ("On the Git project, public", ["Why is it called --force-with-lease, and what was wrong with the other names?", "Why does git rerere exist, and who asked for it?", "Which thread settled the SHA-256 transition plan?", "When did git switch and git restore appear, and what did they refuse that checkout allowed?"]),
     ],
     reads=[
-        ("Code and git.", "", "Every repository with its history: the commit that introduced the line, the files that change together, the message that explained it. Code-aware lanes, identifiers as terms."),
+        ("Code and git.", "", "Every repository on the machine with its whole history: the commit that introduced the line, the files that change together, the message that explained it. C, C++, Go, Java, JavaScript, Kotlin, Python, Rust and TypeScript parsed by structure, identifiers as terms."),
         ("Notes and docs.", "", "Design notes, incident write-ups, READMEs and architecture records, cited to the line, so the invariant a function protects has a source."),
         ("Every agent session.", "", "Claude Code, Codex and ChatGPT sessions rendered and indexed as they happen, so what the last agent learned is one search away for the next, and a compaction loses nothing."),
     ],
@@ -869,7 +890,10 @@ PAGES["developers"] = dict(
   </section>
 """,
     rolewords="Private source trees, incident notes and agent transcripts",
-    plug_html="",
+    plug_html=plug("git", "git.docenta.ai", "docenta-git", "developers",
+                   placard="The Git project, plugged into your assistant",
+                   h2="One address, one sign-in, every answer cited to the commit or the message.",
+                   lead="The sealed Git collection above is served as an MCP server at <strong>https://git.docenta.ai/mcp</strong>: 653,394 documents, the git/git tree at the seal, every commit since 2005 and the whole mailing list. Your own repositories never have an address like it; this door is where you test the claim on code you know."),
     subject_word="developers",
 )
 
@@ -917,77 +941,260 @@ PAGES["researchers"] = dict(
     subject_word="researchers",
 )
 
+# ---------------------------------------------------------------- the door pages (2026-10-12)
+# Five public collections are live behind doors. Each page shows the
+# sealed card verbatim and one REAL answer asked through the door the day
+# the page was written, in the shape a retrieval box cannot produce: the
+# versions compared, the scope counted, the commentators in conflict, the
+# gap named.
+def door_page(slug, title, desc, placard, h1, sub, chip_qs, demo, card, sealed_line, reads, wall_groups, wont, host, mcp_name, word, plug_lead):
+    out = [head(title, desc, f"https://docenta.ai/for/{slug}/")]
+    out.append(f"""
+  <header>
+    <div class="placard">{placard} <a class="live" href="#plug">live door</a></div>
+    <h1>{h1}</h1>
+    <p class="sub">{sub}</p>
+""")
+    out.append(chips(chip_qs))
+    out.append(demo)
+    out.append(f"""
+  </header>
+
+  <section>
+    <div class="placard">The card, as the door says it</div>
+    <h2>What is in the collection, and what is not.</h2>
+    <p class="lead">Every door carries a card, sealed with the collection and shown to your assistant on every connection. This one reads:</p>
+    <div class="terminal" style="margin-top:26px"><div class="term-body"><p class="ans" style="margin:0">{e(card)}</p></div></div>
+    <p class="term-note">{e(sealed_line)}</p>
+""")
+    out.append(cards(reads))
+    out.append("""
+  </section>
+
+  <section>
+    <div class="placard">Questions a plain search cannot answer cleanly</div>
+    <h2>Ask across editions, across volumes, across the shelf.</h2>
+""")
+    out.append(wall(wall_groups))
+    out.append("""
+  </section>
+""")
+    out.append(plug(slug, host, mcp_name, word,
+                    placard="The collection, plugged into your assistant",
+                    h2="One address, one sign-in, every answer cited to the passage.",
+                    lead=plug_lead))
+    out.append("""
+  <section>
+    <div class="placard">What it will not pretend to know</div>
+    <h2>Boundedness is the feature.</h2>
+""")
+    out.append(limits(wont))
+    out.append(ALSO)
+    out.append("""
+  </section>
+""")
+    out.append(cta(slug, word))
+    out.append(FOOT)
+    return "".join(out)
+
+DOORS = {}
+
+DOORS["judaism"] = dict(
+    title="docenta for Judaism - Tanakh, Mishnah, Talmud and commentary, live",
+    desc="A sealed, live collection of Judaism's scripture and commentary in the public domain or under open licenses: the Westminster Leningrad Codex with morphology and the openly licensed Sefaria library. Ask it through your assistant; every answer names the passage, the version and the license.",
+    placard="Exhibit · docenta for Judaism · Tanakh, Mishnah, Talmud and commentary",
+    h1="Ask the library. <em>Get the passage, the version and the license.</em>",
+    sub="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions and translations of the Sefaria library: Tanakh, Mishnah, Talmud, Midrash and commentary in Hebrew, Aramaic and English, about 183,000 documents. Every answer cites the passage and the edition it comes from, with its license; <strong>versions under other licenses are not in this collection</strong>, and it gives no halachic ruling.",
+    chip_qs=["Why does the Torah begin with creation and not with the first commandment?", "Which editions of Rashi does the library hold, and do they word this comment differently?", "Which tractate discusses this ruling, and what does the Mishnah say first?", "Where does this phrase first appear, and where is it cited later?", "What does the collection not contain?"],
+    demo=answer(
+        "why does the Torah begin with creation and not with the first commandment, and where does Rashi get that from?",
+        "Rashi opens his commentary on Genesis 1:1 with Rabbi Isaac's question: the Torah, as Israel's book of law, should have begun with Exodus 12:2, \"This month shall be unto you the first of the months\", the first commandment given to Israel. His answer rests on <strong>Psalm 111:6</strong>, \"He declared to His people the strength of His works, in order that He might give them the heritage of the nations\": the account of creation is there so that when the nations call Israel robbers for taking the land of the seven nations, Israel can answer that the whole earth belongs to the Holy One, who created it and gives it to whom He pleases. Rashi's editors trace the thought to <strong>Yalkut Shimoni on Torah 187</strong>. The library holds the comment in two editions, a 1929 translation in the public domain and a 2009 translation under CC BY, worded differently and saying the same thing.",
+        [("Rashi on Genesis 1, verse 1 · Rosenbaum and Silbermann, 1929-1934 · public domain", "\"Rabbi Isaac said: The Torah which is the Law book of Israel should have commenced with the verse (Exodus 12:2)...\""),
+         ("Rashi on Genesis 1, verse 1 · Rashi Chumash, Metsudah Publications, 2009 · CC BY", "\"R. Yitzchok said: The Torah should have begun with [the verse] 'This month shall be [your first month]', it being the first precept...\""),
+         ("the proof text · Psalms 111:6", "\"He declared to His people the strength of His works, in order that He might give them the heritage of the nations\""),
+         ("the source the editors name · Yalkut Shimoni on Torah 187", "cited inside the 1929 edition's note")],
+        "None between the editions: a version receipt, not a conflict. The 1929 text says \"robbers\"; the 2009 text says \"the first precept that the Israelites were commanded\"; both carry the Psalm.",
+        "Whether the collection holds the Yalkut Shimoni passage itself as a text was not checked by this answer; it is cited here as Rashi's editors cite it. The Hebrew of Rashi's comment is one hop away in the same library.",
+        "lexical lane over origin:judaism · 3 hits, 2 editions of Rashi kept, 1 unrelated homily dropped · every hit holds all of the question's terms",
+        "Real, from the sealed Judaism collection, asked through the same engine the door serves, on 12 October 2026. Two editions, one Psalm, one named source: a search box returns the passage; the docent returns the chain.",
+        title="docenta over MCP · the Judaism collection",
+    ),
+    card="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions of the Sefaria library: public domain and CC BY texts and translations of Tanakh, Mishnah, Talmud, Midrash and commentary, in Hebrew, Aramaic and English, each cited with its version and license. Versions under other licenses are not in this collection; it gives no halachic ruling; cite the passage and the version it returns.",
+    sealed_line="Sealed September 2026; about 183,000 documents; nothing is added, changed or removed, and a question outside the collection is answered \"not in this corpus\".",
+    reads=[("Scripture.", "", "The Westminster Leningrad Codex (public domain) with Open Scriptures morphology (CC BY): every word tagged, so a form finds its root."),
+           ("The Sefaria library.", "", "Every version whose license is public domain or CC BY: Tanakh, Mishnah, Talmud, Midrash and commentary, in Hebrew, Aramaic and English, each cited with its version and license."),
+           ("What stays out.", "", "Versions under other licenses, and anything the registry files as research-only. The card names the cut; the door serves nothing else.")],
+    wall_groups=[
+        ("Trace a comment", ["Where does Rashi comment on this verse, and which other commentator disagrees?", "Which Mishnah does this Gemara discuss, and where is the ruling first stated?", "Which later source cites this passage, and does it quote it exactly?"]),
+        ("Editions and versions", ["Which editions of this commentary does the library hold, under which license, and where do their wordings differ?", "Does the English follow the Hebrew here, or does the translator add a gloss?"]),
+        ("Across the shelf", ["Where does this phrase first appear in Tanakh, and where does the Talmud take it up?", "What do the Midrash and the Rishonim make of the same verse, side by side?", "What does the collection not contain on this question?"]),
+    ],
+    wont=[("It gives no ruling.", "Halacha is not retrieval. The door cites the passage, the version and the license and stops there."),
+          ("Rights are on every record.", "A text under a license the collection cannot carry is simply not inside, and the card says so."),
+          ("\"Not in this corpus\" is an answer.", "A question the collection cannot settle is answered with that sentence and the searches that were run."),
+          ("The seal is the date.", "Nothing is added, changed or removed after the seal; a new seal means a new date on this page.")],
+    host="judaism.docenta.ai", mcp_name="docenta-judaism", word="judaism",
+    plug_lead="The sealed collection above is served as an MCP server at <strong>https://judaism.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asked the question above, and reads the passage back with its version.",
+)
+
+DOORS["christianity"] = dict(
+    title="docenta for Christianity - scripture and classical commentary, live",
+    desc="A sealed, live collection of Christian scripture and classical commentary in the public domain or under open licenses: the Berean and World English Bibles, Matthew Henry, sixty-three volumes of Spurgeon, the SBL Greek New Testament, the Patristic Text Archive and the First Thousand Years of Greek. Every answer names the passage, the translation and the volume.",
+    placard="Exhibit · docenta for Christianity · Scripture and classical commentary",
+    h1="Ask the shelf. <em>Get the verse, the commentary and the sermon.</em>",
+    sub="The Berean Standard Bible and the World English Bible chapter by chapter, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament, the Patristic Text Archive and the First Thousand Years of Greek in their original languages: 51,876 documents, English first, Greek where the source is Greek. <strong>Nothing from the Christian Classics Ethereal Library and no denominational statements</strong>; it gives no pastoral advice.",
+    chip_qs=["What does Matthew Henry make of Psalm 23:4, and did Spurgeon preach on that verse?", "Which translations render this verse differently, and how?", "Which church father first uses this term, and where?", "What does the Greek say here?", "What does the collection not contain?"],
+    demo=answer(
+        "what does Matthew Henry make of Psalm 23:4, and did Spurgeon ever preach on that verse?",
+        "Henry reads the psalm as <strong>three comfortable premises and three comfortable conclusions</strong>: from God's being his shepherd David infers that he shall want no good (verse 1), that he need <strong>fear no evil</strong> (verse 4), and that God will never leave him (verse 6), with an eye not only to providence but to grace received by a lively faith. Spurgeon did preach on the verse: <strong>Sermon 1595, \"The Valley of the Shadow of Death\"</strong>, in volume 27, opens with the confession that he had laid the text by for his own last hours and found he needed to eat this heavenly loaf at once, a tempest having howled around him some days before. The concise Henry says the same in a paragraph.",
+        [("Psalm 23 · Matthew Henry's Complete Commentary, volume 3 · CC0", "\"From three very comfortable premises David, in this psalm, draws three very comfortable conclusions\"; \"he needed to fear no evil (Ps 23:4)\""),
+         ("Psalm 23 · Matthew Henry's Concise Commentary · CC0", "the same reading in short"),
+         ("Sermon 1595, The Valley Of The Shadow Of Death · Spurgeon, volume 27 · CC0", "on Psalm 23:4: \"Do you know I had laid this text by? ... The other day I found that I needed to eat this heavenly loaf at once\""),
+         ("Sermon 2448, Herein Is Love · Spurgeon, volume 42 · CC0", "passes through verses 3 and 4 of the psalm in an exposition")],
+        None,
+        "The sermon's preaching date is not in the text as sealed; the volume number is. A first pass surfaced Sermon 2260, which quotes the connection of a verse to its neighbour, and reading it showed the verse is Psalm 147:3, not 23:4; it was dropped. The answer names what was read, not only what was found.",
+        "evidence over 20 passages, then two searches and three reads · Henry complete, Henry concise and two sermons kept · one false lead read and dropped",
+        "Real, from the sealed Christianity collection, asked through the same engine the door serves, on 12 October 2026. The commentary, the sermon and the verse are one shelf; the false lead was read and named, not hidden.",
+        title="docenta over MCP · the Christianity collection",
+    ),
+    card="Christian scripture and classical commentary in the public domain or under open licenses: the Berean Standard Bible and the World English Bible chapter by chapter, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament, the Patristic Text Archive and the First Thousand Years of Greek in their original languages. English first, Greek where the source is Greek. It holds nothing from the Christian Classics Ethereal Library and no denominational statements, and gives no pastoral advice; cite the passage or the volume it returns.",
+    sealed_line="Sealed 2026-09-21; 51,876 documents; nothing is added, changed or removed, and a question outside the collection is answered \"not in this corpus\".",
+    reads=[("Scripture, two ways.", "", "The Berean Standard Bible (public domain, 2023 release) and the World English Bible (public domain), chapter by chapter, so a verse is cited to its translation."),
+           ("Commentary and sermons.", "", "Matthew Henry complete and concise (CC0), Spurgeon's sermons in sixty-three volumes (CC0): the exposition and the pulpit on the same verse, found together."),
+           ("The Greek shelf.", "", "The SBL Greek New Testament, the Patristic Text Archive (CC BY-SA) and the First Thousand Years of Greek (CC BY-SA), in the original languages, English where the source is English.")],
+    wall_groups=[
+        ("Verse to shelf", ["What does Matthew Henry say on this chapter, and what does Spurgeon preach on it?", "Which sermons take this verse as their text, and in which volumes?", "Which church father first uses this term, and where?"]),
+        ("Translations", ["How do the Berean and the World English render this verse, and where do they differ?", "What does the Greek say here, and which English word carries it?"]),
+        ("Across time", ["How does a patristic reading of this passage compare with Henry's?", "Where does the same figure appear across Philo, the fathers and the sermons?", "What does the collection not contain on this question?"]),
+    ],
+    wont=[("It gives no pastoral advice.", "The door cites the passage, the commentary and the volume; counsel is not retrieval."),
+          ("Nothing from the Christian Classics Ethereal Library.", "Its terms keep it out; the card says so, and the door serves nothing else."),
+          ("A false lead is named, not hidden.", "What was read and dropped is part of the answer, so the next question starts where this one stopped."),
+          ("The seal is the date.", "Nothing is added, changed or removed after the seal; a new seal means a new date on this page.")],
+    host="christianity.docenta.ai", mcp_name="docenta-christianity", word="christianity",
+    plug_lead="The sealed collection above is served as an MCP server at <strong>https://christianity.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asked the question above, and reads the passage back with its translation and volume.",
+)
+
+DOORS["islam"] = dict(
+    title="docenta for Islam - the Koran in six translations and Arabic, and the hadith, live",
+    desc="A sealed, live collection: the Koran in six English translations and in Arabic, sura by sura, and the ten hadith collections in English and Arabic, every hadith under its number with its gradings. No tafsir; every answer names the sura and verse, or the collection, book and number.",
+    placard="Exhibit · docenta for Islam · The Koran in six translations and Arabic, and the hadith",
+    h1="Ask the text. <em>Get the sura, the verse, the translator, and the hadith by its number.</em>",
+    sub="The Koran in six English translations, Pickthall, Yusuf Ali and Shakir, George Sale (1734), J. M. Rodwell (1861) and E. H. Palmer (1880), and in Arabic with and without diacritics, one record per sura per edition; and the ten hadith collections in English and Arabic, Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasai, Ibn Majah, Malik's Muwatta and the three Forty Hadith, every hadith under its number with its gradings. <strong>No tafsir</strong>, no religious ruling; the rights in the hadith texts are stated as unresolved on every record.",
+    chip_qs=["How do the six translations render Surah 112:1, and what is the Arabic?", "Which hadith say what Al-Ikhlas is worth, and do the graders agree?", "Where does the Koran treat this theme, sura by sura?", "Which translator uses this word, and where?", "What does the collection not contain?"],
+    demo=answer(
+        "how do the six English translations render the first verse of Surah 112, what is the Arabic, and which hadith say what the surah is worth?",
+        "Six renderings of four Arabic words, <strong>قُلْ هُوَ اللَّهُ أَحَدٌ</strong>: Pickthall \"Say: He is Allah, the One!\", Yusuf Ali \"Say: He is Allah, the One and Only\", Shakir \"Say: He, Allah, is One\", Sale (1734) \"Say, God is one God\", Rodwell (1861) \"SAY: He is God alone\", Palmer (1880) \"Say, He is God alone\". The hadith on the surah's worth: Bukhari, Book 66 (Virtues of the Qur'an), narrated Abu Said al-Khudri, a man heard another recite it repeatedly and the Prophet said it is <strong>equal to one third of the Qur'an</strong>; Muslim, Book 6, Hadith 1889, Abu Huraira, the same measure. Ibn Majah, Book 5, has it recited with Al-Kafirun in the two rak'ah of Fajr, graded Sahih by Al-Albani; Tirmidhi, Book 9, in the two rak'ah of Tawaf; Nasai, Book 20, in the night prayer, and there <strong>the graders disagree</strong>: Daif isnad per Abu Ghuddah and Al-Albani, Hasan per Zubair Ali Zai.",
+        [("Koran, Sura 112 · six editions: Pickthall, Yusuf Ali, Shakir (Gutenberg 16955), Sale, Rodwell, Palmer · public domain", "verse 1 in each, one record per sura per edition"),
+         ("Koran, Sura 112 · the Arabic text, with and without diacritics · Arabic Wikisource, CC BY-SA", "قُلْ هُوَ اللَّهُ أَحَدٌ"),
+         ("Sahih al-Bukhari, Book 66 · Virtues of the Qur'an · rights unresolved", "\"equal to one third of the Qur'an\", narrated Abu Said Al-Khudri"),
+         ("Sahih Muslim, Book 6 · Hadith 1889 · rights unresolved", "Abu Huraira: \"I am going to recite before you one-third of the Qur'an\""),
+         ("Sunan Ibn Majah, Book 5 · rights unresolved", "the two rak'ah of Fajr; grading Sahih (Al-Albani)"),
+         ("Sunan an-Nasai, Book 20 · rights unresolved", "the night prayer; gradings Daif isnad (Abu Ghuddah, Al-Albani), Hasan (Zubair Ali Zai)")],
+        "The graders disagree on the Nasai narration: Daif isnad for two of them, Hasan for the third. Both verdicts are on the record and both are shown; the door does not pick one.",
+        "No tafsir is in the collection, so what the surah means is not a question it answers; what each translator wrote and what each collection narrates is. The rights in the hadith texts are unresolved and every such record says so.",
+        "lexical lane over origin:islam · 6 translations, 2 Arabic texts and 9 hadith records · every hadith cited with its collection, book and gradings",
+        "Real, from the sealed Islam collection, asked through the same engine the door serves, on 12 October 2026. Six translators, the Arabic, five collections and a disagreement among the graders, on one answer with the number of every hadith.",
+        title="docenta over MCP · the Islam collection",
+    ),
+    card="The Koran in six English translations (Pickthall, Yusuf Ali and Shakir from Project Gutenberg eBook 16955; George Sale 1734, J. M. Rodwell 1861 and E. H. Palmer 1880) and in Arabic (the text of Arabic Wikisource, with and without diacritics), one record per sura per edition; and the ten hadith collections of the hadith-api project in English and Arabic (Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasai, Ibn Majah, Malik's Muwatta and the three Forty Hadith), one record per book with every hadith under its number. The rights in the hadith texts are not stated by their source and every such record says so. No tafsir is in this collection; it gives no religious ruling; cite the sura and the verse, or the collection, the book and the hadith number it returns.",
+    sealed_line="Sealed 2026-09-21; 2,036 documents; nothing is added, changed or removed, and a question outside the collection is answered \"not in this corpus\".",
+    reads=[("Six translations and the Arabic.", "", "Pickthall, Yusuf Ali, Shakir, Sale, Rodwell and Palmer, one record per sura per edition, and the Arabic text with and without diacritics, as people type it."),
+           ("Ten hadith collections.", "", "Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasai, Ibn Majah, Malik's Muwatta and the three Forty Hadith, in English and Arabic, every hadith under its number with its gradings."),
+           ("What the card promises.", "", "The translator named on every verse, the collection and number on every hadith, the rights stated as unresolved where they are, and \"not in this corpus\" for everything else.")],
+    wall_groups=[
+        ("Across editions", ["How do the six translations render this verse, and where do they part?", "Which translator uses this word, and where else?", "What is the Arabic, and does the diacritic text differ from the typed one?"]),
+        ("The hadith", ["Which collections carry this narration, under which numbers, and do the graders agree?", "Which hadith mention this sura, and in which prayers?", "Where does a Forty Hadith collection quote a longer one?"]),
+        ("Limits", ["What does this collection not contain?", "Which records carry rights the source did not state?"]),
+    ],
+    wont=[("It gives no ruling and holds no tafsir.", "What a verse means is not a question this collection answers; what each translator wrote and what each collection narrates is."),
+          ("Gradings disagree, and both are shown.", "A narration graded Daif by one scholar and Hasan by another is cited with both; the door does not pick."),
+          ("Rights are stated as they are.", "The hadith texts' source states no rights; every such record says so, and the card says so."),
+          ("The seal is the date.", "Nothing is added, changed or removed after the seal; a new seal means a new date on this page.")],
+    host="islam.docenta.ai", mcp_name="docenta-islam", word="islam",
+    plug_lead="The sealed collection above is served as an MCP server at <strong>https://islam.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asked the question above, and reads the verse back with its translator, or the hadith with its number.",
+)
+
+DOORS["faith"] = dict(
+    title="docenta for faith - the three traditions together, live",
+    desc="The union of the Judaism, Christianity and Islam collections, 237,496 documents, nothing re-weighted: one question, three scriptures, each answer cited to its own tradition and counted by origin. Live behind a door.",
+    placard="Exhibit · docenta for faith · The three traditions together",
+    h1="One question, three scriptures, <em>each in its own words, and counted</em>.",
+    sub="The union of the Judaism, Christianity and Islam collections, each described on its own card: 237,496 documents, Judaism 77.3 percent, Christianity 21.8 percent, Islam 0.9 percent, as uneven as the open sources are and nothing re-weighted. Every answer says how its matches divide among the three, and a question can be put to one of them alone. <strong>Nothing is blended into a single voice.</strong>",
+    chip_qs=["Where do the three scriptures tell of Joseph sold by his brothers?", "Do the commentators agree who sold him?", "How do the traditions' commentators read this shared figure?", "Which tradition's text is this phrase from, and where else does it appear?", "What does each collection not contain?"],
+    demo=answer(
+        "where do the three scriptures tell of Joseph sold by his brothers, in their own words, and do the commentators agree who sold him?",
+        "The search counts itself before it answers: <strong>20 matches from Judaism, 18 from Christianity, 2 from Islam</strong>. Genesis 37:28 in three Jewish editions (the Sefaria Community Translation, the Modernized JPS 1917, the Rashi Chumash) and two Christian ones (Berean, World English): Midianite merchants pass, the brothers pull Joseph from the pit, he is sold to the Ishmaelites for twenty pieces of silver and brought to Egypt. In Islam the story is Sura 12, Yusuf Ali: the dream of the sun, the moon and eleven stars, and the father's warning not to tell the brothers. On <strong>who sold him</strong> the commentators do not agree, and the answer shows both: Rashi reads the brothers as the sellers, to the Ishmaelites who sold him on to the Midianites; Da'at Zekenim reads two separate groups and the Midianites hauling him from the pit. Philo's treatise On Joseph and Spurgeon's Sermon 1610, A Miniature Portrait of Joseph, stand beside them on the Christian shelf.",
+        [("Genesis 37 · Sefaria Community Translation · CC0 · origin:judaism", "verse 28: \"They sold Joseph for twenty pieces of silver to the Ishmaelites, who brought Joseph to Egypt\""),
+         ("Genesis 37 · Berean Standard Bible · public domain · origin:christianity", "\"Joseph Sold into Egypt\", verses 12 to 28"),
+         ("Koran, Sura 12 · Abdullah Yusuf Ali · public domain · origin:islam", "verses 4 and 5: the dream, and \"relate not thy vision to thy brothers\""),
+         ("Da'at Zekenim on Genesis 37 · tr. Eliyahu Munk · CC BY · origin:judaism", "\"According to Rashi, the subject here are the brothers ... There were two separate groups of people\""),
+         ("On Joseph · Philo Judaeus · First Thousand Years of Greek · CC BY-SA · origin:christianity", "\"the eleven brethren drew Joseph up out of the pit and sold him to them\""),
+         ("Sermon 1610, A Miniature Portrait Of Joseph · Spurgeon, volume 27 · CC0 · origin:christianity", "\"the Patriarchs, moved with envy, sold Joseph into Egypt\"")],
+        "Rashi against Da'at Zekenim on the subject of \"they sold\": brothers, or Midianites. Both readings are on the page, cited to their edition; the door does not decide between them.",
+        "Islam's share of this answer is the sura alone: the hadith collections mention Yusuf only in passing (Bukhari, Book 78). The Arabic of Sura 12 is one hop away; this answer read the English.",
+        "lexical lane over the union · 39 matches counted by origin · 6 kept across three traditions · the commentary conflict surfaced by the second question",
+        "Real, from the sealed faith collection, asked through the same engine the door serves, on 12 October 2026. The count by origin, the three scriptures in their own editions and a commentary disagreement held open: a retrieval box returns a passage; the docent returns the shelf.",
+        title="docenta over MCP · the faith collection",
+    ),
+    card="Scripture, classical commentary and interpretive tradition of Judaism, Christianity and Islam, in the public domain or under open licenses: the union of the judaism, christianity and islam collections, each described on its own card. What it is made of, by documents: Judaism 183,589 documents (77.3 percent), Christianity 51,876 documents (21.8 percent), Islam 2,036 documents (0.9 percent). The shares are as uneven as the open sources are and nothing is re-weighted: every result page's scope_counts say how a question's matches divide among origin:judaism, origin:christianity and origin:islam, and a question can be put to one of them (scopes: origin:islam). It gives no religious ruling; cite the passage, the version or the volume it returns.",
+    sealed_line="Sealed 2026-09-21 from the three sealed collections; 237,496 documents; nothing is added, changed or removed.",
+    reads=[("Three collections, one door.", "", "Everything the Judaism, Christianity and Islam doors hold, served together, with the tradition named on every answer and the count by origin on every page."),
+           ("Kept apart inside.", "", "Each source stays cited to its own tradition, version and license; a question that spans them returns three answers, not one blend, and scopes: origin:islam asks one alone."),
+           ("The same limits.", "", "No religious ruling, nothing under a restrictive license, and \"not in this corpus\" when a tradition's cut lacks the text.")],
+    wall_groups=[
+        ("The shared story", ["Where do the three scriptures tell this story, in their own words?", "Which tradition's text is this phrase from, and where else does it appear?", "How does each tradition's commentary read the same figure?"]),
+        ("Counted, not blended", ["How do the matches for this question divide among the three, and why?", "Put the question to one tradition alone: what changes?"]),
+        ("Disagreement and gaps", ["Where do two commentators in one tradition read the same verse differently?", "What does each collection not contain on this question?"]),
+    ],
+    wont=[("It gives no ruling in any tradition.", "The door cites the passage, the version or the volume and stops there."),
+          ("The shares are uneven and said so.", "Judaism holds 77 percent of the documents; the count on every page keeps that visible instead of hiding it in a ranking."),
+          ("A disagreement stays open.", "Two readings of one verse are shown side by side, cited to their editions; the docent does not decide between them."),
+          ("The seal is the date.", "Made from the three sealed collections; a new seal of any of them means a new seal here, and a new date on this page.")],
+    host="faith.docenta.ai", mcp_name="docenta-faith", word="faith",
+    plug_lead="The sealed union above is served as an MCP server at <strong>https://faith.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks all three traditions at once, reads the count by origin, and can ask one of them alone.",
+)
+
+DOORS["sleep"] = dict(
+    title="docenta for sleep research - the open corpus, live",
+    desc="A sealed, live collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations and one AHRQ evidence report, 77,899 texts. Ask which trials tested what, and where the papers and the review disagree; every answer cites the paper or the registration.",
+    placard="Exhibit · docenta for sleep research · The open corpus",
+    h1="Ask the literature. <em>Get the trial, the paper and the page.</em>",
+    sub="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and one AHRQ evidence report from the NCBI Bookshelf, 77,899 texts, every one carrying its license and source. <strong>Research literature, not medical advice</strong>; no subscription literature, no abstracts of closed articles, no clinical practice guidelines.",
+    chip_qs=["Which trials tested melatonin for insomnia in older adults, and what did they measure?", "Does the meta-analysis agree with the trials it pooled?", "Which registration belongs to this paper?", "What is the earliest paper here making this claim, and did a replication fail?", "What does the collection not contain?"],
+    demo=answer(
+        "which trials tested melatonin for insomnia in older adults, what did they measure, and does the meta-analysis agree?",
+        "The registry and the papers answer together. <strong>NCT00230737</strong>, Melatonin Randomized Trial for Insomnia in the Elderly: phase 2, completed, 27 enrolled, 0.4 mg against 4.0 mg, for sleep initiation and maintenance disorders. <strong>NCT07695246</strong>: cognitive behavioural therapy for insomnia with and without adjunct melatonin in older adults, randomised, double-blind, placebo-controlled, measuring sleep, circadian outcomes and daytime functioning. The largest paper, <strong>Wade and colleagues</strong>, nightly prolonged-release melatonin for six months: 791 randomized, 722 analysed, patients 55 and older, sleep latency shortened by 15.6 minutes in the 65 to 80 group (95 percent CI minus 25.3 to minus 6.0). The <strong>systematic review and meta-analysis</strong> of melatonin and ramelteon in older adults with chronic insomnia searched 1990 to June 2021, the year the Beers Criteria chose, and pools these designs. One hit was dropped on reading: the tasimelteon phase III trial tests a receptor agonist, not melatonin.",
+        [("NCT00230737 · ClinicalTrials.gov registration · COMPLETED, PHASE2, enrollment 27", "Melatonin Randomized Trial for Insomnia in the Elderly: melatonin 0.4 mg, 4.0 mg"),
+         ("NCT07695246 · ClinicalTrials.gov registration", "CBT-I with adjuvant melatonin in older adults with chronic insomnia, randomised, double-blind, placebo-controlled"),
+         ("Wade et al. · PMC open access · nightly prolonged release melatonin for 6 months", "\"the observed effect on sleep latency for patients aged 65-80 years (-15.6 min; 95% CI -25.3 to -6.0)\""),
+         ("Use of Melatonin and/or Ramelteon for the Treatment of Insomnia in Older Adults · systematic review and meta-analysis · PMC open access", "\"searches were conducted from 1 January 1990 to 20 June 2021\"; Beers Criteria as the start"),
+         ("Synnott et al. · tasimelteon phase III · PMC open access", "read and dropped: a melatonin receptor agonist, not melatonin")],
+        None,
+        "The primary outcome measure of NCT00230737 is on the registration, which this answer cited by title and arms; the endpoint line was not read. Whether the meta-analysis pooled Wade's trial is a question for its tables, one read away.",
+        "lexical lane over origin:sleep · 497 documents held every term · 2 registrations, 3 papers kept, 1 read and dropped",
+        "Real, from the sealed sleep collection, asked through the same engine the door serves, on 12 October 2026. Registrations and full texts on one answer, with the arms, the numbers and the one that did not belong.",
+        title="docenta over MCP · the sleep collection",
+    ),
+    card="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and one AHRQ evidence report from the NCBI Bookshelf (a US Government work). Every text is openly licensed or in the public domain and carries its licence and source. It holds no subscription literature, no abstracts of closed articles and no clinical practice guidelines; it is research literature, not medical advice.",
+    sealed_line="Sealed 2026-09-22; 77,899 texts; nothing is added, changed or removed, and a question outside the collection is answered \"not in this corpus\".",
+    reads=[("Full texts, openly licensed.", "", "PubMed Central articles under CC0, CC BY and CC BY-SA, normalized with their license flags, cited to the passage."),
+           ("Trial registrations.", "", "ClinicalTrials.gov records with status, phase, enrollment, conditions and arms, so \"which trial tested what\" is answered from the registry and tied to the papers that report it."),
+           ("What stays out.", "", "Abstract-only records, author manuscripts and publisher open access under other licenses, the clinical practice guidelines, and the literature indexes that need the reader's own subscription.")],
+    wall_groups=[
+        ("Trials and papers", ["Which trials registered this intervention, with which arms, and which papers report them?", "Which studies report this effect at this dose, and where do they disagree?", "Which registration belongs to this paper?"]),
+        ("Over time", ["What is the earliest paper here making this claim, and did a replication fail?", "Which review pooled these trials, and what window did it search?"]),
+        ("Evidence and gaps", ["Which papers cite the same underlying experiment rather than providing independent evidence?", "What does the collection not contain on this question?"]),
+    ],
+    wont=[("It is research literature, not medical advice.", "The door cites the paper, the page and the registration; what to do about it is not retrieval."),
+          ("A near miss is read and dropped.", "A receptor agonist trial surfaced for a melatonin question; reading it put it out, and the answer says so."),
+          ("The window is stated.", "A review's search dates are part of its citation, because a 2021 window cannot pool a 2026 trial."),
+          ("The seal is the date.", "Nothing is added, changed or removed after the seal; a new seal means a new date on this page.")],
+    host="sleep.docenta.ai", mcp_name="docenta-sleep", word="sleep",
+    plug_lead="The sealed collection above is served as an MCP server at <strong>https://sleep.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asked the question above, and reads the paper or the registration back with its license.",
+)
+
 PLACEHOLDERS = {
-    "judaism": dict(
-        title="docenta for Judaism - Tanakh, Mishnah, Talmud and commentary",
-        desc="A sealed collection of Judaism's scripture and commentary in the public domain or under open licenses, answering with the passage and the version. In preparation; the door opens when the collection is sealed.",
-        placard="Exhibit · docenta for Judaism · Tanakh, Mishnah, Talmud and commentary",
-        h1="Ask the library. <em>Get the passage and the version.</em>",
-        sub="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions and translations of the Sefaria library: Tanakh, Mishnah, Talmud and commentary, cited to the passage and the version it comes from. <strong>Versions under other licenses are not in this collection, and it gives no halachic ruling.</strong>",
-        chip_qs=["Where does Rashi comment on this verse, and which other commentary disagrees?", "Which tractate discusses this ruling, and what does the Mishnah say first?", "Which versions of this passage does the library hold, and under which license?", "Where does this phrase first appear, and where is it cited later?"],
-        card="The Hebrew Bible in the Westminster Leningrad Codex with Open Scriptures morphology, and the openly licensed versions of the Sefaria library (public domain and CC BY texts and translations of Tanakh, Mishnah, Talmud and commentary). Versions under other licenses are not in this collection; it gives no halachic ruling; cite the passage and version it returns.",
-        reads=[("Scripture.", "", "The Westminster Leningrad Codex (public domain) with Open Scriptures morphology (CC BY): every word tagged."),
-               ("The Sefaria library.", "", "Every version whose license is public domain or CC BY: Tanakh, Mishnah, Talmud, Midrash and commentary, in Hebrew, Aramaic and English, each cited with its version."),
-               ("What stays out.", "", "Versions under other licenses, and anything the registry files as research-only. The card names the cut; the door serves nothing else.")],
-        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
-        note="The sources are collected. The version whitelist that keeps only the openly licensed texts is the step in progress; the collection is sealed and the door opens after it.",
-    ),
-    "christianity": dict(
-        title="docenta for Christianity - scripture and classical commentary",
-        desc="A sealed collection of Christian scripture and classical commentary in the public domain or under open licenses, answering with the passage, the translation and the volume. In preparation; the door opens when the collection is sealed.",
-        placard="Exhibit · docenta for Christianity · Scripture and classical commentary",
-        h1="Ask the shelf. <em>Get the verse, the translation and the volume.</em>",
-        sub="The Berean Standard Bible and the Majority Standard Bible, the World English Bible, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament with its apparatus, STEPBible's tagged Hebrew and Greek texts and lexicons, the Patristic Text Archive and the First Thousand Years of Greek. <strong>English first, Greek and Hebrew where the source is tagged.</strong>",
-        chip_qs=["Which translations render this verse differently, and how?", "What does Matthew Henry say on this chapter, and what does Spurgeon preach on it?", "Which patristic text first uses this term, and where?", "What does the Greek say here, and how does the apparatus read?"],
-        card="Christian scripture and classical commentary in the public domain or under open licenses: the Berean Standard Bible and the Majority Standard Bible, the World English Bible, Matthew Henry's complete and concise commentaries, sixty-three volumes of Spurgeon's sermons, the SBL Greek New Testament with its apparatus, STEPBible's tagged Hebrew and Greek texts and lexicons, the Patristic Text Archive and the First Thousand Years of Greek. English first, Greek and Hebrew where the source is tagged. It holds no catechisms or denominational statements beyond the sources named, nothing from the Christian Classics Ethereal Library, and gives no pastoral advice; cite the passage or volume it returns.",
-        reads=[("Scripture, several ways.", "", "Berean and Majority Standard (CC0), World English (public domain), the SBL Greek New Testament with apparatus (CC BY), STEPBible's tagged texts and lexicons (CC BY)."),
-               ("Commentary and sermons.", "", "Matthew Henry complete and concise (CC0), Spurgeon's sermons in sixty-three volumes (CC0), the Patristic Text Archive (CC BY-SA, Zenodo release CC0), the First Thousand Years of Greek (CC BY-SA)."),
-               ("What stays out.", "", "The Christian Classics Ethereal Library (its terms), and every source filed as mixed by version until each file's license is read.")],
-        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
-        note="The sources are collected and their rights are filed; the collection is next in the sequence to be built and sealed, then the door opens.",
-    ),
-    "islam": dict(
-        title="docenta for Islam - the Koran in three English translations",
-        desc="A sealed collection of the Koran in three public-domain English translations, cited to the surah and verse. In preparation; the door opens when the collection is sealed.",
-        placard="Exhibit · docenta for Islam · The Koran in three English translations",
-        h1="Ask the text. <em>Get the surah, the verse and the translator.</em>",
-        sub="The Koran in three English translations, Pickthall, Yusuf Ali and Shakir, side by side and cited to the surah and verse. <strong>No Arabic text, no hadith and no tafsir are in this cut</strong>: the Arabic corpora and the hadith collections wait on their rights, and the card will say so until they do.",
-        chip_qs=["How do the three translations render this verse?", "Where does the Koran treat this theme, surah by surah?", "Which translator uses this word, and where?", "What does this cut not contain?"],
-        card="The Koran in three English translations (Pickthall, Yusuf Ali, Shakir; Project Gutenberg). No Arabic text, no hadith and no tafsir are in this collection; it gives no religious ruling; cite the surah and verse it returns.",
-        reads=[("Three translations.", "", "Pickthall, Yusuf Ali and Shakir, from Project Gutenberg, public domain in the United States, aligned verse by verse."),
-               ("Waiting on rights.", "", "The Arabic text and translations from Tanzil, the OpenITI corpus and the Quranic Arabic Corpus are filed research-only under their terms; the hadith mirrors are quarantined until their text rights are resolved."),
-               ("What the card promises.", "", "Exactly what is inside, with the translator named on every answer, and \"not in this corpus\" for everything else.")],
-        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
-        note="The public cut is small by design until the rights of the Arabic sources are settled; it is built after the Christianity collection.",
-    ),
-    "faith": dict(
-        title="docenta for faith - the three traditions together",
-        desc="The union of the Judaism, Christianity and Islam collections: the same theme in each tradition's own words, each answer cited to its own scripture. In preparation; the door opens when the three are sealed.",
-        placard="Exhibit · docenta for faith · The three traditions together",
-        h1="One question, three scriptures, <em>each in its own words</em>.",
-        sub="The union of the Judaism, Christianity and Islam collections, each described on its own card: scripture, classical commentary and interpretive tradition in the public domain or under open licenses. An answer names the tradition and cites its own source; <strong>nothing is blended into a single voice</strong>.",
-        chip_qs=["Where do the three scriptures treat this theme, in their own words?", "How do the traditions' commentators read this shared figure?", "Which tradition's text is this phrase from, and where else does it appear?", "What does each collection not contain?"],
-        card="Scripture, classical commentary and interpretive tradition of Judaism, Christianity and Islam, in the public domain or under open licenses: the union of the judaism, christianity and islam collections, each described on its own card. It gives no religious ruling; cite the passage, version or volume it returns.",
-        reads=[("Three collections, one door.", "", "Everything the Judaism, Christianity and Islam doors hold, served together, with the tradition named on every answer."),
-               ("Kept apart inside.", "", "Each source stays cited to its own tradition and version; a question that spans them returns three answers, not one blend."),
-               ("The same limits.", "", "No religious ruling, nothing under a restrictive license, and \"not in this corpus\" when a tradition's cut lacks the text.")],
-        status=[("collected", True), ("rights sorted", False), ("sealed", False), ("door", False)],
-        note="Built last, from the three sealed collections.",
-    ),
-    "sleep": dict(
-        title="docenta for sleep research - the open corpus",
-        desc="A sealed collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines. In preparation; the door opens when the collection is sealed.",
-        placard="Exhibit · docenta for sleep research · The open corpus",
-        h1="Ask the literature. <em>Get the paper, the page and the trial.</em>",
-        sub="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. <strong>Abstract-only records and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice.</strong>",
-        chip_qs=["Which studies report this effect at this dose, and where do they disagree?", "Which trials registered this intervention, and what did they measure?", "Which guideline says this, and which paper does it cite?", "What is the earliest paper here making this claim, and did a replication fail?"],
-        card="Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. Abstract-only records, author manuscripts and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice; cite the article or trial it returns and read it at its DOI or registry entry.",
-        reads=[("Full texts, openly licensed.", "", "PubMed Central articles under CC0, CC BY and CC BY-SA, normalized with their license flags, cited to the page."),
-               ("Trials, books, guidelines.", "", "ClinicalTrials.gov registrations tied to the papers that report them; the Bookshelf titles and clinical guidelines that carry an open license."),
-               ("What stays out.", "", "Abstract-only records, author manuscripts and publisher open access under other licenses, and the literature indexes that need the reader's own subscription.")],
-        status=[("collected", True), ("rights sorted", True), ("sealed", False), ("door", False)],
-        note="Collected and normalized with license flags; the collection is first in the sequence to be built and sealed, then the door opens.",
-    ),
     "diabetes": dict(
         title="docenta for diabetes research - the open corpus",
         desc="A sealed collection of open-access human diabetes research in the same shape as the sleep collection. In preparation; the collection is being gathered.",
@@ -1142,6 +1349,13 @@ def main():
         path = os.path.join(d, "index.html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(placeholder(slug, **spec))
+        written.append(path)
+    for slug, spec in DOORS.items():
+        d = os.path.join(ROOT, "for", slug)
+        os.makedirs(d, exist_ok=True)
+        path = os.path.join(d, "index.html")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(door_page(slug, **spec))
         written.append(path)
     for slug, spec in PAGES.items():
         d = os.path.join(ROOT, "for", slug)

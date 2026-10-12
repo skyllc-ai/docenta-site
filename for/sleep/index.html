@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>docenta for sleep research - the open corpus</title>
-<meta name="description" content="A sealed collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines. In preparation; the door opens when the collection is sealed.">
+<title>docenta for sleep research - the open corpus, live</title>
+<meta name="description" content="A sealed, live collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations and one AHRQ evidence report, 77,899 texts. Ask which trials tested what, and where the papers and the review disagree; every answer cites the paper or the registration.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
-<meta property="og:title" content="docenta for sleep research - the open corpus">
-<meta property="og:description" content="A sealed collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations, open Bookshelf titles and guidelines. In preparation; the door opens when the collection is sealed.">
+<meta property="og:title" content="docenta for sleep research - the open corpus, live">
+<meta property="og:description" content="A sealed, live collection of open-access sleep research: PubMed Central full texts under open licenses, ClinicalTrials.gov registrations and one AHRQ evidence report, 77,899 texts. Ask which trials tested what, and where the papers and the review disagree; every answer cites the paper or the registration.">
 <meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://docenta.ai/for/sleep/">
@@ -316,20 +316,75 @@ body{zoom:var(--zoom)}
 <div class="wrap" id="main">
 
   <header>
-    <div class="placard">Exhibit · docenta for sleep research · The open corpus <span class="soon">door in preparation</span></div>
-    <h1>Ask the literature. <em>Get the paper, the page and the trial.</em></h1>
-    <p class="sub">Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. <strong>Abstract-only records and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice.</strong></p>
-<div class="chips"><a class="chip" href="#answer">Which studies report this effect at this dose, and where do they disagree?</a><a class="chip" href="#answer">Which trials registered this intervention, and what did they measure?</a><a class="chip" href="#answer">Which guideline says this, and which paper does it cite?</a><a class="chip" href="#answer">What is the earliest paper here making this claim, and did a replication fail?</a></div>
-    <div class="status"><div class="done"><b>collected</b>done</div><div class="done"><b>rights sorted</b>done</div><div class=""><b>sealed</b>next</div><div class=""><b>door</b>next</div></div>
-    <p class="term-note">Collected and normalized with license flags; the collection is first in the sequence to be built and sealed, then the door opens.</p>
+    <div class="placard">Exhibit · docenta for sleep research · The open corpus <a class="live" href="#plug">live door</a></div>
+    <h1>Ask the literature. <em>Get the trial, the paper and the page.</em></h1>
+    <p class="sub">Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and one AHRQ evidence report from the NCBI Bookshelf, 77,899 texts, every one carrying its license and source. <strong>Research literature, not medical advice</strong>; no subscription literature, no abstracts of closed articles, no clinical practice guidelines.</p>
+<div class="chips"><a class="chip" href="#answer">Which trials tested melatonin for insomnia in older adults, and what did they measure?</a><a class="chip" href="#answer">Does the meta-analysis agree with the trials it pooled?</a><a class="chip" href="#answer">Which registration belongs to this paper?</a><a class="chip" href="#answer">What is the earliest paper here making this claim, and did a replication fail?</a><a class="chip" href="#answer">What does the collection not contain?</a></div>
+    <div class="terminal" id="answer" aria-label="An answer, shown as it was reconstructed">
+      <div class="term-bar"><span class="dot r"></span><span class="dot"></span><span class="dot"></span><span class="term-title">docenta over MCP · the sleep collection</span></div>
+      <div class="term-body">
+        <div class="q">which trials tested melatonin for insomnia in older adults, what did they measure, and does the meta-analysis agree?</div>
+        <div class="lbl">Answer</div>
+        <p class="ans">The registry and the papers answer together. <strong>NCT00230737</strong>, Melatonin Randomized Trial for Insomnia in the Elderly: phase 2, completed, 27 enrolled, 0.4 mg against 4.0 mg, for sleep initiation and maintenance disorders. <strong>NCT07695246</strong>: cognitive behavioural therapy for insomnia with and without adjunct melatonin in older adults, randomised, double-blind, placebo-controlled, measuring sleep, circadian outcomes and daytime functioning. The largest paper, <strong>Wade and colleagues</strong>, nightly prolonged-release melatonin for six months: 791 randomized, 722 analysed, patients 55 and older, sleep latency shortened by 15.6 minutes in the 65 to 80 group (95 percent CI minus 25.3 to minus 6.0). The <strong>systematic review and meta-analysis</strong> of melatonin and ramelteon in older adults with chronic insomnia searched 1990 to June 2021, the year the Beers Criteria chose, and pools these designs. One hit was dropped on reading: the tasimelteon phase III trial tests a receptor agonist, not melatonin.</p>
+        <div class="lbl">Evidence</div>
+        <div class="ev"><span class="n">1.</span><span><span class="path">NCT00230737 · ClinicalTrials.gov registration · COMPLETED, PHASE2, enrollment 27</span> <span class="span">· Melatonin Randomized Trial for Insomnia in the Elderly: melatonin 0.4 mg, 4.0 mg</span></span></div><div class="ev"><span class="n">2.</span><span><span class="path">NCT07695246 · ClinicalTrials.gov registration</span> <span class="span">· CBT-I with adjuvant melatonin in older adults with chronic insomnia, randomised, double-blind, placebo-controlled</span></span></div><div class="ev"><span class="n">3.</span><span><span class="path">Wade et al. · PMC open access · nightly prolonged release melatonin for 6 months</span> <span class="span">· &quot;the observed effect on sleep latency for patients aged 65-80 years (-15.6 min; 95% CI -25.3 to -6.0)&quot;</span></span></div><div class="ev"><span class="n">4.</span><span><span class="path">Use of Melatonin and/or Ramelteon for the Treatment of Insomnia in Older Adults · systematic review and meta-analysis · PMC open access</span> <span class="span">· &quot;searches were conducted from 1 January 1990 to 20 June 2021&quot;; Beers Criteria as the start</span></span></div><div class="ev"><span class="n">5.</span><span><span class="path">Synnott et al. · tasimelteon phase III · PMC open access</span> <span class="span">· read and dropped: a melatonin receptor agonist, not melatonin</span></span></div>
+        <div class="box"><b>Conflict.</b> None found in the retrieved evidence.</div>
+        <div class="box gap"><b>Gap.</b> The primary outcome measure of NCT00230737 is on the registration, which this answer cited by title and arms; the endpoint line was not read. Whether the meta-analysis pooled Wade's trial is a question for its tables, one read away.</div>
+        <div class="route"><b>Evidence path</b> · lexical lane over origin:sleep · 497 documents held every term · 2 registrations, 3 papers kept, 1 read and dropped</div>
+      </div>
+    </div>
+    <p class="term-note">Real, from the sealed sleep collection, asked through the same engine the door serves, on 12 October 2026. Registrations and full texts on one answer, with the arms, the numbers and the one that did not belong.</p>
+
   </header>
 
   <section>
-    <div class="placard">The card, as the door will say it</div>
+    <div class="placard">The card, as the door says it</div>
     <h2>What is in the collection, and what is not.</h2>
-    <p class="lead">Every door carries a card, sealed with the collection and shown to your assistant on every connection. This one will read:</p>
-    <div class="terminal" style="margin-top:26px"><div class="term-body"><p class="ans" style="margin:0">Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and the NCBI Bookshelf titles and clinical guidelines that carry an open license: sleep biology, disorders, treatment and the lifespan. Abstract-only records, author manuscripts and articles under other licenses are not in this collection; it holds no patient data and gives no medical advice; cite the article or trial it returns and read it at its DOI or registry entry.</p></div></div>
-<div class="cols"><div class="card"><h3><span class="k">Full texts, openly licensed.</span> </h3><p>PubMed Central articles under CC0, CC BY and CC BY-SA, normalized with their license flags, cited to the page.</p></div><div class="card"><h3><span class="k">Trials, books, guidelines.</span> </h3><p>ClinicalTrials.gov registrations tied to the papers that report them; the Bookshelf titles and clinical guidelines that carry an open license.</p></div><div class="card"><h3><span class="k">What stays out.</span> </h3><p>Abstract-only records, author manuscripts and publisher open access under other licenses, and the literature indexes that need the reader's own subscription.</p></div></div><p class="lead" style="margin-top:14px"><a href="/#for">Back to the collections</a> · also for <a href="/for/contractors/">contractors</a>, <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, <a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a> · <a href="/#coming">in preparation</a>: <a href="/for/judaism/">Judaism</a>, <a href="/for/christianity/">Christianity</a>, <a href="/for/islam/">Islam</a>, <a href="/for/faith/">faith</a>, <a href="/for/sleep/">sleep</a>, <a href="/for/diabetes/">diabetes</a></p>
+    <p class="lead">Every door carries a card, sealed with the collection and shown to your assistant on every connection. This one reads:</p>
+    <div class="terminal" style="margin-top:26px"><div class="term-body"><p class="ans" style="margin:0">Human sleep research from the public biomedical infrastructure: the open-access full texts of PubMed Central articles under CC0, CC BY and CC BY-SA, ClinicalTrials.gov registrations, and one AHRQ evidence report from the NCBI Bookshelf (a US Government work). Every text is openly licensed or in the public domain and carries its licence and source. It holds no subscription literature, no abstracts of closed articles and no clinical practice guidelines; it is research literature, not medical advice.</p></div></div>
+    <p class="term-note">Sealed 2026-09-22; 77,899 texts; nothing is added, changed or removed, and a question outside the collection is answered &quot;not in this corpus&quot;.</p>
+<div class="cols"><div class="card"><h3><span class="k">Full texts, openly licensed.</span> </h3><p>PubMed Central articles under CC0, CC BY and CC BY-SA, normalized with their license flags, cited to the passage.</p></div><div class="card"><h3><span class="k">Trial registrations.</span> </h3><p>ClinicalTrials.gov records with status, phase, enrollment, conditions and arms, so "which trial tested what" is answered from the registry and tied to the papers that report it.</p></div><div class="card"><h3><span class="k">What stays out.</span> </h3><p>Abstract-only records, author manuscripts and publisher open access under other licenses, the clinical practice guidelines, and the literature indexes that need the reader's own subscription.</p></div></div>
+  </section>
+
+  <section>
+    <div class="placard">Questions a plain search cannot answer cleanly</div>
+    <h2>Ask across editions, across volumes, across the shelf.</h2>
+<div class="wall"><div class="g"><h4>Trials and papers</h4><p>Which trials registered this intervention, with which arms, and which papers report them?</p><p>Which studies report this effect at this dose, and where do they disagree?</p><p>Which registration belongs to this paper?</p></div><div class="g"><h4>Over time</h4><p>What is the earliest paper here making this claim, and did a replication fail?</p><p>Which review pooled these trials, and what window did it search?</p></div><div class="g"><h4>Evidence and gaps</h4><p>Which papers cite the same underlying experiment rather than providing independent evidence?</p><p>What does the collection not contain on this question?</p></div></div>
+  </section>
+
+  <section id="plug">
+    <div class="placard">The collection, plugged into your assistant <span class="live">live door</span></div>
+    <h2>One address, one sign-in, every answer cited to the passage.</h2>
+    <p class="lead">The sealed collection above is served as an MCP server at <strong>https://sleep.docenta.ai/mcp</strong>: a public collection we host on purpose so your assistant can ask it today. You add it once; from then on it asks the collection the way it asked the question above, and reads the paper or the registration back with its license.</p>
+    <div class="steps">
+      <div class="step"><div>
+        <h3><a href="#access">Register once</a></h3>
+        <p>Use <a href="#access">the form at the bottom of this page</a> and say "sleep". You confirm your address with one click, and that registration is what opens the collection for you. There is <strong>no key to copy</strong>, ever: the address below is not a secret, and signing in is what makes it yours.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Add the address to your assistant</h3>
+        <pre class="cmd"><span class="a">https://sleep.docenta.ai/mcp</span></pre>
+        <p><strong>Claude Code</strong>: one line, then type <strong>/mcp</strong> and press Enter on <strong>docenta-sleep</strong>.</p>
+        <pre class="cmd">claude mcp add --transport http docenta-sleep <span class="a">https://sleep.docenta.ai/mcp</span></pre>
+        <p><strong>Claude</strong> (web and desktop): Settings, Connectors, Add custom connector, paste the address, Connect. <strong>ChatGPT</strong>: Settings, Connectors, Create, paste the address, choose OAuth.</p>
+        <p style="margin-top:14px"><a class="chip" href="cursor://anysphere.cursor-deeplink/mcp/install?name=docenta-sleep&amp;config=eyJ1cmwiOiJodHRwczovL3NsZWVwLmRvY2VudGEuYWkvbWNwIn0=">Add to Cursor</a> <a class="chip" href="vscode:mcp/install?%7B%22name%22%3A%22docenta-sleep%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A//sleep.docenta.ai/mcp%22%7D">Add to VS Code</a></p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Allow it, once</h3>
+        <p>Your assistant opens a docenta page by itself. It asks who you are (your address and six digits from your mail; nothing at all if you come from your start page) and shows one sentence: which assistant, which collection. Press <strong>Allow</strong>. You can disconnect any assistant later on your start page.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Ask, and read the citation</h3>
+        <p>Every answer names the document and the page it came from. The first question after a quiet spell can take half a minute while the collection wakes up; your assistant is told so and asks again by itself.</p>
+      </div></div>
+    </div>
+    <p class="lead" style="margin-top:26px">The door never sees your files, and cannot be changed by anyone, us included, without a new seal and a new date on this page. It knows that a registered person asked, so each person gets a fair share of it. <strong>It keeps nothing you ask unless you choose to</strong>, with two boxes that start unticked when you connect: "tell me when a question can be answered later", which keeps only the questions the collection could not answer, and "keep my questions, without my name", which keeps the words for 180 days with no name, address or time of day beside them. You can change both on your start page.</p>
+  </section>
+
+  <section>
+    <div class="placard">What it will not pretend to know</div>
+    <h2>Boundedness is the feature.</h2>
+<div class="limits"><p><b>It is research literature, not medical advice.</b> The door cites the paper, the page and the registration; what to do about it is not retrieval.</p><p><b>A near miss is read and dropped.</b> A receptor agonist trial surfaced for a melatonin question; reading it put it out, and the answer says so.</p><p><b>The window is stated.</b> A review&#x27;s search dates are part of its citation, because a 2021 window cannot pool a 2026 trial.</p><p><b>The seal is the date.</b> Nothing is added, changed or removed after the seal; a new seal means a new date on this page.</p></div><p class="lead" style="margin-top:14px"><a href="/#for">Back to the collections</a> · also for <a href="/for/contractors/">contractors</a>, <a href="/for/lawyers/">lawyers</a>, <a href="/for/insurance/">insurance</a>, <a href="/for/home/">home</a>, <a href="/for/email/">mail</a>, <a href="/for/developers/">developers</a>, <a href="/for/researchers/">researchers</a> · <a href="/#doors">public collections, live</a>: <a href="/for/judaism/">Judaism</a>, <a href="/for/christianity/">Christianity</a>, <a href="/for/islam/">Islam</a>, <a href="/for/faith/">faith</a>, <a href="/for/sleep/">sleep</a> · in preparation: <a href="/for/diabetes/">diabetes</a> · <a href="/handbook/">the handbook</a></p>
   </section>
 
   <section id="access">
@@ -342,7 +397,7 @@ body{zoom:var(--zoom)}
           <label>Your name<input name="name" required maxlength="120" autocomplete="name"></label>
           <label>Your email<input name="email" type="email" required maxlength="200" autocomplete="email"></label>
         </div>
-        <label>Which collection, or which desk<select name="audience"><option value="contractors">Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="judaism">Judaism: Tanakh, Mishnah, Talmud and commentary (door in preparation)</option><option value="christianity">Christianity: scripture and classical commentary (door in preparation)</option><option value="islam">Islam: the Koran in three translations (door in preparation)</option><option value="faith">Faith: the three traditions together (door in preparation)</option><option value="sleep" selected>Sleep research: the open corpus (door in preparation)</option><option value="diabetes">Diabetes research: the open corpus (in collection)</option><option value="other">Something else (say what below)</option></select></label>
+        <label>Which collection, or which desk<select name="audience"><option value="contractors">Contractors: the Palo Alto building rules door</option><option value="lawyers">Lawyers: the matter file</option><option value="insurance">Insurance: the claim file</option><option value="home">Home: a life in files</option><option value="email">Mail: the mailbox</option><option value="developers">Developers: repos and sessions</option><option value="researchers">Researchers: the reading pile</option><option value="judaism">Judaism: Tanakh, Mishnah, Talmud and commentary (live door)</option><option value="christianity">Christianity: scripture and classical commentary (live door)</option><option value="islam">Islam: the Koran in six translations and Arabic, and the hadith (live door)</option><option value="faith">Faith: the three traditions together (live door)</option><option value="sleep" selected>Sleep research: the open corpus (live door)</option><option value="diabetes">Diabetes research: the open corpus (in collection)</option><option value="other">Something else (say what below)</option></select></label>
         <label>The question your files should be able to answer (a sentence is plenty)<textarea name="message" maxlength="2000" rows="3"></textarea></label>
         <label class="ea-hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
         <div class="ea-turnstile"></div>
@@ -358,7 +413,7 @@ body{zoom:var(--zoom)}
   <footer>
     <div class="frow">
       <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
-      <div>Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+      <div>docenta 0.3.1, October 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
     </div>
   </footer>
 </div>

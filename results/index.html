@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>docenta results - where docenta stands on public benchmarks</title>
+<meta name="description" content="docenta&#x27;s retrieval on LongMemEval-S and LoCoMo beside the published numbers of other retrievers and memory systems, against grep and Spotlight on a real machine, with every source and caveat.">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-180.png">
+<meta property="og:title" content="docenta results - where docenta stands on public benchmarks">
+<meta property="og:description" content="docenta&#x27;s retrieval on LongMemEval-S and LoCoMo beside the published numbers of other retrievers and memory systems, against grep and Spotlight on a real machine, with every source and caveat.">
+<meta property="og:image" content="https://docenta.ai/assets/og-card-1200x630.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docenta.ai/results/">
+<link rel="canonical" href="https://docenta.ai/results/">
+<meta name="twitter:card" content="summary_large_image">
+<style>/* SPDX-License-Identifier: LicenseRef-Docenta-Proprietary */
+/* Copyright (c) 2026 SKY, LLC. */
+/* The TOKENS AND CHROME layer every docenta surface takes, the site
+   included: the palette in both themes (the landing page's hues and a
+   paper theme derived from them), the reset, links and focus, the bar
+   with the small mark, the buttons, the theme switch. No outside
+   resource: a page must read from a ZIP on disk. */
+:root{
+  --bg:#F6F1EA;--surface:#FFFCF8;--surface-2:#EFE7DC;--text:#1E1B18;--text-2:#625950;
+  --line:#E3DACE;--line-2:#D5CABB;--accent:#B5361E;--accent-2:#CE422B;--accent-3:#93290F;--glow:#F7B26B;
+  --label:#8A5A3A;--code:#EEE6DA;--tip:#2E7D4F;--tip-bg:#E4F1E9;--warn:#B5361E;--warn-bg:#F9E7E1;
+  --note:#8A5A3A;--note-bg:#F5EADB;--shadow:0 10px 30px rgba(70,45,20,.10);--focus:#CE422B;
+  --sans:Inter,'Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  /* How long a landing glows. The one place to change it. */
+  --glow-time:1.4s;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F0D0B;--surface:#1E1B18;--surface-2:#26221E;--text:#F2EDE8;--text-2:#9A8D82;
+  --line:#2C2620;--line-2:#3A332C;--accent:#F7B26B;--accent-2:#CE422B;--accent-3:#B03618;--glow:#F7B26B;
+  --label:#DEA584;--code:#1A1714;--tip:#7FC9A0;--tip-bg:#172A1F;--warn:#F08A6E;--warn-bg:#33201B;
+  --note:#DEA584;--note-bg:#2C2117;--shadow:0 14px 34px rgba(0,0,0,.45);--focus:#F7B26B;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0F0D0B;--surface:#1E1B18;--surface-2:#26221E;--text:#F2EDE8;--text-2:#9A8D82;
+  --line:#2C2620;--line-2:#3A332C;--accent:#F7B26B;--accent-2:#CE422B;--accent-3:#B03618;--glow:#F7B26B;
+  --label:#DEA584;--code:#1A1714;--tip:#7FC9A0;--tip-bg:#172A1F;--warn:#F08A6E;--warn-bg:#33201B;
+  --note:#DEA584;--note-bg:#2C2117;--shadow:0 14px 34px rgba(0,0,0,.45);--focus:#F7B26B;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+/* A jump is a jump: on a long page a smooth scroll across the whole book
+   is a wait, not a courtesy (owner 2026-09-19). */
+html{-webkit-text-size-adjust:100%;--zoom:1}
+body{background:var(--bg);color:var(--text);font:16.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);color:var(--text);padding:8px 12px;border:1px solid var(--line);border-radius:8px;z-index:100}
+.skip:focus{left:12px}
+
+/* The bar: small mark, what this page is, the theme switch. */
+.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1320px;margin:0 auto;padding:0 24px;height:54px;display:flex;align-items:center;gap:14px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--text)}
+.brand:hover{text-decoration:none}
+.brand svg{width:22px;height:22px;flex:none}
+.kicker{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--label);border:1px solid var(--line-2);border-radius:999px;padding:6px 11px;white-space:nowrap}
+.crumb{font-size:13.5px;color:var(--text-2);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grow{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface);color:var(--text);font:500 13.5px var(--sans);cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.btn kbd{font:11px var(--mono);color:var(--text-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon{width:34px;padding:0;justify-content:center}
+/* The text size: a zoom of the page alone, stepped from the bar and
+   remembered per browser (the browser's zoom reaches every tab). */
+body{zoom:var(--zoom)}
+.size{display:inline-flex;align-items:center;gap:4px}
+#size{font:600 12.5px var(--mono);padding:0 10px;min-width:60px;justify-content:center;letter-spacing:.02em}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:disabled:hover{border-color:var(--line-2)}
+@media (max-width:600px){#size{display:none}}
+#theme svg{display:none}
+#theme[data-mode="system"] .auto,#theme[data-mode="light"] .sun,#theme[data-mode="dark"] .moon{display:block}
+
+  /* docenta.ai takes the shared tokens-and-chrome layer (tools/page/tokens.css,
+     synced from the docenta repo) and keeps its own editorial layout below,
+     written in the shared token names so both themes work. */
+  .bar-in{max-width:1060px}
+
+  body{font-size:17px;line-height:1.6}
+  .mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  .nav-cta{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--accent-2);padding:10px 18px;border-radius:8px;font-weight:700;color:#fff}
+  .nav-cta:hover{background:var(--accent-3);color:#fff;text-decoration:none}
+  /* Plain prose pages (privacy, terms): the same chrome, running text. */
+  .prose{max-width:720px}
+  .prose h2{font-size:clamp(22px,2.8vw,28px);margin-top:48px}
+  .prose h3{font-size:18px;font-weight:700;margin-top:28px;margin-bottom:6px}
+  .prose p{margin-top:14px;color:var(--text)}
+  .prose ul{margin:12px 0 0 22px}
+  .prose li{margin-top:8px}
+  .prose code{font-family:var(--mono);font-size:14px;background:var(--code);padding:1px 6px;border-radius:5px}
+  .prose .eff{color:var(--text-2);font-size:14px;margin-top:10px}
+  .placard{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;color:var(--label);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+  .placard::before{content:"";display:inline-block;width:34px;height:1px;background:var(--label);opacity:.6}
+  header{padding:56px 0 30px}
+  h1{font-weight:800;font-size:clamp(38px,6.4vw,64px);line-height:1.04;letter-spacing:-.03em;max-width:860px;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--accent)}
+  .sub{color:var(--text-2);font-size:clamp(17px,2vw,21px);max-width:680px;margin:26px 0 10px}
+  .sub strong{color:var(--text);font-weight:600}
+  /* the prompt rail: what people actually say */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 6px}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+  .chip::before{content:"\275D ";color:var(--accent)}
+  .chip:hover{border-color:var(--accent);text-decoration:none}
+  /* the answer, shown as it is reconstructed */
+  .terminal{--bg:#0F0D0B;--surface:#1E1B18;--text:#F2EDE8;--text-2:#9A8D82;--line:#2C2620;--line-2:#3A332C;--accent:#F7B26B;--accent-2:#CE422B;--label:#DEA584;color:var(--text);margin:44px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.55);overflow:hidden}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--line-2)}
+  .dot.r{background:var(--accent-3)}
+  .term-title{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-2)}
+  .term-body{padding:22px 24px 26px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:14px;line-height:1.7}
+  .q{color:var(--text);margin-bottom:14px}
+  .q::before{content:"\276F ";color:var(--accent)}
+  .ans{font-family:Inter,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--text);margin:0 0 16px;max-width:820px}
+  .ans strong{color:var(--accent);font-weight:600}
+  .lbl{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label);margin:14px 0 6px}
+  .ev{display:grid;grid-template-columns:22px 1fr;gap:8px;color:var(--text);margin:4px 0}
+  .ev .n{color:var(--accent)}
+  .ev .path{color:var(--accent)}
+  .ev .span{color:var(--text-2)}
+  .box{border-left:3px solid var(--label);padding:6px 12px;margin:8px 0;color:var(--text);font-family:Inter,'Segoe UI',system-ui,sans-serif;font-size:15px}
+  .box.conflict{border-color:var(--accent-2)}
+  .box.gap{border-color:var(--text-2)}
+  .box b{color:var(--label);font-weight:600}
+  .route{color:var(--text-2);font-size:13px;margin-top:10px}
+  .route b{color:var(--text);font-weight:600}
+  .term-note{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text-2);margin:14px 2px 0}
+  section{padding:72px 0 8px}
+  h2{font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;max-width:760px;text-wrap:balance}
+  .lead{color:var(--text-2);max-width:680px;margin-top:16px}
+  .lead strong{color:var(--text);font-weight:600}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .cols.two{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px 24px}
+  .card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+  .card h3 .k{color:var(--accent)}
+  a.card{display:block;color:inherit;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
+  a.card:hover,a.card:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
+  a.card:focus-visible{box-shadow:0 0 0 2px var(--accent)}
+  a.card h3::after{content:"\00a0\2192";color:var(--accent);font-weight:400}
+  a.card.wide{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-color:var(--label)}
+  a.card.wide .live{margin:0;white-space:nowrap}
+  @media (max-width:820px){a.card.wide{grid-template-columns:1fr}}
+  .card p{color:var(--text-2);font-size:15.5px}
+  .card p code{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--label)}
+  .card .qs{margin-top:12px;color:var(--label);font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7}
+  /* the prompt wall, grouped by job */
+  .wall{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:36px}
+  .wall .g h4{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label);margin-bottom:10px}
+  .wall .g p{color:var(--text);font-size:14.5px;line-height:1.5;margin-bottom:10px;padding-left:14px;text-indent:-14px}
+  .wall .g p::before{content:"\275D ";color:var(--accent)}
+  @media (max-width:980px){.wall{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.wall{grid-template-columns:1fr}}
+  /* jobs, not brands */
+  table.jobs{width:100%;border-collapse:collapse;margin-top:34px;font-size:15.5px}
+  table.jobs th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--label);padding:0 14px 12px 0;font-weight:600}
+  table.jobs td{padding:12px 14px 12px 0;border-top:1px solid var(--line);vertical-align:top;color:var(--text-2)}
+  table.jobs td:last-child{color:var(--text)}
+  .tablewrap{overflow-x:auto}
+  /* the receipts motif */
+  .receipts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:34px}
+  .receipts div{border:1px dashed var(--label);border-radius:10px;padding:16px 14px;background:linear-gradient(180deg,var(--surface),var(--bg))}
+  .receipts b{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .receipts span{color:var(--text-2);font-size:14px;line-height:1.5}
+  @media (max-width:980px){.receipts{grid-template-columns:repeat(2,1fr)}}
+  .limits{margin-top:30px;max-width:760px}
+  .limits p{padding:10px 0;border-top:1px solid var(--line);color:var(--text-2)}
+  .limits p b{color:var(--text);font-weight:600}
+  .plaque{margin-top:44px;border:1px solid var(--label);border-radius:12px;padding:8px 0;background:linear-gradient(180deg,var(--surface),var(--bg))}
+  .plaque-title{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--label);text-align:center;padding:18px 0 6px}
+  .plaque-grid{display:grid;grid-template-columns:repeat(5,1fr);padding:10px 10px 20px}
+  .stat{padding:14px 10px;text-align:center;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none}
+  .stat b{display:block;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(18px,2.4vw,26px);color:var(--accent);letter-spacing:-.02em}
+  .stat span{font-size:12.5px;color:var(--text-2);display:block;margin-top:6px;line-height:1.45}
+  .plaque-foot{font-size:12px;color:var(--text-2);text-align:center;padding:0 20px 16px}
+  .spine{margin-top:40px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:2.05;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px 28px;color:var(--text-2);overflow-x:auto}
+  .spine b{color:var(--text);font-weight:600}
+  .spine .a{color:var(--accent)}
+  .steps{counter-reset:step;margin-top:34px;display:grid;gap:18px;max-width:760px}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .step::before{counter-increment:step;content:counter(step);width:38px;height:38px;border-radius:50%;border:1px solid var(--label);color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .step p{color:var(--text-2);font-size:15.5px}
+  .step p strong{color:var(--text);font-weight:600}
+  pre.cmd{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:var(--text);overflow-x:auto;white-space:pre;line-height:1.6}
+  pre.cmd .a{color:var(--accent)}
+  .soon{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--label);border:1px solid var(--label);padding:2px 8px;border-radius:6px;vertical-align:middle;white-space:nowrap}
+  .status{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px}
+  .status div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--text-2)}
+  .status div b{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--label);margin-bottom:6px}
+  .status div.done{border-color:var(--label);color:var(--text)}
+  @media (max-width:640px){.status{grid-template-columns:repeat(2,1fr)}}
+  .key{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--bg);background:var(--accent);padding:1px 7px;border-radius:5px;white-space:nowrap}
+  .live{display:inline-block;margin-left:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:3px 8px;border-radius:6px;vertical-align:middle}
+  a.live:hover,a.live:focus-visible{background:var(--text);text-decoration:none}
+  .cta{margin:84px 0 0;padding:56px 40px;text-align:center;background:linear-gradient(180deg,var(--surface),var(--bg));border:1px solid var(--line);border-radius:16px}
+  .cta h2{max-width:none}
+  .cta p{color:var(--text-2);margin:16px auto 30px;max-width:560px}
+  .cta-btn{display:inline-block;background:var(--accent-2);color:#fff;font-weight:700;font-size:17px;padding:15px 34px;border-radius:10px}
+  .cta-btn:hover{background:var(--accent-3);color:#fff;text-decoration:none}
+  .cta .alt{display:block;margin-top:18px;font-size:14px;color:var(--text-2)}
+  .ea{margin:30px auto 0;max-width:640px;text-align:left}
+  .ea-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ea label{display:block;font-size:13.5px;color:var(--text-2);margin-bottom:14px}
+  .ea input,.ea select,.ea textarea{display:block;width:100%;margin-top:6px;padding:11px 12px;border-radius:8px;background:var(--bg);border:1px solid var(--line);color:var(--text);font:inherit;font-size:15.5px}
+  .ea input:focus,.ea select:focus,.ea textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .ea textarea{resize:vertical;min-height:84px}
+  .ea-turnstile{margin:6px 0 16px;min-height:0}
+  .ea .cta-btn{border:0;cursor:pointer;font-family:inherit}
+  .ea .cta-btn[disabled]{opacity:.6;cursor:wait}
+  .ea-status{margin-top:14px;font-size:14.5px;color:var(--text);min-height:1.4em}
+  .ea-status a{color:var(--accent)}
+  .ea-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+  .ea-done{margin:18px auto 0;max-width:560px;padding:22px 26px;border:1px solid var(--accent);border-radius:10px;text-align:left}
+  .ea-done h3{margin:0 0 8px;font-size:20px}
+  .ea-done p{margin:0;font-size:15px;line-height:1.55;color:var(--text)}
+  @media (max-width:640px){.ea-grid{grid-template-columns:1fr}}
+  footer{margin-top:80px;padding:34px 0 44px;border-top:1px solid var(--line);color:var(--text-2);font-size:13.5px}
+  footer .frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer a{color:var(--label)}
+  @media (max-width:820px){
+    .cols,.cols.two{grid-template-columns:1fr}
+    .plaque-grid{grid-template-columns:repeat(2,1fr)}
+    .stat{border-left:none;border-top:1px solid var(--line)}
+    .stat:first-child{border-top:none}
+  }
+</style>
+<script>// SPDX-License-Identifier: LicenseRef-Docenta-Proprietary
+// Copyright (c) 2026 SKY, LLC.
+// The theme switch and the text size shared by every page docenta
+// writes: system theme by default, a choice stamped on the root and
+// remembered per browser; the text size as a zoom of the page alone
+// (never the browser's, which reaches every tab), in steps, remembered
+// the same way. Both run before paint so a remembered choice never
+// flashes the other. The tooltips say what is active and what the
+// click does next (owner 2026-10-11).
+(function(){
+  var root=document.documentElement;
+  var KEY='docenta-theme';
+  function saved(){try{return localStorage.getItem(KEY)||'';}catch(e){return '';}}
+  function apply(v){if(v==='light'||v==='dark'){root.setAttribute('data-theme',v);}else{root.removeAttribute('data-theme');}}
+  apply(saved());
+  var SKEY='docenta-size',SIZES=[85,100,115,130,150,175,200];
+  function sizeSaved(){try{var n=parseInt(localStorage.getItem(SKEY),10);return SIZES.indexOf(n)>=0?n:100;}catch(e){return 100;}}
+  function sizeApply(n){root.style.setProperty('--zoom',String(n/100));}
+  function sizeStore(n){try{if(n===100){localStorage.removeItem(SKEY);}else{localStorage.setItem(SKEY,String(n));}}catch(e){}}
+  sizeApply(sizeSaved());
+  document.addEventListener('DOMContentLoaded',function(){
+    var b=document.getElementById('theme');
+    if(b){
+      var order=['','light','dark'],names={'':'System','light':'Light','dark':'Dark'};
+      function systemNow(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+      function label(){
+        var v=saved(),i=order.indexOf(v),next=order[(i+1)%3],after=order[(i+2)%3];
+        var now=v?names[v]:'System, '+systemNow()+' right now';
+        var tip='Theme: '+now+'. Click for '+names[next]+', then '+names[after]+'.';
+        b.title=tip;b.setAttribute('aria-label',tip);b.dataset.mode=v||'system';
+      }
+      label();
+      b.addEventListener('click',function(){
+        var v=saved(),next=order[(order.indexOf(v)+1)%order.length];
+        try{if(next){localStorage.setItem(KEY,next);}else{localStorage.removeItem(KEY);}}catch(e){}
+        apply(next);label();
+      });
+      if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',label);}catch(e){}}
+    }
+    var up=document.getElementById('size-up'),down=document.getElementById('size-down'),show=document.getElementById('size');
+    if(up&&down&&show){
+      function sizeLabel(){
+        var n=sizeSaved(),i=SIZES.indexOf(n);
+        show.textContent=n+'%';
+        show.title=(n===100?'Text size: 100%, the page as written.':'Text size: '+n+'%. Click to go back to 100%.')+' Command (Control on Windows) with + or - steps it here, 0 resets; the browser\'s own zoom is left alone.';
+        show.setAttribute('aria-label',show.title);
+        down.disabled=i<=0;up.disabled=i>=SIZES.length-1;
+        down.title=down.disabled?'Smallest text already':'Smaller text, '+SIZES[i-1]+'%';
+        up.title=up.disabled?'Largest text already':'Larger text, '+SIZES[i+1]+'%';
+        down.setAttribute('aria-label',down.title);up.setAttribute('aria-label',up.title);
+      }
+      function set(n){sizeStore(n);sizeApply(n);sizeLabel();}
+      function step(d){var i=SIZES.indexOf(sizeSaved())+d;if(i>=0&&i<SIZES.length){set(SIZES[i]);}}
+      sizeLabel();
+      up.addEventListener('click',function(){step(1);});
+      down.addEventListener('click',function(){step(-1);});
+      show.addEventListener('click',function(){set(100);});
+      // Command (Control on Windows) with + - 0: on a docenta page these
+      // size THIS page and the browser's zoom, which reaches every tab,
+      // is not invoked (the event is taken before the browser acts).
+      document.addEventListener('keydown',function(e){
+        if(!(e.metaKey||e.ctrlKey)||e.altKey||e.shiftKey&&e.code!=='Equal')return;
+        if(e.code==='Equal'||e.code==='NumpadAdd'){step(1);e.preventDefault();}
+        else if(e.code==='Minus'||e.code==='NumpadSubtract'){step(-1);e.preventDefault();}
+        else if(e.code==='Digit0'||e.code==='Numpad0'){set(100);e.preventDefault();}
+      });
+    }
+  });
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar"><div class="bar-in"><a class="brand" href="/"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><defs><linearGradient id="bookG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7B26B"></stop><stop offset="1" stop-color="#B03618"></stop></linearGradient></defs><path d="M 398,588 L 262,782 L 512,700 Z" fill="#CE422B" stroke="#CE422B" stroke-width="44" stroke-linejoin="round"></path><circle cx="592" cy="432" r="312" fill="#0F0D0B" stroke="#DEA584" stroke-width="36"></circle><path d="M 578,332 C 524,298 456,284 382,296 L 382,542 C 456,532 524,548 578,586 Z" fill="url(#bookG)"></path><path d="M 606,332 C 660,298 728,284 802,296 L 802,542 C 728,532 660,548 606,586 Z" fill="url(#bookG)"></path></svg>docenta</a><span class="grow"></span><a class="nav-cta" href="/#access">request early access</a><button id="theme" class="btn icon" type="button" title="Theme"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="auto" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></button></div></div>
+<div class="wrap" id="main">
+
+  <header>
+    <div class="placard">Exhibit · docenta · Results</div>
+    <h1>Results. <em>Where docenta stands on public benchmarks, beside the numbers others have published.</em></h1>
+    <p class="eff">SKY, LLC &middot; docenta 0.3.2 &middot; measured 2026-10-30 and 2026-10-31 on one MacBook Pro (M4 Max)</p>
+<div class="prose">
+<h2>Where docenta stands, in four lines</h2>
+<ul>
+<li><strong>LongMemEval-S retrieval:</strong> in the top band of the published retrievers measured the same way: 0.956 of questions find an evidence session in the top five, against 0.966 for the best raw retriever we found published (MemPalace, MiniLM embeddings) and 0.862 for a stemmed BM25. Grep over the same files finds 0.75.</li>
+<li><strong>LoCoMo retrieval:</strong> ahead of the paper's own retrieval baseline at five and ten sessions (80.0 and 91.2 against 72.1 and 84.7, the paper's metric), slightly behind it at two (63.0 against 65.9).</li>
+<li><strong>On a real machine:</strong> the evidence for 114 of 227 questions in the top ten, against 42 to 47 for Spotlight, ripgrep and ripgrep-all, and an agent reads 20 KB to reach it instead of 2.2 to 2.7 MB.</li>
+<li><strong>Answer accuracy</strong> (what memory products usually quote) is a different measure: it scores an answering model and a judge as well as the retrieval. Those numbers are listed below for orientation, in their own tables, never in the same column as ours.</li>
+</ul>
+<p>What is measured here is retrieval: did the evidence land on the page an agent reads. Every store was built on the machine by the shipped binaries; no model wrote, rewrote or summarized anything that was indexed.</p>
+
+<h2>LongMemEval-S: 500 questions, about 50 chat sessions each</h2>
+<p>LongMemEval (Wu et al., ICLR 2025), the S split, cleaned. Each question gets its own store holding only its haystack. Session level: a hit is an evidence session in the top k.</p>
+<p><strong>Beside published retrievers measured the same way</strong> (same split, same unit, recall_any: any evidence session in the top k, all 500 questions):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>retriever</th><th>recall@5</th><th>recall@10</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>MemPalace, raw (ChromaDB, all-MiniLM-L6-v2, no LLM)</td><td>0.966</td><td>about 0.98</td><td>project benchmark page, self-reported</td></tr>
+<tr><td><strong>docenta lexical channel (BM25)</strong></td><td><strong>0.956</strong></td><td><strong>0.976</strong></td><td>this page</td></tr>
+<tr><td>agentmemory, BM25 + MiniLM vectors</td><td>0.952</td><td>0.986</td><td>project repo, self-reported, older pipeline</td></tr>
+<tr><td><strong>docenta hybrid (lexical, sparse and dense fused)</strong></td><td><strong>0.948</strong></td><td><strong>0.976</strong></td><td>this page</td></tr>
+<tr><td><strong>docenta dense channel (arctic-embed-m-v2.0)</strong></td><td><strong>0.940</strong></td><td><strong>0.966</strong></td><td>this page</td></tr>
+<tr><td>agentmemory, BM25 with stemming and synonyms</td><td>0.862</td><td>0.946</td><td>project repo, self-reported</td></tr>
+<tr><td>docenta keyword tool (every word of the question)</td><td>0.89</td><td>0.90</td><td>this page</td></tr>
+<tr><td>grep (ripgrep, ranked by distinct terms matched)</td><td>0.75</td><td>0.86</td><td>this page</td></tr>
+</tbody></table></div>
+<p><strong>The benchmark's own strict metric.</strong> The official scorer also reports recall_all (EVERY evidence session in the top k) over the 470 questions that have an answer. docenta: lexical 0.832 at five and 0.900 at ten, hybrid 0.843 and 0.917, dense 0.813 and 0.904. The paper's own retriever table (BM25 0.634, Contriever 0.723, Stella 0.720 at five) was measured on the M split, ten times the haystack per question, so it is not a like-for-like row and is not set beside ours. One later paper reports the strict metric on the S split (Associa, ACL Findings 2025): BM25 0.51, Contriever 0.67, Stella 0.70, BGE-m3 0.75, Associa 0.87 at five, with keys built from the user's turns only; read it as orientation, the units are not fully stated.</p>
+<p>Where the words differ from the evidence, fusion pays: on preference questions ("what would I like ...") lexical finds 0.73 at five, dense and hybrid 0.93. Where the question quotes the user, lexical wins (0.99 against hybrid's 0.93). The keyword tool is the weak rung by design: it asks for every word, which is right for exact terms and wrong for a question phrased unlike its evidence, and the tool descriptions send questions to the meaning tool for that reason.</p>
+<p><strong>Answer accuracy on LongMemEval-S, for orientation only</strong> (an answering model reads what was retrieved and a judge model grades it; not comparable with the recall above):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>system</th><th>answering model</th><th>accuracy</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>Full context (the whole haystack in the prompt)</td><td>GPT-4o</td><td>60.6%</td><td>LongMemEval paper</td></tr>
+<tr><td>Zep</td><td>GPT-4o</td><td>71.2%</td><td>Zep paper (arXiv 2501.13956)</td></tr>
+<tr><td>Mastra, RAG top 20</td><td>GPT-4o</td><td>80.05%</td><td>Mastra research page, self-reported</td></tr>
+<tr><td>Mastra, observational memory</td><td>GPT-4o</td><td>84.23%</td><td>same</td></tr>
+<tr><td>Emergence, internal system</td><td>GPT-4o</td><td>86.0%</td><td>Emergence blog, self-reported</td></tr>
+</tbody></table></div>
+
+<h2>LoCoMo: 1,982 questions over ten long conversations</h2>
+<p>LoCoMo (Maharana et al., ACL 2024, CC BY-NC 4.0), every session one Add and every question one Search, through the same Add/Search adapter docenta entered the Agent Memory Leaderboard with. Conversations hold 19 to 32 sessions, so ten sessions are about a third of a conversation: a generous k, and said so.</p>
+<p><strong>Beside the paper's retrieval baseline</strong> (the paper's metric: the share of a question's evidence sessions in the top k, averaged; DRAGON retriever; their unit is an LLM-written summary of each session, ours the session itself):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>sessions retrieved</th><th>paper: DRAGON over session summaries</th><th>docenta over the raw sessions</th></tr></thead>
+<tbody>
+<tr><td>2</td><td>65.9</td><td>63.0</td></tr>
+<tr><td>5</td><td>72.1</td><td><strong>80.0</strong></td></tr>
+<tr><td>10</td><td>84.7</td><td><strong>91.2</strong></td></tr>
+</tbody></table></div>
+<p>In the plainer metric (any evidence session in the top k): 0.53 at one, 0.85 at five, 0.94 at ten; every cited session at ten 0.87; search p50 0.41 s. Rank 1 is the weak spot: two people talk about the same few subjects for months, so the session that answers competes with near-copies of itself. The paper's turn-level rows (56.7 at five turns) measure a finer unit and are not set beside these.</p>
+<p><strong>Answer accuracy on LoCoMo, for orientation only</strong> (judge GPT-4o-mini, adversarial questions excluded; not comparable with the recall above):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>system</th><th>judged accuracy</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>Best plain RAG (2 chunks of 256 tokens)</td><td>60.97</td><td>Mem0 paper (arXiv 2504.19413)</td></tr>
+<tr><td>Mem0 / Mem0 with graph</td><td>66.88 / 68.44</td><td>same</td></tr>
+<tr><td>Full context</td><td>72.90</td><td>same</td></tr>
+<tr><td>Letta, filesystem agent</td><td>74.0</td><td>Letta blog</td></tr>
+<tr><td>Zep, as corrected by Zep</td><td>75.14</td><td>Zep blog</td></tr>
+</tbody></table></div>
+
+<h2>On a real machine: against grep and Spotlight</h2>
+<p>227 questions about one person's own machine (repositories, mail, agent sessions), every tool run by the same deterministic policy and judged by the same truth. These questions are ours and self-judged; the public sets above exist to answer that.</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>tool</th><th>truth in top 10</th><th>what the agent reads to reach it (median)</th></tr></thead>
+<tbody>
+<tr><td><strong>docenta meaning tool</strong></td><td><strong>114 of 227</strong></td><td><strong>20 KB</strong></td></tr>
+<tr><td>docenta keyword tool</td><td>63</td><td>19 KB</td></tr>
+<tr><td>ripgrep-all (reads PDFs and Office files)</td><td>47</td><td>2.2 MB</td></tr>
+<tr><td>ripgrep</td><td>44</td><td>2.7 MB</td></tr>
+<tr><td>Spotlight (mdfind)</td><td>42</td><td>19 KB</td></tr>
+</tbody></table></div>
+<p>Spotlight is the real competitor on one shape, filename-like code questions, and answers in about 100 ms; it cannot see hidden folders, where mail and sessions live. 100 of the 227 questions no tool answered in the top ten.</p>
+
+<h2>The Agent Memory Leaderboard</h2>
+<p>agentmemoryleaderboard.ai scores memory systems end to end: the system serves Add and Search, the leaderboard fixes the answering model, the prompts and the judge, and reports judged accuracy over a mix of public sets (PersonaMem, LoCoMo-Refined, LongMemEval and others). For orientation, its first cycle (published 2026-08-12, textual track): industry entries from 58.02 (MemoraX) down, Mem0 41.40, MemPalace 39.48; in the academic table a SQLite full-text baseline scored 41.79 and a plain BM25 38.47. docenta entered the second cycle on 2026-10-31 as 0.3.2; its score will stand here when it is published, wherever it lands.</p>
+
+<h2>Invented tool calls</h2>
+<p>A probe in the classes of the Hallucinated-Tools Benchmark (arXiv 2609.19425), whose suite is not published, so this is not an HTB score: 32 invented calls against docenta's MCP surface, 10 honest ones. Every invented tool name is refused and named, no honest call is refused.</p>
+
+<h2>The harness</h2>
+<p>Every number of ours comes from a script in the docenta repository that builds the stores, runs the queries and writes one audit row per question: <code>scripts/eval/longmemeval.py</code> and <code>scripts/eval/lme-official.py</code> (the official metrics), <code>scripts/eval/aml.py locomo</code>, <code>scripts/eval/head-to-head.py</code>, <code>scripts/eval/tool-calls.py</code>. Published numbers are quoted with their source and labelled where the source reports on itself. The repository is in private preview; write to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a> for the harness and the audit files.</p>
+</div>
+  </header>
+
+  <footer>
+    <div class="frow">
+      <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
+      <div>docenta 0.3.1, October 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

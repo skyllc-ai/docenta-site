@@ -1337,6 +1337,95 @@ PLAIN["terms"] = dict(
 <p>These terms are governed by the laws of the State of California, United States, without regard to its conflict of law rules. When these terms change, the date at the top changes with them and the current text is always at docenta.ai/terms. Questions go to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a>.</p>
 </div>""")
 
+PLAIN["results"] = dict(
+    title="docenta results - where docenta stands on public benchmarks",
+    desc="docenta's retrieval on LongMemEval-S and LoCoMo beside the published numbers of other retrievers and memory systems, against grep and Spotlight on a real machine, with every source and caveat.",
+    placard="Exhibit · docenta · Results",
+    body=r"""<h1>Results. <em>Where docenta stands on public benchmarks, beside the numbers others have published.</em></h1>
+    <p class="eff">SKY, LLC &middot; docenta 0.3.2 &middot; measured 2026-10-30 and 2026-10-31 on one MacBook Pro (M4 Max)</p>
+<div class="prose">
+<h2>Where docenta stands, in four lines</h2>
+<ul>
+<li><strong>LongMemEval-S retrieval:</strong> in the top band of the published retrievers measured the same way: 0.956 of questions find an evidence session in the top five, against 0.966 for the best raw retriever we found published (MemPalace, MiniLM embeddings) and 0.862 for a stemmed BM25. Grep over the same files finds 0.75.</li>
+<li><strong>LoCoMo retrieval:</strong> ahead of the paper's own retrieval baseline at five and ten sessions (80.0 and 91.2 against 72.1 and 84.7, the paper's metric), slightly behind it at two (63.0 against 65.9).</li>
+<li><strong>On a real machine:</strong> the evidence for 114 of 227 questions in the top ten, against 42 to 47 for Spotlight, ripgrep and ripgrep-all, and an agent reads 20 KB to reach it instead of 2.2 to 2.7 MB.</li>
+<li><strong>Answer accuracy</strong> (what memory products usually quote) is a different measure: it scores an answering model and a judge as well as the retrieval. Those numbers are listed below for orientation, in their own tables, never in the same column as ours.</li>
+</ul>
+<p>What is measured here is retrieval: did the evidence land on the page an agent reads. Every store was built on the machine by the shipped binaries; no model wrote, rewrote or summarized anything that was indexed.</p>
+
+<h2>LongMemEval-S: 500 questions, about 50 chat sessions each</h2>
+<p>LongMemEval (Wu et al., ICLR 2025), the S split, cleaned. Each question gets its own store holding only its haystack. Session level: a hit is an evidence session in the top k.</p>
+<p><strong>Beside published retrievers measured the same way</strong> (same split, same unit, recall_any: any evidence session in the top k, all 500 questions):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>retriever</th><th>recall@5</th><th>recall@10</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>MemPalace, raw (ChromaDB, all-MiniLM-L6-v2, no LLM)</td><td>0.966</td><td>about 0.98</td><td>project benchmark page, self-reported</td></tr>
+<tr><td><strong>docenta lexical channel (BM25)</strong></td><td><strong>0.956</strong></td><td><strong>0.976</strong></td><td>this page</td></tr>
+<tr><td>agentmemory, BM25 + MiniLM vectors</td><td>0.952</td><td>0.986</td><td>project repo, self-reported, older pipeline</td></tr>
+<tr><td><strong>docenta hybrid (lexical, sparse and dense fused)</strong></td><td><strong>0.948</strong></td><td><strong>0.976</strong></td><td>this page</td></tr>
+<tr><td><strong>docenta dense channel (arctic-embed-m-v2.0)</strong></td><td><strong>0.940</strong></td><td><strong>0.966</strong></td><td>this page</td></tr>
+<tr><td>agentmemory, BM25 with stemming and synonyms</td><td>0.862</td><td>0.946</td><td>project repo, self-reported</td></tr>
+<tr><td>docenta keyword tool (every word of the question)</td><td>0.89</td><td>0.90</td><td>this page</td></tr>
+<tr><td>grep (ripgrep, ranked by distinct terms matched)</td><td>0.75</td><td>0.86</td><td>this page</td></tr>
+</tbody></table></div>
+<p><strong>The benchmark's own strict metric.</strong> The official scorer also reports recall_all (EVERY evidence session in the top k) over the 470 questions that have an answer. docenta: lexical 0.832 at five and 0.900 at ten, hybrid 0.843 and 0.917, dense 0.813 and 0.904. The paper's own retriever table (BM25 0.634, Contriever 0.723, Stella 0.720 at five) was measured on the M split, ten times the haystack per question, so it is not a like-for-like row and is not set beside ours. One later paper reports the strict metric on the S split (Associa, ACL Findings 2025): BM25 0.51, Contriever 0.67, Stella 0.70, BGE-m3 0.75, Associa 0.87 at five, with keys built from the user's turns only; read it as orientation, the units are not fully stated.</p>
+<p>Where the words differ from the evidence, fusion pays: on preference questions ("what would I like ...") lexical finds 0.73 at five, dense and hybrid 0.93. Where the question quotes the user, lexical wins (0.99 against hybrid's 0.93). The keyword tool is the weak rung by design: it asks for every word, which is right for exact terms and wrong for a question phrased unlike its evidence, and the tool descriptions send questions to the meaning tool for that reason.</p>
+<p><strong>Answer accuracy on LongMemEval-S, for orientation only</strong> (an answering model reads what was retrieved and a judge model grades it; not comparable with the recall above):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>system</th><th>answering model</th><th>accuracy</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>Full context (the whole haystack in the prompt)</td><td>GPT-4o</td><td>60.6%</td><td>LongMemEval paper</td></tr>
+<tr><td>Zep</td><td>GPT-4o</td><td>71.2%</td><td>Zep paper (arXiv 2501.13956)</td></tr>
+<tr><td>Mastra, RAG top 20</td><td>GPT-4o</td><td>80.05%</td><td>Mastra research page, self-reported</td></tr>
+<tr><td>Mastra, observational memory</td><td>GPT-4o</td><td>84.23%</td><td>same</td></tr>
+<tr><td>Emergence, internal system</td><td>GPT-4o</td><td>86.0%</td><td>Emergence blog, self-reported</td></tr>
+</tbody></table></div>
+
+<h2>LoCoMo: 1,982 questions over ten long conversations</h2>
+<p>LoCoMo (Maharana et al., ACL 2024, CC BY-NC 4.0), every session one Add and every question one Search, through the same Add/Search adapter docenta entered the Agent Memory Leaderboard with. Conversations hold 19 to 32 sessions, so ten sessions are about a third of a conversation: a generous k, and said so.</p>
+<p><strong>Beside the paper's retrieval baseline</strong> (the paper's metric: the share of a question's evidence sessions in the top k, averaged; DRAGON retriever; their unit is an LLM-written summary of each session, ours the session itself):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>sessions retrieved</th><th>paper: DRAGON over session summaries</th><th>docenta over the raw sessions</th></tr></thead>
+<tbody>
+<tr><td>2</td><td>65.9</td><td>63.0</td></tr>
+<tr><td>5</td><td>72.1</td><td><strong>80.0</strong></td></tr>
+<tr><td>10</td><td>84.7</td><td><strong>91.2</strong></td></tr>
+</tbody></table></div>
+<p>In the plainer metric (any evidence session in the top k): 0.53 at one, 0.85 at five, 0.94 at ten; every cited session at ten 0.87; search p50 0.41 s. Rank 1 is the weak spot: two people talk about the same few subjects for months, so the session that answers competes with near-copies of itself. The paper's turn-level rows (56.7 at five turns) measure a finer unit and are not set beside these.</p>
+<p><strong>Answer accuracy on LoCoMo, for orientation only</strong> (judge GPT-4o-mini, adversarial questions excluded; not comparable with the recall above):</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>system</th><th>judged accuracy</th><th>source</th></tr></thead>
+<tbody>
+<tr><td>Best plain RAG (2 chunks of 256 tokens)</td><td>60.97</td><td>Mem0 paper (arXiv 2504.19413)</td></tr>
+<tr><td>Mem0 / Mem0 with graph</td><td>66.88 / 68.44</td><td>same</td></tr>
+<tr><td>Full context</td><td>72.90</td><td>same</td></tr>
+<tr><td>Letta, filesystem agent</td><td>74.0</td><td>Letta blog</td></tr>
+<tr><td>Zep, as corrected by Zep</td><td>75.14</td><td>Zep blog</td></tr>
+</tbody></table></div>
+
+<h2>On a real machine: against grep and Spotlight</h2>
+<p>227 questions about one person's own machine (repositories, mail, agent sessions), every tool run by the same deterministic policy and judged by the same truth. These questions are ours and self-judged; the public sets above exist to answer that.</p>
+<div class="tablewrap"><table class="jobs">
+<thead><tr><th>tool</th><th>truth in top 10</th><th>what the agent reads to reach it (median)</th></tr></thead>
+<tbody>
+<tr><td><strong>docenta meaning tool</strong></td><td><strong>114 of 227</strong></td><td><strong>20 KB</strong></td></tr>
+<tr><td>docenta keyword tool</td><td>63</td><td>19 KB</td></tr>
+<tr><td>ripgrep-all (reads PDFs and Office files)</td><td>47</td><td>2.2 MB</td></tr>
+<tr><td>ripgrep</td><td>44</td><td>2.7 MB</td></tr>
+<tr><td>Spotlight (mdfind)</td><td>42</td><td>19 KB</td></tr>
+</tbody></table></div>
+<p>Spotlight is the real competitor on one shape, filename-like code questions, and answers in about 100 ms; it cannot see hidden folders, where mail and sessions live. 100 of the 227 questions no tool answered in the top ten.</p>
+
+<h2>The Agent Memory Leaderboard</h2>
+<p>agentmemoryleaderboard.ai scores memory systems end to end: the system serves Add and Search, the leaderboard fixes the answering model, the prompts and the judge, and reports judged accuracy over a mix of public sets (PersonaMem, LoCoMo-Refined, LongMemEval and others). For orientation, its first cycle (published 2026-08-12, textual track): industry entries from 58.02 (MemoraX) down, Mem0 41.40, MemPalace 39.48; in the academic table a SQLite full-text baseline scored 41.79 and a plain BM25 38.47. docenta entered the second cycle on 2026-10-31 as 0.3.2; its score will stand here when it is published, wherever it lands.</p>
+
+<h2>Invented tool calls</h2>
+<p>A probe in the classes of the Hallucinated-Tools Benchmark (arXiv 2609.19425), whose suite is not published, so this is not an HTB score: 32 invented calls against docenta's MCP surface, 10 honest ones. Every invented tool name is refused and named, no honest call is refused.</p>
+
+<h2>The harness</h2>
+<p>Every number of ours comes from a script in the docenta repository that builds the stores, runs the queries and writes one audit row per question: <code>scripts/eval/longmemeval.py</code> and <code>scripts/eval/lme-official.py</code> (the official metrics), <code>scripts/eval/aml.py locomo</code>, <code>scripts/eval/head-to-head.py</code>, <code>scripts/eval/tool-calls.py</code>. Published numbers are quoted with their source and labelled where the source reports on itself. The repository is in private preview; write to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a> for the harness and the audit files.</p>
+</div>""")
+
 def main():
     written = []
     path = os.path.join(ROOT, "index.html")

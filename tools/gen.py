@@ -1460,8 +1460,38 @@ def main():
         with open(path, "w", encoding="utf-8") as f:
             f.write(plain(f"/{slug}/", **spec))
         written.append(path)
+    written.extend(sitemap_and_robots(written))
     for p in written:
         print("wrote", os.path.relpath(p, ROOT))
+
+
+def sitemap_and_robots(pages):
+    """sitemap.xml and robots.txt beside the pages: every generated page
+    that does not say noindex, with the day its file last changed in git
+    (today for a file git does not know yet). Search Console 2026-11-09:
+    the site had neither, and Google found the doors' /mcp addresses
+    before some of the pages."""
+    import subprocess, datetime
+    urls = []
+    for path in pages:
+        with open(path, encoding="utf-8") as f:
+            if 'name="robots"' in f.read(4096):
+                continue
+        rel = os.path.relpath(path, ROOT)
+        loc = "https://docenta.ai/" + ("" if rel == "index.html" else rel[: -len("index.html")])
+        day = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        urls.append((loc, day or datetime.date.today().isoformat()))
+    out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, day in urls:
+        out.append(f"  <url><loc>{html.escape(loc)}</loc><lastmod>{day}</lastmod></url>")
+    out.append("</urlset>")
+    sitemap = os.path.join(ROOT, "sitemap.xml")
+    with open(sitemap, "w", encoding="utf-8") as f:
+        f.write("\n".join(out) + "\n")
+    robots = os.path.join(ROOT, "robots.txt")
+    with open(robots, "w", encoding="utf-8") as f:
+        f.write("User-agent: *\nAllow: /\n\nSitemap: https://docenta.ai/sitemap.xml\n")
+    return [sitemap, robots]
 
 if __name__ == "__main__":
     main()

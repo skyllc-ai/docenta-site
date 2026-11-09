@@ -233,7 +233,7 @@ FOOT = """
   <footer>
     <div class="frow">
       <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
-      <div>docenta 0.3.1, October 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+      <div>docenta 0.3.2, November 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
     </div>
   </footer>
 </div>
@@ -1472,8 +1472,24 @@ def sitemap_and_robots(pages):
     the site had neither, and Google found the doors' /mcp addresses
     before some of the pages."""
     import subprocess, datetime
+    # Pages the generator does not write but the site serves (the handbook,
+    # rendered by handbook-html in the docenta repo) join the list; a path
+    # held back in .assetsignore is not served and stays out.
+    held = set()
+    try:
+        with open(os.path.join(ROOT, ".assetsignore"), encoding="utf-8") as f:
+            held = {line.strip().strip("/") for line in f if line.strip() and not line.startswith("#")}
+    except OSError:
+        pass
+    pages = list(pages)
+    handbook = os.path.join(ROOT, "handbook", "index.html")
+    if os.path.isfile(handbook) and handbook not in pages:
+        pages.append(handbook)
     urls = []
     for path in pages:
+        rel_dir = os.path.relpath(os.path.dirname(path), ROOT)
+        if rel_dir.split(os.sep)[0] in held:
+            continue
         with open(path, encoding="utf-8") as f:
             if 'name="robots"' in f.read(4096):
                 continue

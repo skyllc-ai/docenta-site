@@ -7,3 +7,5 @@ node_modules
 .wrangler
 # Held back until the owner has reviewed the page (2026-10-31); not served, not in the sitemap.
 results
+# The generator and its copies of the shared layer: source, not pages (owner 2026-11-17).
+tools

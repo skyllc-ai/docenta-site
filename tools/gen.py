@@ -233,7 +233,7 @@ FOOT = """
   <footer>
     <div class="frow">
       <div>docenta is a product of SKY, LLC. From the makers of <a href="https://uffs.io">UFFS</a>, the open-source NTFS search engine.</div>
-      <div>docenta 0.3.2, November 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
+      <div>docenta 0.3.4, November 2026. Built in Rust. Runs on macOS, Windows, Linux. &middot; <a href="/handbook/">Handbook</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></div>
     </div>
   </footer>
 </div>
@@ -1272,7 +1272,7 @@ PLAIN["privacy"] = dict(
 <ul>
 <li><strong>Downloads.</strong> Binaries, models and updates come from dl.docenta.ai. Like any web server, it logs the address a request came from and the time.</li>
 <li><strong>Licensing.</strong> Your installation generates a key pair on your machine. The public half identifies the machine to our license service at license.docenta.ai, which issues and renews a lease. The service learns that key, the time of each renewal and the address the request came from. It does not learn what you indexed or asked.</li>
-<li><strong>Turbo, only on your word.</strong> When you consent to the turbo lane, docenta packs the extracted text of your pending documents, seals it with encryption to a key that exists only on your machine, and sends the sealed pack through our relay to a GPU rented for that one job. The relay sees ciphertext only. The rented machine computes search vectors, returns them sealed, and is destroyed afterwards. Nothing ships without an explicit consent naming the hours, and <code>docenta turbo consent 0</code> withdraws it.</li>
+<li><strong>Turbo, only on your word.</strong> When you consent to the turbo lane, docenta packs the extracted text of your pending documents, seals it with encryption to a key that exists only on your machine, and sends the sealed pack through our relay to a GPU rented for that one job. The relay sees ciphertext only. The rented machine computes search vectors, returns them sealed, and is destroyed afterwards. Nothing ships without an explicit consent naming the hours, and <code>docenta cloud consent 0</code> withdraws it.</li>
 <li><strong>Early access requests.</strong> If you fill in the form on this site, we keep the name, address and question you typed, after you confirm the address by mail, to write back when the door opens. Nothing else is collected and there is no newsletter.</li>
 </ul>
 <p>docenta sends no telemetry, no usage statistics and no crash reports.</p>
@@ -1284,7 +1284,7 @@ PLAIN["privacy"] = dict(
 <li><strong>What docenta does with your mail.</strong> It fetches messages and attachments to your computer, extracts their text, and indexes them there so you can search and ask questions about them. That is the only use.</li>
 <li><strong>What docenta does not do.</strong> Your mail is not transferred to SKY, LLC servers, not sold, not used for advertising, not used to build models or profiles, and not read by any person at SKY, LLC. The one transfer that can occur is the turbo lane described above: extracted text sealed to your own key, sent only on your explicit consent, processed on a machine rented for your job alone, for the sole purpose of building your own search index, and destroyed afterwards.</li>
 <li><strong>Limited use.</strong> docenta's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
-<li><strong>Taking it back.</strong> Remove docenta at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and it stops fetching mail and says so. <code>docenta remove mail</code> revokes the grant, deletes the token from the credential store and removes the fetched mail from your machine. <code>docenta remove --everything</code> removes everything docenta kept.</li>
+<li><strong>Taking it back.</strong> Remove docenta at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> and it stops fetching mail and says so. <code>docenta uninstall mail</code> revokes the grant, deletes the token from the credential store and removes the fetched mail from your machine. <code>docenta uninstall --everything</code> removes everything docenta kept.</li>
 </ul>
 
 <h2>Other mail providers</h2>
@@ -1316,7 +1316,7 @@ PLAIN["terms"] = dict(
 <p>Everything docenta indexes stays yours. We claim no rights to your files, mail, repositories or transcripts, and the <a href="/privacy/">privacy policy</a> says exactly what the software sends us, which is not your content. You are responsible for having the right to index what you point docenta at, including mail accounts and shared drives.</p>
 
 <h2>Connected accounts</h2>
-<p>When you connect a mail account, you authorize docenta to fetch that account's mail to your computer. A Google account connected with "Sign in with Google" is subject to Google's terms as well as these, and our handling of Google user data is described in the privacy policy. You can disconnect an account at any time from the provider's permissions page or with <code>docenta remove mail</code>.</p>
+<p>When you connect a mail account, you authorize docenta to fetch that account's mail to your computer. A Google account connected with "Sign in with Google" is subject to Google's terms as well as these, and our handling of Google user data is described in the privacy policy. You can disconnect an account at any time from the provider's permissions page or with <code>docenta uninstall mail</code>.</p>
 
 <h2>The turbo lane</h2>
 <p>The turbo lane rents a GPU on your explicit consent, which names a number of hours. The consent is the authorization to spend that amount on your behalf; the rate card shown before you consent is the price. Sealed packs are processed on a machine rented for your job alone and destroyed afterwards.</p>
@@ -1331,7 +1331,7 @@ PLAIN["terms"] = dict(
 <p>To the fullest extent the law allows, SKY is not liable for indirect, incidental, special, consequential or punitive damages, or for lost data, profits or revenue, arising from docenta or these terms, and SKY's total liability for any claim is limited to the amount you paid SKY for docenta in the twelve months before the claim.</p>
 
 <h2>Termination</h2>
-<p>You may stop using docenta at any time; <code>docenta remove --everything</code> removes what it kept. We may end your access if you break these terms. Sections on your content, no warranty, limitation of liability and governing law survive.</p>
+<p>You may stop using docenta at any time; <code>docenta uninstall --everything</code> removes what it kept. We may end your access if you break these terms. Sections on your content, no warranty, limitation of liability and governing law survive.</p>
 
 <h2>Governing law and contact</h2>
 <p>These terms are governed by the laws of the State of California, United States, without regard to its conflict of law rules. When these terms change, the date at the top changes with them and the current text is always at docenta.ai/terms. Questions go to <a href="mailto:docenta@docenta.ai">docenta@docenta.ai</a>.</p>
